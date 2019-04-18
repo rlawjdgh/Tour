@@ -107,7 +107,7 @@
 						<a href="#" class="btn btn-primary btn-sm">More Info</a>
 					</div>
 				</div>
-			</div>\
+			</div>
 			
 			<!-- /.col-md-4 -->
 			<div class="col-md-4 mb-5">
