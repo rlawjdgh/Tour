@@ -18,8 +18,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="javaDB" />
-		<property name="password" value="12345" />
+		<property name="username" value="practice" />
+		<property name="password" value="practice" />
 
 	</bean>
 	<!-- DataSource에 정보 넘겨주기 -->
