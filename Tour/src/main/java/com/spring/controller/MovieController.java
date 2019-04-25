@@ -18,9 +18,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class HomeController {
+@RequestMapping("/movie/*")
+public class MovieController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
