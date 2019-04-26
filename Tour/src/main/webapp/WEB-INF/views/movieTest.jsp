@@ -57,6 +57,8 @@
 		url+=movieCd;
 		console.log(url);
 		
+		alert("movieCd : " + movieCd);
+		
 		$.ajax({
 			url:url,
 			type:"get",

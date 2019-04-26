@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-@RequestMapping("/movie/*")
 public class MovieController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
@@ -36,7 +37,14 @@ public class MovieController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		return "main";
+		return "movie/main";
+	}
+	
+	@RequestMapping("/movieInfo")
+	public String movieInfo(Model model, @ModelAttribute("movieCd") int movieCd) {	
+		model.addAttribute("movieCd", movieCd);
+		
+		return "movie/movieInfo";
 	}
 
 	@RequestMapping("/movieTest")

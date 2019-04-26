@@ -1,29 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-    <!-- <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5"> -->
-<title>Home</title>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/carousel.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 	
-	<script src="${ pageContext.request.contextPath }/resources/css/jquery.min.js"></script>
-	<script src="${ pageContext.request.contextPath }/resources/css/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript">
-	    $(document).ready(function() {
-	         $('.carousel').carousel({
-	             interval: 2000
-	         })
-	    });    
-	</script>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 	<style>
       	.bd-placeholder-img {
@@ -37,19 +22,10 @@
       	
       	.carousel {
 		  background:#444;
-		}
-		
-		.carousel-item .img-fluid {
-		  width:100%;
-		  height:auto;
-		}
-      	
+		}      	
     </style>
-    
 </head>
 <body>
-	
-	<!-- navbar include로 뺄 예정 -->
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     		<a class="navbar-brand" href="#">
@@ -64,7 +40,7 @@
     		<div class="collapse navbar-collapse" id="navbarCollapse">	
 	      		<ul class="navbar-nav mr-auto">
         			<li class="nav-item active">
-          				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          				<a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
         			</li>
         		
         			<li class="nav-item">
@@ -151,93 +127,5 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    
-	
-	<blockquote class="blockquote text-center">
-  		<h1>Moive</h1>
-	</blockquote>
-	
-	<hr size="4px" width="170px">
-	
-	<div class="col text-center" style="padding-bottom: 50px;"> 
-		<button type="button" class="btn btn-secondary btn-lg">Box Office</button>
-		<button type="button" class="btn btn-secondary btn-lg">Latest Film</button>
-		<button type="button" class="btn btn-secondary btn-lg">Coming Soon</button>
-	</div>
-	
-	<div style="padding-left: 1500px;">
-		<button type="button" class="btn btn-link">MORE</button>
-	</div>
-	
-	<!-- 영화 정보 4개 만들 예정 -->
-	<div class="row justify-content-center">
-		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
-		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
-		   			<h5 class="card-title">Special title treatment</h5>
-		       		<a href="#" class="card-link">Card link</a>
-		   			<a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
-		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
-		   			<h5 class="card-title">Special title treatment</h5>
-		       		<a href="#" class="card-link">Card link</a>
-		   			<a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
-		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
-		   			<h5 class="card-title">Special title treatment</h5>
-		       		<a href="#" class="card-link">Card link</a>
-		   			<a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
-		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
-		   			<h5 class="card-title">Special title treatment</h5>
-		       		<a href="#" class="card-link">Card link</a>
-		   			<a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-
-
-	<div class="container marketing">		
-		<hr class="featurette-divider">
-		
-  		<h1 style="text-align:center; padding-bottom: 20px;">Coming Soon</h1>
-		
-		<div class="row featurette">
-      		<div class="col-md-7 order-md-2">
-        		<h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      		</div>
-      		
-	      	<div class="col-md-5 order-md-1">
-	        	<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-	        		<title>Placeholder</title>
-	        		<rect width="100%" height="100%" fill="#eee"></rect>
-	        		<text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-	        	</svg>
-	      	</div>
-    	</div>
-	</div>
-	
 </body>
 </html>
