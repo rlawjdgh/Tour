@@ -1,17 +1,14 @@
 package com.spring.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.domain.MovieVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,27 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class MovieController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		log.info("홈페이지 출력");
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		return "movie/main";
 	}
 	
-	@RequestMapping("/movieInfo")
-	public String movieInfo(Model model, @ModelAttribute("movieCd") int movieCd) {	
-		model.addAttribute("movieCd", movieCd);
+	@PostMapping("/movieInfo")
+	public String movieInfo(Model model, MovieVO movieVO) {	
+		log.info("영화 상세정보 출력");
 		
 		return "movie/movieInfo";
 	}

@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5"> -->
@@ -34,6 +34,9 @@
 				dd = "0"+dd;
 			}
 			
+			var movieList = new Array;
+			var movieInfo = new Array;
+			
 			$(document).ready(function() {
 				
 				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=430156241533f1d058c603178cc3ca0e&targetDt=";
@@ -53,9 +56,6 @@
 							$("#msg").html(str);
 						}
 						
-						var movieList = new Array;
-						var movieInfo = new Array;
-						
 						$(data).find("dailyBoxOffice").each(function(){
 
 							movieList.push($(this).find("movieNm").text());
@@ -65,47 +65,149 @@
 						
 						for(var i = 0; i < 4; i++) {
 							$( '#movieNm'+[i] ).text( movieList[i] );
-							
-							/* 
-								$('#movieInfo'+[i]).click(function () {
-								console.log("movieInfo : " + movieInfo[i]);
-								location.href="MovieInfo?movieCd="+movieInfo[i];
-							}); 
-							
-							movieInfo[4]의 값만 넘어가짐.. 왜 그러는지는 모르겠음
-							
-							*/
 						}
 						
 						
 						$('#movieInfo'+[0]).click(function () {
-							location.href="/tour/movieInfo?movieCd="+movieInfo[0];
+							$("#movieInfo"+[0]).attr("onClick", show(movieInfo[0]));
 						});
 						
 						$('#movieInfo'+[1]).click(function () {
-							location.href="/tour/movieInfo?movieCd="+movieInfo[1];
+							$("#movieInfo"+[1]).attr("onClick", show(movieInfo[1]));
 						});
 						
 						$('#movieInfo'+[2]).click(function () {
-							location.href="/tour/movieInfo?movieCd="+movieInfo[2];
+							$("#movieInfo"+[2]).attr("onClick", show(movieInfo[2]));
 						});
 						
 						$('#movieInfo'+[3]).click(function () {
-							location.href="/tour/movieInfo?movieCd="+movieInfo[3];
+							$("#movieInfo"+[3]).attr("onClick", show(movieInfo[3]));
 						});
-						
-						
+									
 					},
 					error:function(){
 						alert('실패');
 					}
 				});
 			});
+			
+			function show(movieCd) {
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=";
+				url+=movieCd;
+				
+				$.ajax({
+					url:url,
+					type:"get",
+					success:function(data){
+						
+						var length = $(data).find("actor").find("peopleNm").length; 
+						var howPeople = ""; 
+						$(data).find("actor").each(function(index){
+							if(index==length-1){
+								howPeople += $(this).find("peopleNm").text();
+							}else{
+								howPeople += $(this).find("peopleNm").text()+",";
+							}
+						});
+						
+						var form = $('<form></form>'); 
+						form.attr('action', '/tour/movieInfo'); 
+						form.attr('method', 'post'); 
+						form.appendTo('body'); 
+
+						var movieNm = $("<input type='hidden' name='movieNm' value='" + $(data).find("movieNm").text() + "'/>");
+						var showTm = $("<input type='hidden' name='showTm' value='" + $(data).find("showTm").text() + "'/>");
+						var director = $("<input type='hidden' name='director' value='" + $(data).find("director").find("peopleNm").text() + "'/>");
+						var people = $("<input type='hidden' name='people' value='" + howPeople + "'/>");
+						
+						form.append(movieNm).append(showTm).append(director).append(people);
+
+						form.submit();
+				
+					},
+					error:function(){
+						alert('에러발생');
+					}
+				});
+			}
 		});
 	</script>
+	
+	<style type="text/css">
+		.carousel {
+		  background:#444;
+		}   
+	</style>
     
 </head>
 <body>
+
+	<!-- 사진 슬라이드(슬라이드는 안됌)...???? -->
+	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-2" data-slide-to="1"></li>
+            <li data-target="#carousel-2" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          
+            <div class="carousel-item active">
+                <a href="https://bootstrapcreative.com/">
+
+                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
+
+                    <div class="carousel-caption">
+                        <div>
+                            <h2>Digital Craftsmanship</h2>
+                            <p>We meticously build each site to get results</p>
+                            <span class="btn btn-sm btn-outline-secondary">Learn More</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+          
+          
+            <div class="carousel-item">
+                <a href="https://bootstrapcreative.com/">
+                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
+
+                    <div class="carousel-caption justify-content-center align-items-center">
+                        <div>
+                            <h2>Every project begins with a sketch</h2>
+                            <p>We work as an extension of your business to explore solutions</p>
+                            <span class="btn btn-sm btn-outline-secondary">Our Process</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="https://bootstrapcreative.com/">
+  
+                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
+
+
+                    <div class="carousel-caption justify-content-center align-items-center">
+                        <div>
+                            <h2>Performance Optimization</h2>
+                            <p>We monitor and optimize your site's long-term performance</p>
+                            <span class="btn btn-sm btn-secondary">Learn How</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+       
+        <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 	
 	<blockquote class="blockquote text-center">
   		<h1>Moive</h1>

@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-		
-	</script>
 </head>
 <body>
-	${ movieCd }
+	${ movieVO.movieNm } <br>
+	${ movieVO.director } <br>
+	${ movieVO.people } <br>
+	${ movieVO.showTm }
 </body>
 </html>

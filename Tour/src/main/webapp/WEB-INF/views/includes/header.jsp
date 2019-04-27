@@ -18,11 +18,7 @@
         	-moz-user-select: none;
         	-ms-user-select: none;
         	user-select: none;
-      	}
-      	
-      	.carousel {
-		  background:#444;
-		}      	
+      	}   	
     </style>
 </head>
 <body>
@@ -60,72 +56,6 @@
     		
   		</nav>
   	</header>
-	
-	<!-- 사진 슬라이드(슬라이드는 안됌)...???? -->
-	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-2" data-slide-to="1"></li>
-            <li data-target="#carousel-2" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          
-            <div class="carousel-item active">
-                <a href="https://bootstrapcreative.com/">
 
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-                    <div class="carousel-caption">
-                        <div>
-                            <h2>Digital Craftsmanship</h2>
-                            <p>We meticously build each site to get results</p>
-                            <span class="btn btn-sm btn-outline-secondary">Learn More</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-          
-          
-            <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-                    <div class="carousel-caption justify-content-center align-items-center">
-                        <div>
-                            <h2>Every project begins with a sketch</h2>
-                            <p>We work as an extension of your business to explore solutions</p>
-                            <span class="btn btn-sm btn-outline-secondary">Our Process</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
-  
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-
-                    <div class="carousel-caption justify-content-center align-items-center">
-                        <div>
-                            <h2>Performance Optimization</h2>
-                            <p>We monitor and optimize your site's long-term performance</p>
-                            <span class="btn btn-sm btn-secondary">Learn How</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-        </div>
-       
-        <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 </body>
 </html>

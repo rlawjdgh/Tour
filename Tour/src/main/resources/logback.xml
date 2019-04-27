@@ -30,10 +30,10 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="com.spring.tour" level="info" />
+	<logger name="com.spring.controller" level="info" />
 	<logger name="com.spring.service" level="info" />
 	<logger name="com.spring.mapper" level="debug"/>
-	<logger name="com.spring.tour" level="debug"/>
+	<logger name="com.spring.controller" level="debug"/>
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core" level="info" />
