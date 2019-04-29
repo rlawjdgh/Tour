@@ -119,8 +119,10 @@
 						var showTm = $("<input type='hidden' name='showTm' value='" + $(data).find("showTm").text() + "'/>");
 						var director = $("<input type='hidden' name='director' value='" + $(data).find("director").find("peopleNm").text() + "'/>");
 						var people = $("<input type='hidden' name='people' value='" + howPeople + "'/>");
+						var openDt = $("<input type='hidden' name='openDt' value='" + $(data).find("openDt").text() + "'/>");
+						var genreNm = $("<input type='hidden' name='genreNm' value='" + $(data).find("genreNm").text() + "'/>"); // 영화 장르
 						
-						form.append(movieNm).append(showTm).append(director).append(people);
+						form.append(movieNm).append(showTm).append(director).append(people).append(openDt).append(genreNm);
 
 						form.submit();
 				
@@ -228,9 +230,9 @@
 	<!-- 영화 정보 4개 만들 예정 -->
 	<div class="row justify-content-center">
 		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18.7rem;">
 		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
+				<div class="card-body" style="height: 101px;">
 		   			<h5 class="card-title" id="movieNm0"></h5>
 		       		<a href="#" class="card-link" id="movieInfo0">상세보기</a>
 		   			<a href="#" class="card-link">예매하기</a>
@@ -239,9 +241,9 @@
 		</div>
 		
 		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18.7rem;">
 		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
+				<div class="card-body" style="height: 101px;">
 		   			<h5 class="card-title" id="movieNm1"></h5>
 		       		<a href="#" class="card-link" id="movieInfo1">상세보기</a>
 		   			<a href="#" class="card-link">예매하기</a>
@@ -250,9 +252,9 @@
 		</div>
 		
 		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18.7rem;">
 		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
+				<div class="card-body" style="height: 101px;">
 		   			<h5 class="card-title" id="movieNm2"></h5>
 		       		<a href="#" class="card-link" id="movieInfo2">상세보기</a>
 		   			<a href="#" class="card-link">예매하기</a>
@@ -261,9 +263,9 @@
 		</div>
 		
 		<div class="col-sm-2">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18.7rem;">
 		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="Card image cap">
-				<div class="card-body">
+				<div class="card-body" style="height: 101px;">
 		   			<h5 class="card-title" id="movieNm3"></h5>
 		       		<a href="#" class="card-link" id="movieInfo3">상세보기</a>
 		   			<a href="#" class="card-link">예매하기</a>
