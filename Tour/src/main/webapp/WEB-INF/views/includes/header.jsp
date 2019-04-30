@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/carousel.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
@@ -18,10 +19,31 @@
         	-moz-user-select: none;
         	-ms-user-select: none;
         	user-select: none;
-      	}   	
+      	}
+      	
+      	.carousel {
+		  background:#444;
+		}
+		
+		.show {
+			position: absolute; 
+			width: 100%;
+		 	height: 100%; top: 0; 
+		 	bottom: 0; 
+		 	left: 0; 
+		 	right: 0;
+		}
+		
+		.show-video {
+			position: absolute; 
+			top: 50%; 
+			left: 50%; 
+			transform: translate(-50%,-50%);
+		}	
     </style>
 </head>
 <body>
+
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     		<a class="navbar-brand" href="/tour/">
@@ -36,7 +58,7 @@
     		<div class="collapse navbar-collapse" id="navbarCollapse">	
 	      		<ul class="navbar-nav mr-auto">
         			<li class="nav-item active">
-          				<a class="nav-link" href="#">로그인</a>
+          				<a class="nav-link" href="/tour/movielogin">로그인</a>
         			</li>
         		
         			<li class="nav-item">
@@ -56,6 +78,3 @@
     		
   		</nav>
   	</header>
-
-</body>
-</html>

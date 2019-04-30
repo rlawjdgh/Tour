@@ -32,6 +32,14 @@ public class MovieController {
 		
 		return "movie/movieInfo";
 	}
+	
+	@RequestMapping("/movielogin")
+	public String login() {
+		log.info("로그인 화면 출력");
+		
+		return "movie/movielogin";
+	}
+	
 
 	@RequestMapping("/movieTest")
 	public void movieTest() {
