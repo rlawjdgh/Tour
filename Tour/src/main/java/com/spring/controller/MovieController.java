@@ -1,6 +1,5 @@
 package com.spring.controller;
 
-import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MovieController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Model model) {
 		log.info("홈페이지 출력");
 		
 		return "movie/main";
@@ -32,16 +31,8 @@ public class MovieController {
 		
 		return "movie/movieInfo";
 	}
-	
-	@RequestMapping("/movielogin")
-	public String login() {
-		log.info("로그인 화면 출력");
-		
-		return "movie/movielogin";
-	}
-	
 
-	@RequestMapping("/movieTest")
+	@PostMapping("/movieTest")
 	public void movieTest() {
 		
 	}

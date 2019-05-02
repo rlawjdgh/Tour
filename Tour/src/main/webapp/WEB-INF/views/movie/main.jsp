@@ -3,8 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../includes/header.jsp" %>
 
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/carousel.css">
-	
 	<!-- 사진 슬라이드(슬라이드는 안됌)...???? -->
 	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
         <ol class="carousel-indicators">
@@ -28,8 +26,7 @@
                     </div>
                 </a>
             </div>
-          
-          
+             
             <div class="carousel-item">
                 <a href="https://bootstrapcreative.com/">
                  <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
@@ -72,6 +69,8 @@
         </a>
     </div>
 	
+	
+	
 	<blockquote class="blockquote text-center">
   		<h1>Moive</h1>
 	</blockquote>
@@ -84,7 +83,7 @@
 		<button type="button" class="btn btn-secondary btn-lg">Coming Soon</button>
 	</div>
 	
-	<div style="padding-left: 1500px;">
+	<div style="padding-left: 1520px;">
 		<button type="button" class="btn btn-link">MORE</button>
 	</div>
 	
@@ -157,122 +156,122 @@
     	</div>
 	</div>
 	
-<script>
-	$(function(){
-		
-		var d = new Date();
-		var yy = d.getFullYear();
-		var mm = d.getMonth() + 1;
-		var dd = d.getDate() - 1;
-		var today = `${yy}${mm}${dd}`;
-		
-		if(mm<10){
-			mm="0"+mm;
-		}
-		
-		if(dd<10){
-			dd = "0"+dd;
-		}
-		
-		var movieList = new Array;
-		var movieInfo = new Array;
-		
-		$(document).ready(function() {
+	<script>
+		$(function(){
 			
-			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=430156241533f1d058c603178cc3ca0e&targetDt=";
-			url+= yy+mm+dd;
+			var d = new Date();
+			var yy = d.getFullYear();
+			var mm = d.getMonth() + 1;
+			var dd = d.getDate() - 1;
+			var today = `${yy}${mm}${dd}`;
 			
-			// console.log(url);
+			if(mm<10){
+				mm="0"+mm;
+			}
 			
-			$.ajax({
-				url:url,
-				type:"get",
-				success:function(data){
-					console.log(data);
-					var str="";
-					
-					if($(data).find("dailyBoxOffice").text()==""){
-						alert("데이터가 없습니다.");
-						$("#msg").html(str);
-					}
-					
-					$(data).find("dailyBoxOffice").each(function(){
-
-						movieList.push($(this).find("movieNm").text());
-						movieInfo.push($(this).find("movieCd").text());
-					});
-					
-					
-					for(var i = 0; i < 4; i++) {
-						$( '#movieNm'+[i] ).text( movieList[i] );
-					}
-					
-					
-					$('#movieInfo'+[0]).click(function () {
-						$("#movieInfo"+[0]).attr("onClick", show(movieInfo[0]));
-					});
-					
-					$('#movieInfo'+[1]).click(function () {
-						$("#movieInfo"+[1]).attr("onClick", show(movieInfo[1]));
-					});
-					
-					$('#movieInfo'+[2]).click(function () {
-						$("#movieInfo"+[2]).attr("onClick", show(movieInfo[2]));
-					});
-					
-					$('#movieInfo'+[3]).click(function () {
-						$("#movieInfo"+[3]).attr("onClick", show(movieInfo[3]));
-					});
-								
-				},
-				error:function(){
-					alert('실패');
-				}
-			});
-		});
-		
-		function show(movieCd) {
-			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=";
-			url+=movieCd;
+			if(dd<10){
+				dd = "0"+dd;
+			}
 			
-			$.ajax({
-				url:url,
-				type:"get",
-				success:function(data){
-					
-					var length = $(data).find("actor").find("peopleNm").length; 
-					var howPeople = ""; 
-					$(data).find("actor").each(function(index){
-						if(index==length-1){
-							howPeople += $(this).find("peopleNm").text();
-						}else{
-							howPeople += $(this).find("peopleNm").text()+", ";
+			var movieList = new Array;
+			var movieInfo = new Array;
+			
+			$(document).ready(function() {
+				
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=dedf3e37049fc0fb419590fb9807a649&targetDt=";
+				url+=yy+mm+dd /* 20190424 */;
+				
+				// console.log(url);
+				
+				$.ajax({
+					url:url,
+					type:"get",
+					success:function(data){
+						console.log(data);
+						var str="";
+						
+						if($(data).find("dailyBoxOffice").text()==""){
+							alert("데이터가 없습니다.");
+							$("#msg").html(str);
 						}
-					});
-					
-					var form = $('<form></form>'); 
-					form.attr('action', '/tour/movieInfo'); 
-					form.attr('method', 'post'); 
-					form.appendTo('body'); 
-
-					var movieNm = $("<input type='hidden' name='movieNm' value='" + $(data).find("movieNm").text() + "'/>");
-					var showTm = $("<input type='hidden' name='showTm' value='" + $(data).find("showTm").text() + "'/>");
-					var director = $("<input type='hidden' name='director' value='" + $(data).find("director").find("peopleNm").text() + "'/>");
-					var people = $("<input type='hidden' name='people' value='" + howPeople + "'/>");
-					var openDt = $("<input type='hidden' name='openDt' value='" + $(data).find("openDt").text() + "'/>");
-					var genreNm = $("<input type='hidden' name='genreNm' value='" + $(data).find("genreNm").text() + "'/>"); // 영화 장르
-					
-					form.append(movieNm).append(showTm).append(director).append(people).append(openDt).append(genreNm);
-
-					form.submit();
-			
-				},
-				error:function(){
-					alert('에러발생');
-				}
+						
+						$(data).find("dailyBoxOffice").each(function(){
+	
+							movieList.push($(this).find("movieNm").text());
+							movieInfo.push($(this).find("movieCd").text());
+						});
+						
+						
+						for(var i = 0; i < 4; i++) {
+							$( '#movieNm'+[i] ).text( movieList[i] );
+						}
+						
+						
+						$('#movieInfo'+[0]).click(function () {
+							$("#movieInfo"+[0]).attr("onClick", show(movieInfo[0]));
+						});
+						
+						$('#movieInfo'+[1]).click(function () {
+							$("#movieInfo"+[1]).attr("onClick", show(movieInfo[1]));
+						});
+						
+						$('#movieInfo'+[2]).click(function () {
+							$("#movieInfo"+[2]).attr("onClick", show(movieInfo[2]));
+						});
+						
+						$('#movieInfo'+[3]).click(function () {
+							$("#movieInfo"+[3]).attr("onClick", show(movieInfo[3]));
+						});
+									
+					},
+					error:function(){
+						alert('실패');
+					}
+				});
 			});
-		}
-	});
-</script>
+			
+			function show(movieCd) {
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=dedf3e37049fc0fb419590fb9807a649&movieCd=";
+				url+=movieCd;
+				
+				$.ajax({
+					url:url,
+					type:"get",
+					success:function(data){
+						
+						var length = $(data).find("actor").find("peopleNm").length; 
+						var howPeople = ""; 
+						$(data).find("actor").each(function(index){
+							if(index==length-1){
+								howPeople += $(this).find("peopleNm").text();
+							}else{
+								howPeople += $(this).find("peopleNm").text()+", ";
+							}
+						});
+						
+						var form = $('<form></form>'); 
+						form.attr('action', '/tour/movieInfo'); 
+						form.attr('method', 'post'); 
+						form.appendTo('body'); 
+	
+						var movieNm = $("<input type='hidden' name='movieNm' value='" + $(data).find("movieNm").text() + "'/>");
+						var showTm = $("<input type='hidden' name='showTm' value='" + $(data).find("showTm").text() + "'/>");
+						var director = $("<input type='hidden' name='director' value='" + $(data).find("director").find("peopleNm").text() + "'/>");
+						var people = $("<input type='hidden' name='people' value='" + howPeople + "'/>");
+						var openDt = $("<input type='hidden' name='openDt' value='" + $(data).find("openDt").text() + "'/>");
+						var genreNm = $("<input type='hidden' name='genreNm' value='" + $(data).find("genreNm").text() + "'/>"); // 영화 장르
+						
+						form.append(movieNm).append(showTm).append(director).append(people).append(openDt).append(genreNm);
+	
+						form.submit();
+				
+					},
+					error:function(){
+						alert('에러발생');
+					}
+				});
+			}
+		});
+	</script>
 
 <%@include file="../includes/footer.jsp" %>  

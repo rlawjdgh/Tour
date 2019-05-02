@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MAGACGV</title>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/carousel.css">
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -48,7 +46,7 @@
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     		<a class="navbar-brand" href="/tour/">
     			<img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-    			MAGAVGC
+    			MAGACGV
     		</a>
     		
     		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +56,7 @@
     		<div class="collapse navbar-collapse" id="navbarCollapse">	
 	      		<ul class="navbar-nav mr-auto">
         			<li class="nav-item active">
-          				<a class="nav-link" href="/tour/movielogin">로그인</a>
+          				<a class="nav-link" href="/tour/memberlogin">로그인</a>
         			</li>
         		
         			<li class="nav-item">

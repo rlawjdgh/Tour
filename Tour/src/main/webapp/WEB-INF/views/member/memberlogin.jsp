@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp" %>
-
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/util.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/login.css">
-
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/util.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/login.css">	
     
 	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
         <div class="carousel-inner" role="listbox">
@@ -32,7 +30,7 @@
 				<form class="login100-form validate-form flex-sb flex-w">
 				
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="useremail" placeholder="User E-mail">
+						<input class="input100" type="text" name="userId" placeholder="userId">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -45,10 +43,10 @@
 					<div class="flex-sb-m w-full p-t-3 p-b-24">
 
 						<div>
-							<a href="#" class="txt1">
+							<a href="/tour/memberInsert" class="txt1">
 								회원가입
-							</a> / 
-							
+							</a>
+							 / 				
 							<a href="#" class="txt1">
 								비밀번호 찾기
 							</a>
