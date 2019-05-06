@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
         <div class="carousel-inner" role="listbox">
@@ -27,7 +28,8 @@
       							개봉연도 : ${ movieVO.openDt }<br>
       							상영시간 : ${ movieVO.showTm } mim <br>
       							감독 : ${ movieVO.director }<br>
-      							배우 : ${ movieVO.people } 
+      							배우 : ${ movieVO.people } <br>
+      							영화번호 : ${ movieVO.movieNm } 
         		</p>
         		<form>
 	        		<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
@@ -66,5 +68,28 @@
 	<hr size="4px" width="170px">
 	
 	<!-- 여기부터 테이블 -->
+	<div class="list-group">
+		<c:forEach var="r" items="${reply }">
+			<a href="#" class="list-group-item list-group-item-action">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">${r.writer }</h5>
+					<small>3 days ago</small>
+				</div>
+				<p class="mb-1">${r.reply }</p>
+				<small>${r.replyDate }</small>
+			</a>
+		</c:forEach>
+	</div>
+	<table width="690">
+			<tr>
+				<td class="f11" align="center">
+					${pageMenu }
+				</td>
+			</tr>
+		</table>	
+
+
+
+
 
 <%@include file="../includes/footer.jsp" %>  

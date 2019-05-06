@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.MovieReplyMapper">
+
+	<select id="getReplys" resultType="com.spring.domain.MovieReplyVO">
+		select * from mvreply where movienm=#{movieNm}
+	</select>
+	
+	<select id="getTotal" resultType="java.lang.Integer">
+		select count(*) from mvreply
+	</select>
+	
+	<select id="getRepliesPaging" resultType="com.spring.domain.MovieReplyVO">
+		select * from ( select rank() over(order by reNo desc) no,
+		b.* from(select * from mvreply where movienm=#{movieNm} ) b ) where no between #{start} and #{end}
+	</select>
+
+</mapper>

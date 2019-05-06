@@ -1,0 +1,23 @@
+create table MVreply(
+	reNo number(10,0) primary key,
+	movieNm varchar2(100) not null,
+	reply varchar2(1000) not null,
+	writer varchar2(50) not null,
+	replyDate date default sysdate
+);
+
+create sequence seq_mvreply;
+--샘플데이터
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','대박~~','user1',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','Lorem ipsum dolor sit amet','user2',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','consectetur adipisicing elit','user3',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','sed do eiusmod tempor incididunt','user4',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','ut labore et dolore magna aliqua','user5',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','Ut enim ad minim veniam~~','user6',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','quis nostrud exercitation ullamco','user7',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','laboris nisi ut aliquip ex ea','user8',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','commodo consequat','user9',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','Duis aute irure dolor in','user10',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','reprehenderit in voluptate velit','user11',sysdate );
+insert into MVREPLY values(seq_mvreply.nextval,'어벤져스: 엔드게임','esse cillum dolore eu fugiat nulla pariatu','user12',sysdate );
+select * from MVREPLY;

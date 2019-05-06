@@ -251,7 +251,7 @@
 						
 						var form = $('<form></form>'); 
 						form.attr('action', '/tour/movieInfo'); 
-						form.attr('method', 'post'); 
+						//form.attr('method', 'post'); 
 						form.appendTo('body'); 
 	
 						var movieNm = $("<input type='hidden' name='movieNm' value='" + $(data).find("movieNm").text() + "'/>");

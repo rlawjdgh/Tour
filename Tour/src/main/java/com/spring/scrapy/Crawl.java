@@ -1,4 +1,4 @@
-package com.spring.scrapy;
+/*package com.spring.scrapy;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,3 +34,4 @@ public class Crawl {
 
 	
 }
+*/
