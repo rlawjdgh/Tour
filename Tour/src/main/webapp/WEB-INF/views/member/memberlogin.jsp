@@ -27,16 +27,16 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
-				<form class="login100-form validate-form flex-sb flex-w">
+				<form class="login100-form validate-form flex-sb flex-w" id="login">
 				
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="userId" placeholder="userId">
+						<input class="input100" type="text" id="userId" placeholder="userId">
 						<span class="focus-input100"></span>
 					</div>
 					
 					
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" id="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -54,14 +54,57 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" id="btn">
 							Login
 						</button>
 					</div>
-
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	<script>
+	$(function(){
+		
+		$("#btn").click(function() {
+			
+			var id = $("#userId").val();
+			var password = $("#password").val();
+			
+			if( id == '') {
+	        	alert("아이디를 입력 해 주세요.");
+	        	id.focus();
+	        	return false;
+	        }
+			
+			if( password == '') {
+	        	alert("비밀번호를 입력 해 주세요.");
+	        	password.focus();
+	        	return false;
+	        }
+			
+			var params="id="+id+"password="+password;
+
+			$.ajax({
+				url : "/tour/loginForm",
+				data : {id: id, password: password},
+				type : "post",
+				success : function(data) {
+					
+					if(data == 'no_id'){
+						alert("아이디가 없습니다.");
+			        	return;
+					} else if(data == 'no_pw'){
+						alert("존재하지 않는 비밀번호입니다.");
+						return;
+					}else{
+						$(location).attr('href', "tour/clear");
+					}
+				}
+			});
+			
+		});
+	});
+	</script>
 	
 <%@include file="../includes/footer.jsp" %>  

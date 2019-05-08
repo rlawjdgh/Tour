@@ -26,7 +26,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 order-md-1">
-				<form class="needs-validation" method="post" id="insert" action="/tour/registMember">
+				<form class="needs-validation" method="post" id="regist" action="/tour/registMember">
 					<div class="row">
        		
 						<div class="col-md-6 mb-3">
@@ -39,7 +39,7 @@
 							<div class="input-group">
 	         					<input type="text" class="form-control" id="id">
 	         					<span class="input-group-btn">
-	        						<button type="button" class="btn btn-outline-danger">중복체크</button>
+	        						<button type="button" class="btn btn-outline-danger" id="check_id">중복체크</button>
 	      						</span>
 	      					</div>
        					</div>
@@ -93,12 +93,15 @@
 	<script>
 		$(function(){
 			
+			 var id_check = false;
 			 var name = $('#name');
 			 var id = $('#id');
 			 var email = $('#email');
 			 var password = $('#password');
 			 var confirm = $('#confirm-Pass');
 			 var phone = $('#phone');
+			 
+			 var registForm = $("#regist");
 			
 			$(".btn-block").on("click",function(e) {
 				e.preventDefault();
@@ -126,11 +129,16 @@
 		        	return false;
 		        } else {
 		            if(!regpId.test(id.val())) {
-		                alert('이메일 주소가 유효하지 않습니다');
+		                alert('영어로 입력 해 주세요');
 		                id.focus();
 		                return false;
 		            }
 		        }
+		        
+		        if (id_check == false) {
+					alert("아이디 중복체크 해주세요");
+					return false;
+				}
 		        
 		        if( password.val() == '') {
 		        	alert("비밀번호를 입력 해 주세요.");
@@ -178,9 +186,38 @@
 					return false;
 				}
 				
-				$("#insert").submit();
+				registForm.append("<input type='hidden' name='name' value='" + name.val() + "'/>")
+				registForm.append("<input type='hidden' name='id' value='" + id.val() + "'/>")
+				registForm.append("<input type='hidden' name='email' value='" + email.val() + "'/>")
+				registForm.append("<input type='hidden' name='password' value='" + password.val() + "'/>")
+				registForm.append("<input type='hidden' name='phone' value='" + phone.val() + "'/>")
+				
+				registForm.submit();
 			});
 			
+			$("#check_id").click(function() {
+				
+				var checkId = $("#id").val();
+
+				$.ajax({
+					url : "/tour/check_id",
+					data : checkId,
+					type : "get",
+					success : function(data) {
+						
+						alert(data);
+						
+						if(data == 'no'){
+							alert("아이디가 사용중입니다.");
+							id.focus();
+				        	return false;
+						} else {
+							alert("사용 가능합니다.");
+							id_check = true;
+						}
+					}
+				});
+			});	
 		});
 	</script>
 

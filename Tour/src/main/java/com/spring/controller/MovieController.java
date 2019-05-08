@@ -25,6 +25,7 @@ import com.spring.domain.Paging;
 /**
  * Handles requests for the application home page.
  */
+
 @Slf4j
 @Controller
 public class MovieController {
