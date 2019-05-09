@@ -84,7 +84,7 @@ public class MemberController {
 			res = "no_pw";
 		}
 		
-		session.setAttribute("vo", vo);
+		session.setAttribute("logon", vo);
 		session.setMaxInactiveInterval(3600);
 		
 		return res;

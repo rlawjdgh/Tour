@@ -14,5 +14,9 @@
 		select * from ( select rank() over(order by reNo desc) no,
 		b.* from(select * from mvreply where movienm=#{movieNm} ) b ) where no between #{start} and #{end}
 	</select>
+	
+	<insert id="insertReply">
+		insert into mvreply values(seq_mvreply.nextval,#{movieNm},#{reply},#{writer},sysdate)
+	</insert>
 
 </mapper>

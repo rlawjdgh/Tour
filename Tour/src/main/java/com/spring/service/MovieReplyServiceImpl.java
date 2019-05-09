@@ -46,4 +46,13 @@ public class MovieReplyServiceImpl implements MovieReplyService {
 		return mapper.getRepliesPaging(hash);
 	}
 
+	@Override
+	public int insertReply(String movieNm, String writer, String reply) {
+		HashMap<String, String> hash = new HashMap<>();
+		hash.put("movieNm", movieNm);
+		hash.put("writer",writer);
+		hash.put("reply", reply);
+		return mapper.insertReply(hash);
+	}
+
 }

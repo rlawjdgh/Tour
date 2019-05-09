@@ -10,5 +10,6 @@ public interface MovieReplyMapper {
 	public List<MovieReplyVO> getReplys(String movieNm);
 	public int getTotal();
 	public List<MovieReplyVO> getRepliesPaging(HashMap<String, Object> hash);
+	public int insertReply(HashMap<String, String> hash);
 	
 }

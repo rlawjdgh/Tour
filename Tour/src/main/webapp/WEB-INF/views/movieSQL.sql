@@ -19,3 +19,5 @@
 		writer varchar2(50) not null,
 		replyDate date default sysdate
 	);
+	
+	

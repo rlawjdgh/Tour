@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../includes/header.jsp" %>
 	
 	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
@@ -53,33 +54,106 @@
 	  	
 	  	<div style="padding-top: 70px;"></div>
 	  	
-	  	<blockquote class="blockquote text-center">
+	  	<blockquote class="blockquote text-center mb-3">
 	  		<h1>한줄평</h1>
 		</blockquote>
 		
 		<hr size="4px" width="170px">
 	
-		<!-- 여기부터 테이블 -->
-		<div class="list-group">
-			<c:forEach var="r" items="${reply}">
-				<a href="#" class="list-group-item list-group-item-action">
-					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">${r.writer }</h5>
-						<small>3 days ago</small>
-					</div>
-					<p class="mb-1">${r.reply }</p>
-					<small>${r.replyDate }</small>
-				</a>
-			</c:forEach>
-		</div>
+		<!-- 한줄평 리스트 -->
+		<div class="list-group mt-3 reList"></div>
 		
-		<table width="690">
+		<table width="690" class="mb-3 mt-3">
 			<tr>
 				<td class="f11" align="center">
 					${pageMenu }
 				</td>
 			</tr>
 		</table>
+		<!-- 한줄평 입력 -->
+		<div class="input-group mb-3">
+			<form action="" id="replyForm">
+			<input id="reply" name="reply" type="text" class="form-control" placeholder="한줄평">
+			<input id="movieTitle" name="movieNm" type="hidden" class="form-control" value="${ movieVO.movieNm }">		
+			<input id="writer" name="writer" type="hidden" class="form-control" value="${ logon.id }"/>
+			</form>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-reply">등록</button>
+			</div>
+		</div>
+		
 	</div>
+	<!-- 댓글등록 -->
+	<script>
+	$(function(){
+		var logedIdx = "${logon.idx}";
+		showReply();
+		
+		$(".btn-reply").on("click",function(){
+			//if(logedIdx==null || logedIdx == ""){
+			//	alert("로그인 후 이용가능합니다.");
+			//	return;
+			//}else{
+				$.ajax({
+					type : "post",
+					url : '/tour/insertReply',
+					data : {movieNm : $("#movieTitle").val(),
+							writer : "테스틑"/* $("#writer").val() */,
+							reply : $("#reply").val()},
+					success : function(data){
+						console.log(data);
+						 $("#reply").val("");
+						 showReply();
+					}
+					
+				});
+			//}
+		});
 
+		function showReply(){
+			 $.getJSON({
+				url : '/tour/getReplyLists',
+				data : {movieNm : $("#movieTitle").val(),
+						page : ${page}}, 
+				success:function(data){
+					var str = "";
+					console.log(data);
+					$(data).each(function(i,obj){
+						str += "<a href='#' class='list-group-item list-group-item-action disabled'>";
+						str += "<div class='d-flex w-100 justify-content-between'>";
+						str += "<h5 class='mb-1'>" + obj.writer + "</h5>";
+						str += "</div><p class='mb-1'>" + obj.reply + "</p>";
+						str += "<small>" + displayTime(obj.replyDate) + "</small></a>";
+					});	
+					$(".reList").html(str);
+				}
+			});//getJSON
+		 }//showReply
+		
+		 //시간포맷
+		function displayTime(timeValue){
+			
+			var today = new Date();
+			
+			var gap = today.getTime()-timeValue;
+			
+			var dateObj = new Date(timeValue);
+			var str = "";
+			/* if(gap<(1000*60*60*24)){//오늘 24시간 안에 작성됐을 경우
+				var hh=dateObj.getHours();
+				var mi = dateObj.getMinutes();
+				var ss = dateObj.getSeconds();
+				
+						//시분초가 9가 넘어가면 두자리수가 되니까 그냥 쓰고, 두자리수가 안될경우 앞에 0붙이기
+				return [(hh>9?'':'0')+hh,':',(mi>9?'':'0')+mi,':',(ss>9?'':'0')+ss].join('');
+			}else{//댓글이 달린지 24시간이 지났으면 */
+				var yy = dateObj.getFullYear();
+				var mm = dateObj.getMonth()+1;
+				var dd = dateObj.getDate();
+				return [yy,'/',(mm>9?'':'0')+mm,'/',(dd>9?'':'0')+dd].join('');
+			//}
+
+		}//displayTime
+	})
+	</script>
 <%@include file="../includes/footer.jsp" %>  
