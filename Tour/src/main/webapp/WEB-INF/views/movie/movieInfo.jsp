@@ -26,7 +26,7 @@
         		<h2 class="featurette-heading"><span class="text-muted"></span></h2>
         		<p class="lead">장르 : ${ movieVO.genreNm }<br>
       							개봉연도 : ${ movieVO.openDt }<br>
-      							상영시간 : ${ movieVO.showTm } mim <br>
+      							상영시간 : ${ movieVO.showTm } min <br>
       							감독 : ${ movieVO.director }<br>
       							배우 : ${ movieVO.people } 
         		</p>

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.spring.domain.MovieReplyVO;
+import com.spring.domain.MovieVO;
 
 public interface MovieReplyMapper {
 	

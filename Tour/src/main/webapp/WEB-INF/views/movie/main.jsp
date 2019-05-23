@@ -3,71 +3,46 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../includes/header.jsp" %>
 
-	<!-- 사진 슬라이드(슬라이드는 안됌)...???? -->
-	<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-2" data-slide-to="1"></li>
-            <li data-target="#carousel-2" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          
-            <div class="carousel-item active">
-                <a href="https://bootstrapcreative.com/">
+	<!-- 사진 슬라이드(슬라이드는 안됨)...???? -->
 
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-                    <div class="carousel-caption">
-                        <div>
-                            <h2>Digital Craftsmanship</h2>
-                            <p>We meticously build each site to get results</p>
-                            <span class="btn btn-sm btn-outline-secondary">Learn More</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-             
-            <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-                    <div class="carousel-caption justify-content-center align-items-center">
-                        <div>
-                            <h2>Every project begins with a sketch</h2>
-                            <p>We work as an extension of your business to explore solutions</p>
-                            <span class="btn btn-sm btn-outline-secondary">Our Process</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="carousel-item">
-                <a href="https://bootstrapcreative.com/">
-  
-                 <img src="https://dummyimage.com/1000x400/444/" alt="responsive image" class="d-block img-fluid">
-
-
-                    <div class="carousel-caption justify-content-center align-items-center">
-                        <div>
-                            <h2>Performance Optimization</h2>
-                            <p>We monitor and optimize your site's long-term performance</p>
-                            <span class="btn btn-sm btn-secondary">Learn How</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
-       
-        <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+      </div>
+      <div class="carousel-item">
+        <img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 	
 	
 	
@@ -84,56 +59,37 @@
 	</div>
 	
 	<div style="padding-left: 1520px;">
-		<button type="button" class="btn btn-link">MORE</button>
+		<button type="button" class="btn btn-link show-more">MORE</button>
 	</div>
 	
 	<!-- 영화 정보 4개 만들 예정 -->
-	<div class="row justify-content-center">
-		<div class="col-sm-2">
-			<div class="card" style="width: 18.7rem;">
-		  	<img class="card-img-top" src="#" alt="Card image cap">
-				<div class="card-body" style="height: 101px;">
-		   			<h5 class="card-title" id="movieNm0"></h5>
-		       		<a href="#" class="card-link" id="movieInfo0">상세보기</a>
+	<div class="row justify-content-center mvList">
+	<c:forEach var="i" begin="0" end="4" step="1">
+		<div class="col-sm-2 m-3">
+			<div class="card" style="width:18.7rem;">
+		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
+				<div class="card-body" style="height: 101px;" id="movieCode">
+		   			<h5 class="card-title" id="movieNm${i}"></h5>
+		       		<a href="#" class="card-link" id="movieInfo">상세보기</a>
 		   			<a href="#" class="card-link">예매하기</a>
 				</div>
 			</div>
 		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18.7rem;">
-		  	<img class="card-img-top" src="#" alt="Card image cap">
-				<div class="card-body" style="height: 101px;">
-		   			<h5 class="card-title" id="movieNm1"></h5>
-		       		<a href="#" class="card-link" id="movieInfo1">상세보기</a>
-		   			<a href="#" class="card-link">예매하기</a>
+	</c:forEach>
+	<div class="row justify-content-center mvList hiding">
+		<c:forEach var="i" begin="5" end="9" step="1">
+			<div class="col-sm-2 m-3">
+				<div class="card" style="width:18.7rem;">
+			  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
+					<div class="card-body" style="height: 101px;" id="movieCode">
+			   			<h5 class="card-title" id="movieNm${i}"></h5>
+			       		<a href="#" class="card-link" id="movieInfo">상세보기</a>
+			   			<a href="#" class="card-link">예매하기</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18.7rem;">
-		  	<img class="card-img-top" src="#" alt="Card image cap">
-				<div class="card-body" style="height: 101px;">
-		   			<h5 class="card-title" id="movieNm2"></h5>
-		       		<a href="#" class="card-link" id="movieInfo2">상세보기</a>
-		   			<a href="#" class="card-link">예매하기</a>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="card" style="width: 18.7rem;">
-		  	<img class="card-img-top" src="#" alt="Card image cap">
-				<div class="card-body" style="height: 101px;">
-		   			<h5 class="card-title" id="movieNm3"></h5>
-		       		<a href="#" class="card-link" id="movieInfo3">상세보기</a>
-		   			<a href="#" class="card-link">예매하기</a>
-				</div>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
-	
 	
 	<div class="container marketing">		
 		<hr class="featurette-divider">
@@ -159,6 +115,20 @@
 	<script>
 		$(function(){
 			
+			var switch1 = 0;
+			$(".hiding").css("display","none");		
+			$(".show-more").on("click",function(){
+				if(switch1==0){
+					$(".hiding").fadeIn(500);
+					$(".show-more").html("HIDE");
+					switch1 = !switch1;
+				}else{
+					$(".hiding").fadeOut(500);
+					$(".show-more").html("MORE");
+					switch1 = !switch1;
+				}
+			});
+			
 			var d = new Date();
 			var yy = d.getFullYear();
 			var mm = d.getMonth() + 1;
@@ -173,12 +143,13 @@
 				dd = "0"+dd;
 			}
 			
-			var movieList = new Array;
-			var movieInfo = new Array;
+			/* var movieList = new Array;
+			var movieInfo = new Array; */
 			
 			$(document).ready(function() {
 				
-				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=dedf3e37049fc0fb419590fb9807a649&targetDt=";
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=";
+				//url+= $("#txtYear").val()+$("#selMon").val()+$("#selDay").val();
 				url+=yy+mm+dd /* 20190424 */;
 				
 				// console.log(url);
@@ -190,37 +161,19 @@
 						console.log(data);
 						var str="";
 						
-						if($(data).find("dailyBoxOffice").text()==""){
+						//JSONObject jsonobj = (JSONobject)jsonparser.parse(readUrl());
+						
+						if(data.boxOfficeResult.dailyBoxOfficeList==""){
 							alert("데이터가 없습니다.");
 							$("#msg").html(str);
 						}
 						
-						$(data).find("dailyBoxOffice").each(function(){
-	
-							movieList.push($(this).find("movieNm").text());
-							movieInfo.push($(this).find("movieCd").text());
-						});
-						
-						
-						for(var i = 0; i < 4; i++) {
-							$( '#movieNm'+[i] ).text( movieList[i] );
-						}
-						
-						
-						$('#movieInfo'+[0]).click(function () {
-							$("#movieInfo"+[0]).attr("onClick", show(movieInfo[0]));
-						});
-						
-						$('#movieInfo'+[1]).click(function () {
-							$("#movieInfo"+[1]).attr("onClick", show(movieInfo[1]));
-						});
-						
-						$('#movieInfo'+[2]).click(function () {
-							$("#movieInfo"+[2]).attr("onClick", show(movieInfo[2]));
-						});
-						
-						$('#movieInfo'+[3]).click(function () {
-							$("#movieInfo"+[3]).attr("onClick", show(movieInfo[3]));
+						$.each(data.boxOfficeResult.dailyBoxOfficeList,function(index,item){ //boxOfficeResult : json안에 젤 바깥 키
+							//영화이름
+							var movieNm = item.movieNm;
+							$("#movieCode").append("<input type='hidden' value='" + item.movieCd + "' class='mCd'>");
+							$("#movieInfo").attr("id","movieInfo" + index);
+							$('#movieNm'+ index).text( movieNm );
 						});
 									
 					},
@@ -228,11 +181,12 @@
 						alert('실패');
 					}
 				});
+				
 			});
 			
-			function show(movieCd) {
-				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=dedf3e37049fc0fb419590fb9807a649&movieCd=";
-				url+=movieCd;
+			$("#movieInfo").on("click",function(){
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=";
+				url+=$(".mCd").val();
 				
 				$.ajax({
 					url:url,
@@ -270,7 +224,8 @@
 						alert('에러발생');
 					}
 				});
-			}
+			});	
+			
 		});
 	</script>
 

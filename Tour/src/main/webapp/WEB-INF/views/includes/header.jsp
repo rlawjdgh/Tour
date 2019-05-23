@@ -68,11 +68,40 @@
         			</li>
       			</ul>
       	
-			      <form class="form-inline mt-2 mt-md-0">
-			        	<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-			        	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			      </form>
+			   
+			        	<input class="form-control mr-sm-2 keyword" type="text" placeholder="Search" aria-label="Search">
+			        	<button class="btn btn-outline-success my-2 my-sm-0 goSearch" type="button">Search</button>
+			      
     		</div>
     		
   		</nav>
   	</header>
+
+  	<script>
+  		$(function(){
+  			
+  			$(".goSearch").on("click",function(){
+  				if($(".keyword").val()=="" || $(".keyword").val==null){
+  					alert("검색어를 입력하세요");
+  				}else{
+  					location.href="/tour/searchList";
+  				}
+  				
+  				
+  				$.ajax({
+					url:url,
+					type:"get",
+					success:function(data){
+						console.log(data);
+						var str="";
+					},
+					error:function(){
+						alert('실패');
+					}
+						
+					});
+  				
+  			});
+  			
+  		});
+  	</script>

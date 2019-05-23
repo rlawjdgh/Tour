@@ -90,6 +90,11 @@ public class MovieController {
 		return str;
 	}
 	
+	@RequestMapping("/searchList")
+	public void searchList() {
+		
+	}
+	
 	@PostMapping("/movieTest")
 	public void movieTest() {
 		
