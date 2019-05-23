@@ -31,7 +31,7 @@
       							배우 : ${ movieVO.people } 
         		</p>
         		<form>
-	        		<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+	        		<button type="button" class="btn btn-primary" id="booking">
 	  					예매하기
 					</button>
 				</form>
@@ -48,7 +48,7 @@
 	<div class="container">
   	
 	  	<div class="embed-responsive embed-responsive-16by9" style="width: 1100px; height: 500px;">
-	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen style="float: center;"></iframe>
+	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PVP5ZJuI57c" allowfullscreen style="float: center;"></iframe>
 		</div>
 	  	
 	  	
@@ -59,6 +59,18 @@
 		</blockquote>
 		
 		<hr size="4px" width="170px">
+		
+		<!-- 한줄평 입력 -->
+		<div class="input-group mb-3" style="padding-top: 40px;">
+			<form action="" id="replyForm">
+				<input id="reply" name="reply" type="text" class="form-control" placeholder="한줄평">
+				<input id="movieTitle" name="movieNm" type="hidden" class="form-control" value="${ movieVO.movieNm }">		
+				<input id="writer" name="writer" type="hidden" class="form-control" value="${ logon.id }"/>
+			</form>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-reply">등록</button>
+			</div>
+		</div>
 	
 		<!-- 한줄평 리스트 -->
 		<div class="list-group mt-3 reList"></div>
@@ -70,18 +82,6 @@
 				</td>
 			</tr>
 		</table>
-		<!-- 한줄평 입력 -->
-		<div class="input-group mb-3">
-			<form action="" id="replyForm">
-			<input id="reply" name="reply" type="text" class="form-control" placeholder="한줄평">
-			<input id="movieTitle" name="movieNm" type="hidden" class="form-control" value="${ movieVO.movieNm }">		
-			<input id="writer" name="writer" type="hidden" class="form-control" value="${ logon.id }"/>
-			</form>
-			<div class="input-group-append">
-				<button class="btn btn-primary btn-reply">등록</button>
-			</div>
-		</div>
-		
 	</div>
 	<!-- 댓글등록 -->
 	<script>
@@ -90,15 +90,15 @@
 		showReply();
 		
 		$(".btn-reply").on("click",function(){
-			//if(logedIdx==null || logedIdx == ""){
-			//	alert("로그인 후 이용가능합니다.");
-			//	return;
-			//}else{
+			if(${logon == null}){
+				alert("로그인 후 이용가능합니다.");
+				return;
+			}else{
 				$.ajax({
 					type : "post",
 					url : '/tour/insertReply',
 					data : {movieNm : $("#movieTitle").val(),
-							writer : "테스틑"/* $("#writer").val() */,
+							writer : $("#writer").val(),
 							reply : $("#reply").val()},
 					success : function(data){
 						console.log(data);
@@ -107,14 +107,13 @@
 					}
 					
 				});
-			//}
+			}
 		});
-
 		function showReply(){
 			 $.getJSON({
 				url : '/tour/getReplyLists',
 				data : {movieNm : $("#movieTitle").val(),
-						page : ${page}}, 
+						page : ${page}},  
 				success:function(data){
 					var str = "";
 					console.log(data);
@@ -129,7 +128,7 @@
 				}
 			});//getJSON
 		 }//showReply
-		
+		  
 		 //시간포맷
 		function displayTime(timeValue){
 			
@@ -152,8 +151,11 @@
 				var dd = dateObj.getDate();
 				return [yy,'/',(mm>9?'':'0')+mm,'/',(dd>9?'':'0')+dd].join('');
 			//}
-
 		}//displayTime
 	})
+	
+	$('#booking').click(function(){
+		$(location).attr('href', '/tour/movieTicketing')
+	});	
 	</script>
 <%@include file="../includes/footer.jsp" %>  

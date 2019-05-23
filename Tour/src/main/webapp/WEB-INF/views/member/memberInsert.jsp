@@ -205,8 +205,6 @@
 					type : "get",
 					success : function(data) {
 						
-						alert(data);
-						
 						if(data == 'no'){
 							alert("아이디가 사용중입니다.");
 							id.focus();

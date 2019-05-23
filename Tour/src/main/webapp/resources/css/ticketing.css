@@ -1,0 +1,235 @@
+.ticket_inner {
+    width: 980px;
+    margin: 20px auto 0;
+}
+
+.ticket_step {
+    min-height: 300px;
+    background: #fff;
+    border-top: 2px solid #23333b;
+}
+
+.ticket_left {
+    float: left;
+    width: 600px;
+}
+
+.ticket_right {
+    float: right;
+    width: 379px;
+    border-left: 1px solid #c0c0c0;
+    box-sizing: border-box;
+}
+
+.theater_header {
+    overflow: hidden;
+    height: 59px;
+    padding: 0 25px 0 20px;
+    line-height: 59px;
+    border-bottom: 1px solid #dedede;
+}
+
+.theater_header dt {
+    float: left;
+    font-size: 20px;
+    padding: 0 0 0 10px;
+    font-weight: bold;
+    color: #231f20;
+}
+
+.ticket_My {
+    overflow: hidden;
+    height: 35px;
+    padding-left: 20px;
+    border-bottom: 1px solid #dedede;
+}
+
+.ticket_My dt {
+    float: left;
+    color: #231f20;
+    font-size: 14px;
+    padding-left: 10px;
+    line-height: auto;
+    font-weight: bold;
+}
+
+.theater_cont {
+    position: relative;
+}
+
+.tab_srcoll {
+    height: 415px;
+    padding-left: 10px;
+    overflow-y: auto;
+}
+
+.tab_cont.on {
+    display: block;
+}
+
+.theater_zone {
+    position: relative;
+}
+
+.theater_zone li {
+    margin-bottom: 8px;
+}
+
+.area_cont.on {
+    display: block;
+}
+
+.theater_zone {
+    position: relative;
+}
+
+.theater_zone li {
+    margin-bottom: 8px;
+}
+
+.area_zone > a {
+    display: block;
+    width: 116px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 13px;
+    color: #666;
+    text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+.area_cont.on {
+    display: block;
+}
+
+.area_cont {
+    display: none;
+    position: absolute;
+    left: 131px;
+    top: 0;
+}
+
+.area_list {
+    overflow: hidden;
+    width: 409px;
+}
+
+.area_list li {
+    float: left;
+    margin: 0 0 8px 7px;
+    display: table;
+}
+
+.theater_header {
+    overflow: hidden;
+    height: 59px;
+    padding: 0 25px 0 20px;
+    line-height: 59px;
+    border-bottom: 1px solid #dedede;
+}
+
+.movie_cont {
+    height: 466px;
+    min-height: 466px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.scroll_bar {
+    clear: both;
+    height: 466px;
+    overflow-y: auto;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+.selectMv {
+    width: 980px;
+    margin: 0 auto;
+    background: #dad2b4;
+}
+
+.selectMv_Area {
+    overflow: hidden;
+    padding: 20px 30px 15px;
+    box-sizing: border-box;
+     background: #dad2b4;
+}
+
+.selectMv_Area .txtdate {
+    padding-left: 0px;
+}
+
+.selectMv_Area dl {
+    float: left;
+    overflow: hidden;
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.selectMv_Area dl dt {
+    float: left;
+    color: #231f20;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.selectMv_Area dl dd {
+    float: left;
+    color: #231f20;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.selectMv_Area .txtCin dd {
+    float: right;
+    width: 257px;
+}
+
+.selectMv_Area .listMv {
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.selectMv_Area .txtName {
+    float: left;
+    width: 362px;
+}
+
+
+
+
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+

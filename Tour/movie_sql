@@ -1,0 +1,83 @@
+create sequence seq_area;
+
+create table area(
+	idx number(5) primary key,
+	name varchar2(20) not null
+);
+insert into area values(seq_area.nextval, '서울');
+insert into area values(seq_area.nextval, '부산');
+
+지역DB 	 지역
+-------------
+1		서울
+2		부산
+
+
+
+create sequence seq_location;
+
+create table location(
+	idx number(5) primary key,
+	locNum number(5),
+	locName varchar2(50)	
+);
+insert into location values(seq_location.nextval, 1, '신촌');
+insert into location values(seq_location.nextval, 1, '홍대입구');
+insert into location values(seq_location.nextval, 2, '해운대');
+
+번호	지역DB 		위치
+-----------------------------
+1	1		신촌
+2  	1  		홍대
+3  	2 		해운대
+
+
+
+
+create sequence seq_box;
+
+create table box(
+	idx number(5) primary key,
+	locIdx number(5),
+	boxNum number(5),
+	time varchar2(50)
+);
+insert into box values(seq_box.nextval, 1, 1, '09:15');
+insert into box values(seq_box.nextval, 1, 2, '10:30');
+insert into box values(seq_box.nextval, 1, 3, '11:50');
+insert into box values(seq_box.nextval, 2, 1, '09:20');
+
+고유번호	번호		몇관		시간
+-------------------------------
+1		1		1		09:15
+2		1		2		11:00
+3		1		3		14:30
+4		2		1		10:35
+
+
+
+
+↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 보류  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+
+create sequence seq_sit
+
+create table sit(
+	idx number(5) primary key,
+	mumberNum number(5),
+	sitNum number(5),
+	day varchar2(20),
+	movie varchar2(20),
+	sitName varchar2(20)
+);
+insert into sit values(seq_sit.nextval, 1, 4, 1, '어벤져스', 'F11');
+insert into sit values(seq_sit.nextval, 1, 4, 1, '어벤져스', 'F12');
+insert into sit values(seq_sit.nextval, 2, 4, 2, '어벤져스', 'F13');
+insert into sit values(seq_sit.nextval, 2, 4, 2, '어벤져스', 'F14');
+
+번호		멤버idx	고유번호	날짜	     영화	         좌석
+-------------------------------------------
+1		1		 4		1	   어벤져스	   	F11
+2		1		 4		1	   어벤져스		F12
+3		3		 4		2	   어벤져스		F13
+4		4		 4		2	   어벤져스		F14

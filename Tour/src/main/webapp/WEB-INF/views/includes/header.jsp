@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,17 +67,16 @@
           				<a class="nav-link" href="#">상영관</a>
         			</li>
       			</ul>
-      	
-			   
-			        	<input class="form-control mr-sm-2 keyword" type="text" placeholder="Search" aria-label="Search">
-			        	<button class="btn btn-outline-success my-2 my-sm-0 goSearch" type="button">Search</button>
-			      
+      				<div class="form-inline mt-2 mt-md-0">
+						<input class="form-control mr-sm-2 keyword" type="text" placeholder="Search" aria-label="Search">
+				      	<button class="btn btn-outline-success my-2 my-sm-0 goSearch" type="button">Search</button>
+				    </div>
     		</div>
     		
   		</nav>
   	</header>
 
-  	<script>
+	<script>
   		$(function(){
   			
   			$(".goSearch").on("click",function(){
@@ -104,4 +103,4 @@
   			});
   			
   		});
-  	</script>
+  	</script> 

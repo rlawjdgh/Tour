@@ -66,28 +66,26 @@
 	<script>
 	$(function(){
 		
+		var id = $("#userId");
+		var password = $("#password");
+		
 		$("#btn").click(function() {
 			
-			var id = $("#userId").val();
-			var password = $("#password").val();
-			
-			if( id == '') {
+			if( id.val() == '') {
 	        	alert("아이디를 입력 해 주세요.");
 	        	id.focus();
 	        	return false;
 	        }
 			
-			if( password == '') {
+			if( password.val() == '') {
 	        	alert("비밀번호를 입력 해 주세요.");
 	        	password.focus();
 	        	return false;
 	        }
-			
-			var params="id="+id+"password="+password;
 
 			$.ajax({
 				url : "/tour/loginForm",
-				data : {id: id, password: password},
+				data : {id: id.val(), password: password.val()},
 				type : "post",
 				success : function(data) {
 					
@@ -98,7 +96,7 @@
 						alert("존재하지 않는 비밀번호입니다.");
 						return;
 					}else{
-						$(location).attr('href', "tour/clear");
+						$(location).attr('href', "/tour/");
 					}
 				}
 			});

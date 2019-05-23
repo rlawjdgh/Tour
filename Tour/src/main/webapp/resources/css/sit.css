@@ -1,0 +1,172 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+#container.sub {
+    margin: 39px 0 0 0;
+}
+
+#container {
+    position: relative;
+    min-width: 980px;
+    border-top: 1px solid #e9e4d2;
+    min-height: 669px;
+}
+
+#content {
+    position: relative;
+    min-height: 400px;
+}
+
+.seatwrap {
+    padding: 50px 0 30px;
+    background: #f9f6ec;
+}
+
+.seatArea {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.seatArea .seatTit {
+    float: left;
+    padding-bottom: 20px;
+    font-size: 28px;
+    color: #231f20;
+}
+
+.seatwrap .selectbox {
+    background: #fff;
+    padding: 0 28px 0 30px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.personSelect {
+    padding: 20px 0 10px;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.personSelect > li {
+    float: left;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 30px;
+}
+
+.seatheader:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.personSelect:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.personSelect li label {
+    float: left;
+    display: inline-block;
+    min-width: 72px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #231f20;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.personSelect li .select_box .ui_fold_btn {
+    width: 70px;
+    padding: 0 0 0 10px;
+}
+
+.select_box .ui_fold_btn {
+    display: block;
+    width: 90px;
+    padding: 13px 26px 12px 10px;
+    /* background: #fff url(/LCHS/Image/Bg/bg_select.gif) no-repeat 100% 50%; */
+    border: 1px solid #b9b9b9;
+    color: #666;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 13px;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+.personSelect li .select_box {
+    display: inline-block;
+    margin-right: 50px;
+    width: 70px;
+}
+
+.select_box {
+    position: relative;
+}
+
+.personSelect li .select_box ul {
+    min-width: auto;
+    width: 68px;
+}
+
+.select_box ul {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    display: none;
+    min-width: 97px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.select_box li {
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 13px;
+}
+
+.select_box li a.on, .select_box li a:hover, .select_box li a:focus, .select_box li a:active {
+    background: #231f20;
+    color: #fff;
+}
+
+.select_box li a {
+    display: block;
+    width: auto;
+    padding: 0 0 0 10px;
+    line-height: 29px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+.seat_txt2 {
+    padding: 20px 0 20px 27px;
+    border-top: 1px solid #ccc;
+    line-height: 16px;
+    background: url(/LCHS/image/icon/icon_seat_d.gif) no-repeat 0 20px;
+    font-size: 13px;
+    color: #6f6247;
+}

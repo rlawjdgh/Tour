@@ -39,11 +39,11 @@ public class MemberController {
 	@PostMapping("/registMember")
 	public String registMember(MemberVO vo) {
 		log.info("회원가입");
-
+ 
 		if (vo.getGrade() == null) {
 			vo.setGrade("Silver");
 		}
-		log.info("" + vo.getName());
+		log.info("" + vo.getName()); 
 
 		service.registMember(vo);
 
@@ -52,16 +52,15 @@ public class MemberController {
 
 	@RequestMapping("/check_id")
 	@ResponseBody
-	public String check_id(@ModelAttribute("checkId") String checkId) {
-		log.info("ID 중복체크");
+	public String check_id(@ModelAttribute("checkId") String checkId) { 
+		log.info("ID 중복체크"); 
 
 		MemberVO vo = service.checkId(checkId);
 		log.info("" + vo);
 
-		String res = "yes";
-
-		if (vo != null) {
-			res = "no";
+		String res = "no";
+		if(vo == null) {
+			res = "yes";
 		}
 
 		return res;
@@ -90,10 +89,4 @@ public class MemberController {
 		return res;
 	}
 	
-	@RequestMapping("/clear")
-	public String clear() {
-		
-		return "/tour/";
-	}
-
 }

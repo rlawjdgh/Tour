@@ -58,28 +58,30 @@
 		<button type="button" class="btn btn-secondary btn-lg">Coming Soon</button>
 	</div>
 	
-	<div style="padding-left: 1520px;">
+	<div style="padding-left: 1340px;">
 		<button type="button" class="btn btn-link show-more">MORE</button>
 	</div>
 	
 	<!-- 영화 정보 4개 만들 예정 -->
 	<div class="row justify-content-center mvList">
-	<c:forEach var="i" begin="0" end="4" step="1">
-		<div class="col-sm-2 m-3">
-			<div class="card" style="width:18.7rem;">
-		  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
-				<div class="card-body" style="height: 101px;" id="movieCode">
-		   			<h5 class="card-title" id="movieNm${i}"></h5>
-		       		<a href="#" class="card-link" id="movieInfo">상세보기</a>
-		   			<a href="#" class="card-link">예매하기</a>
+		<c:forEach var="i" begin="0" end="4" step="1">
+			<div class="col-sm-2">
+				<div class="card" style="width:15rem;">
+			  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
+					<div class="card-body" style="height: 101px;" id="movieCode">
+			   			<h5 class="card-title" id="movieNm${i}"></h5>
+			       		<a href="#" class="card-link" id="movieInfo">상세보기</a>
+			   			<a href="#" class="card-link">예매하기</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</c:forEach>
-	<div class="row justify-content-center mvList hiding">
+		</c:forEach>
+	</div>
+	
+	<div class="row justify-content-center mvList hiding" style="padding-top: 40px;">
 		<c:forEach var="i" begin="5" end="9" step="1">
-			<div class="col-sm-2 m-3">
-				<div class="card" style="width:18.7rem;">
+			<div class="col-sm-2">
+				<div class="card" style="width:15rem;">
 			  	<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
 					<div class="card-body" style="height: 101px;" id="movieCode">
 			   			<h5 class="card-title" id="movieNm${i}"></h5>
