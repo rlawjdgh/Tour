@@ -1,0 +1,279 @@
+.w_center {
+	width: 32px;
+	height: 6px;
+	background-image:
+		url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_left.png);
+	background-position: 50% 0;
+}
+
+[class^=w_] {
+	position: absolute;
+	display: block;
+	width: 6px;
+	height: 32px;
+	background:
+		url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_left.png)
+		no-repeat;
+	font-size: 0;
+	line-height: 0;
+}
+
+.btn_wrap {
+	width: 100%;
+	background: #cdc197;
+}
+
+.btn_inner {
+	width: 980px;
+	margin: 0 auto;
+	line-height: 50px;
+}
+
+.btn_inner .btn_next {
+	float: right;
+	padding-right: 29px;
+	background:
+		url(https://www.lottecinema.co.kr/LCHS/Image/Btn/btn_total_next02.png)
+		no-repeat 100% 50%;
+}
+
+.btn_inner [class^=btn_] {
+	display: block;
+	color: #231f20;
+	font-size: 14px;
+	font-weight: bold;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-align: center;
+}
+
+.btn_wrap {
+	width: 100%;
+	background: #cdc197;
+}
+
+.btn_inner {
+	width: 980px;
+	margin: 0 auto;
+	line-height: 50px;
+}
+
+.btn_inner:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.btn_inner [class^=btn_] {
+	display: block;
+	color: #231f20;
+	font-size: 14px;
+	font-weight: bold;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-align: center
+}
+
+.btn_inner .btn_prev {
+	float: left;
+	padding-left: 29px;
+	background: url('/LCHS/Image/Btn/btn_total_prev02.png') no-repeat 0 50%
+}
+
+.btn_inner .btn_prev.on, .btn_inner .btn_prev:hover {
+	background-image: url('/LCHS/Image/Btn/btn_total_prev02_on.png');
+	color: #000
+}
+
+.btn_inner .btn_next.on, .btn_inner .btn_next:hover {
+	background-image: url('/LCHS/Image/Btn/btn_total_next02_on.png');
+	color: #000
+}
+
+.total_wrap {
+	width: 100%;
+	background: #33373a
+}
+
+.total_slide {
+	overflow: hidden;
+	width: 980px;
+	margin: 0 auto;
+}
+
+.total_slide ul {
+	width: 3000px;
+	display: table;
+}
+
+.total_slide ul:after {
+	content: '';
+	display: block;
+	clear: both
+}
+
+.total_slide ul>li {
+	display: table-cell;
+	vertical-align: top;
+	position: relative;
+	width: 245px; /*  float:left;  height:196px; */
+	padding: 15px 15px 20px;
+	border-right: 1px solid #515151;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	color: #a7a9ac;
+	font-size: 14px;
+}
+
+.total_slide ul>li:first-child {
+	border-left: 1px solid #515151;
+}
+
+.total_slide ul>li:first-child .total_data dt {
+	width: 80px;
+}
+
+.total_slide ul>li:first-child .total_data dd {
+	width: 114px;
+}
+
+.total_slide ul>li dl:after {
+	content: '';
+	display: block;
+	clear: both
+}
+
+.total_slide ul>li>dl {
+	height: 134px;
+}
+
+.total_slide ul>li .total_tit {
+	margin-bottom: 10px;
+	color: #cdc197;
+}
+
+.total_slide ul>li .total_data dt {
+	float: left;
+	width: 68px
+}
+
+.total_slide ul>li .total_data dt>img {
+	width: 65px;
+	height: 94px
+}
+
+.total_slide ul>li .total_data dd {
+	float: left;
+	width: 136px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	color: #fff;
+	letter-spacing: -1px
+}
+
+.total_slide ul>li .total_data dt, .total_slide ul>li .total_data dd {
+	line-height: 22px;
+	word-break: break-all
+}
+
+.total_slide ul>li .total_data dd em {
+	display: block;
+}
+
+.total_slide .total_sum {
+	float: right;
+	padding-top: 5px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center
+}
+
+.total_slide .total_sum>span {
+	font-size: 24px;
+	font-weight: normal;
+	font-family: 'linlivertine'
+}
+
+.total_slide .total_sweet {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 105px;
+	color: #fff
+}
+
+.total_slide .total_sweet dt {
+	float: left;
+	width: 124px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.total_slide .total_sweet dt, .total_slide .total_sweet dd {
+	display: inline-block;
+	margin-bottom: 6px;
+	line-height: 18px
+}
+
+.total_slide .total_sweet dd {
+	float: right;
+}
+
+.total_slide .total_sweet p {
+	margin-bottom: 10px
+}
+
+.total_slide .total_sweet dd img {
+	vertical-align: text-bottom
+}
+
+.total_slide .total_sweet dd a {
+	margin-left: 4px;
+}
+
+.total_slide .total_sweet .btns_close {
+	margin-left: 4px
+}
+
+.total_slide ul>li .total_data.sum dd {
+	float: right;
+	text-align: right
+}
+
+.total_slide .movie_name {
+	display: block;
+	margin-bottom: 5px
+}
+
+.total_slide .movie_sort {
+	display: block;
+	margin-bottom: 28px
+}
+
+.total_slide .movie_grade {
+	font-size: 12px
+}
+
+.total_slide.total_list li {
+	width: 326px !important;
+}
+
+.total_slide.total_list ul>li:first-child .total_data dd {
+	width: 200px !important;
+}
+
+.total_slide.total_list ul>li .total_data dd {
+	width: 227px !important;
+}
+
+.total_wrap .total_slide ul>li {
+	width: 250px;
+}
+
+.total_wrap .total_slide ul>li:first-child {
+	width: 228px;
+}

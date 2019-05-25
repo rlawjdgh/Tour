@@ -1,0 +1,88 @@
+.select_box .ui_fold_btn {
+    display: block;
+    width: 90px;
+    padding: 13px 26px 12px 10px;
+    background: #fff url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_select.gif) no-repeat 100% 50%;
+    border: 1px solid #b9b9b9;
+    color: #666;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 13px;
+}
+
+.mseat_inner {
+    width: 980px;
+    min-height: 80px;
+    margin: 0 auto;
+    padding: 20px 0 32px;
+}
+
+.screen_box {
+    position: relative;
+}
+
+.screen_box .screen_tit {
+    display: block;
+    margin-bottom: 15px;
+    line-height: 25px;
+    background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_screen.gif) no-repeat 0 0;
+    font-size: 20px;
+    color: #231f20;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.screen_scroll {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.screen_Fbox {
+    position: relative;
+}
+
+.seat_Barea {
+    overflow: auto;
+    position: relative;
+    padding: 20px 0;
+    background: #f9f8f3;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.seat_area {
+    position: relative;
+}
+
+.seat_tit {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 22px;
+    text-align: left;
+    line-height: 22px;
+    font-size: 11px;
+    color: #2b2e33;
+}
+
+.seat_area a {
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background: #848484;
+    text-align: center;
+    color: #fff;
+    font-size: 11px;
+    line-height: 23px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
