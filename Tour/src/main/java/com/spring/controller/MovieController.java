@@ -23,6 +23,7 @@ import com.spring.domain.AreaVO;
 import com.spring.domain.BoxVO;
 import com.spring.domain.Common;
 import com.spring.domain.LocationVO;
+import com.spring.domain.MovieEnterVO;
 
 import lombok.extern.slf4j.Slf4j;
 import com.spring.domain.Paging;
@@ -55,7 +56,7 @@ public class MovieController {
 	public String movieInfo(Model model, @ModelAttribute("movieVO") MovieVO movieVO, String page) {
 		log.info("영화 상세정보 출력");
 
-		// 댓글페이지네이션
+		// 댓글페이지네이
 		int nowPage = 1; // 기본으로 보여질 페이지
 		if (page != null && !page.isEmpty()) {
 			nowPage = Integer.parseInt(page);
@@ -142,7 +143,12 @@ public class MovieController {
 	}
 	
 	@RequestMapping("/movieSitBooking")
-	public String sitBooking(int boxIdx, String movieNm) {
+	public String sitBooking(Model model, @ModelAttribute("movieEnterVO") MovieEnterVO movieEnterVO) {
+		
+		int idx = movieEnterVO.getBoxIdx();
+		List<BoxVO> box = boxService.selectIdx(idx);
+		
+		model.addAttribute("box", box);
 		
 		return "/movie/movieSitBooking";
 	}

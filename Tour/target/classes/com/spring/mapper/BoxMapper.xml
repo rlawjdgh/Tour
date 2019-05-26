@@ -6,4 +6,8 @@
 		select * from box where locIdx=#{locIdx}
 	</select>
 	
+	<select id="selectIdx" resultType="com.spring.domain.BoxVO">
+		select * from box where idx=#{idx}
+	</select>
+	
 </mapper>

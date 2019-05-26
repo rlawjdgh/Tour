@@ -22,4 +22,9 @@ public class BoxServiceImpl implements BoxService{
 		return mapper.select(locIdx);
 	}
 
+	@Override
+	public List<BoxVO> selectIdx(int idx) {
+		return mapper.selectIdx(idx);
+	}
+
 }

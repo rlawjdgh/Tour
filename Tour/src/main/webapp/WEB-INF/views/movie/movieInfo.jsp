@@ -126,7 +126,7 @@
 					});	
 					$(".reList").html(str);
 				}
-			});//getJSON
+			}); //getJSON
 		 }//showReply
 		  
 		 //시간포맷
@@ -153,7 +153,7 @@
 			//}
 		}//displayTime
 	})
-	
+	 
 	$('#booking').click(function(){
 		$(location).attr('href', '/tour/movieTicketing')
 	});	

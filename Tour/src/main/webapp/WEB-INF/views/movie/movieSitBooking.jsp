@@ -109,7 +109,7 @@
 								    <dd>
 									    <dl class="total_data">
 											 <dd>
-											    <strong class="movie_name">어벤져스: 엔드게임</strong>
+											    <strong class="movie_name">${movieEnterVO.movieNm}</strong>
 										    </dd>
 									    </dl>
 								    </dd>
@@ -120,28 +120,27 @@
 								    <dt class="total_tit Lang-LBL1027">예매정보</dt>
 								    <dd>
 									    <dl class="total_data">
-										    <dt class="Lang-LBL1028">상영일</dt>
-										    <dd class="day_data"></dd>
-										    <dt class="Lang-LBL1029">상영시간</dt>
-										    <dd class="time_data"></dd>
-										    <dt class="Lang-LBL1030">상영관</dt>
-										    <dd class="name_data">??<br>관</dd>
-										    <dt class="Lang-LBL1031">좌석</dt>
-										    <dd class="seat_data"></dd>
+									    	<c:forEach var="box" items="${ box }">
+											    <dt class="Lang-LBL1028">상영일</dt>
+											    <dd class="day_data">${movieEnterVO.day}</dd>
+											    <dt class="Lang-LBL1029">상영시간</dt>
+											    <dd class="time_data">${box.time}</dd>
+											    <dt class="Lang-LBL1030">상영관</dt>
+											    <dd class="name_data">${movieEnterVO.locName}<br>${box.boxNum}관</dd>
+											    <dt class="Lang-LBL1031">좌석</dt>
+											    <dd class="seat_data"></dd>
+											</c:forEach>
 									    </dl>
 								    </dd>
 							    </dl>
-							    <strong class="total_sum seatSum"><span>0</span> <em class="Lang-LBL1037">원</em></strong>
 						    </li>
 						    
 						    <li>
-							    <dl>
+							    <dl>	
 								    <dt class="total_tit Lang-LBL1034">총 결제 금액</dt>
 								    <dd>
 									    <dl class="total_data sum">
 										    <dt class="Lang-LBL1035">영화예매</dt>
-										    <dd class="seatSum">₩<span>0</span></dd>
-										    
 									    </dl>								
 								    </dd>
 							    </dl>

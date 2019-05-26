@@ -109,7 +109,6 @@
 	
 	
 	<script>
-		var locc = "";	
 	
 		$(function(){
 			
@@ -304,11 +303,13 @@
 			form.attr('action', '/tour/movieSitBooking'); 
 			form.attr('method', 'get'); 
 			form.appendTo('body'); 
-
+			
+			var day = $("<input type='hidden' name='day' value='"+$('#click-today').val()+"'/>");
 			var boxIdx = $("<input type='hidden' name='boxIdx' value='"+$(this).data("boxidx")+"'/>");
+			var locName = $("<input type='hidden' name='locName' value='"+$('#click-locName').val()+"'/>");
 			var movieNm = $("<input type='hidden' name='movieNm' value='"+$('#click-movieNm').val()+"'/>");
 			
-			form.append(boxIdx).append(movieNm);
+			form.append(day).append(boxIdx).append(locName).append(movieNm);
 
 			form.submit();
 		});

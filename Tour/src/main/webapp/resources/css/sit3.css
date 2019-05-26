@@ -184,14 +184,6 @@
 	display: block;
 }
 
-.total_slide .total_sum {
-	float: right;
-	padding-top: 5px;
-	font-size: 14px;
-	color: #fff;
-	text-align: center
-}
-
 .total_slide .total_sum>span {
 	font-size: 24px;
 	font-weight: normal;

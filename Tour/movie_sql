@@ -27,9 +27,9 @@ insert into location values(seq_location.nextval, 2, '해운대');
 
 번호	지역DB 		위치
 -----------------------------
-1	1		신촌
-2  	1  		홍대
-3  	2 		해운대
+1	1			신촌
+2  	1  			홍대
+3  	2 			해운대
 
 
 
@@ -70,14 +70,14 @@ create table sit(
 	movie varchar2(20),
 	sitName varchar2(20)
 );
-insert into sit values(seq_sit.nextval, 1, 4, 1, '어벤져스', 'F11');
-insert into sit values(seq_sit.nextval, 1, 4, 1, '어벤져스', 'F12');
-insert into sit values(seq_sit.nextval, 2, 4, 2, '어벤져스', 'F13');
-insert into sit values(seq_sit.nextval, 2, 4, 2, '어벤져스', 'F14');
+insert into sit values(seq_sit.nextval, 1, 4, 2019-05-20, '어벤져스', 'F11');
+insert into sit values(seq_sit.nextval, 1, 4, 2019-05-20, '어벤져스', 'F12');
+insert into sit values(seq_sit.nextval, 2, 4, 2019-05-21, '어벤져스', 'F13');
+insert into sit values(seq_sit.nextval, 2, 4, 2019-05-21, '어벤져스', 'F14');
 
-번호		멤버idx	고유번호	날짜	     영화	         좌석
--------------------------------------------
-1		1		 4		1	   어벤져스	   	F11
-2		1		 4		1	   어벤져스		F12
-3		3		 4		2	   어벤져스		F13
-4		4		 4		2	   어벤져스		F14
+번호		멤버idx	고유번호	날짜	     		영화	         좌석
+-------------------------------------------------------------
+1		1		 4		2019-05-20	   어벤져스	   	F11
+2		1		 4		2019-05-20	   어벤져스		F12
+3		3		 4		2019-05-21	   어벤져스		F13
+4		4		 4		2019-05-21	   어벤져스		F14
