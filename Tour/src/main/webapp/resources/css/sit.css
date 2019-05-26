@@ -95,6 +95,20 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding: 0 0 0 10px;
 }
 
+.select_box .ui_fold_btn {
+    display: block;
+    width: 90px;
+    padding: 13px 26px 12px 10px;
+    /* background: #fff url(/LCHS/Image/Bg/bg_select.gif) no-repeat 100% 50%; */
+    border: 1px solid #b9b9b9;
+    color: #666;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 13px;
+}
+
 ol, ul, li {
     list-style: none;
 }
@@ -152,6 +166,7 @@ a {
     padding: 20px 0 20px 27px;
     border-top: 1px solid #ccc;
     line-height: 16px;
+    background: url(/LCHS/image/icon/icon_seat_d.gif) no-repeat 0 20px;
     font-size: 13px;
     color: #6f6247;
 }
