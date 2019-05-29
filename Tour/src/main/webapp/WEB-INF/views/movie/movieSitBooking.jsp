@@ -6,6 +6,21 @@
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/sit2.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/sit3.css">
 	
+	<style>
+		.seat_area .on {
+    		background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_seat01.gif);
+		}
+		
+		.total_slide .total_sum {
+		    float: right;
+		    padding-top: 5px;
+		    font-size: 14px;
+		    color: #fff;
+		    text-align: center;
+		}
+	</style>
+	  
+	  
 	<div class="carousel slide carousel-fade">
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
@@ -31,12 +46,12 @@
 						
 						<div class="selectbox">
 							<ul class="personSelect">
-								<li>
+								<li> 
 									<label>성인</label>
 									<div class="select_box selbox1" style="width: 70px;">
 										<a href="#0" class="ui_fold_btn show-click1">0</a>
 										<ul id="showNum1" style="width: 70px; display: none;">
-											<c:forEach var="i" begin="0" end="8" step="1">
+											<c:forEach var="i" begin="0" end="5" step="1">
 												<li><a href='javascript:void(0)' class="click-adult" onclick="show(${i})">${i}</a></li>
 											</c:forEach>
 										</ul>
@@ -48,7 +63,7 @@
 									<div class="select_box selbox2" style="width: 70px;">
 										<a href="#0" class="ui_fold_btn show-click2">0</a>
 										<ul id="showNum2" style="width: 70px; display: none;">
-											<c:forEach var="i" begin="0" end="8" step="1">
+						 					<c:forEach var="i" begin="0" end="5" step="1">
 												<li><a href='javascript:void(0)' class="click-senior" onclick="show(${i})">${i}</a></li>
 											</c:forEach>
 										</ul>
@@ -60,7 +75,7 @@
 									<div class="select_box selbox3" style="width: 70px;">
 										<a href="#0" class="ui_fold_btn show-click3">0</a>
 										<ul id="showNum3" style="width: 70px; display: none;">
-											<c:forEach var="i" begin="0" end="8" step="1">
+											<c:forEach var="i" begin="0" end="5" step="1"> 
 												<li><a href='javascript:void(0)' class="click-disabled" onclick="show(${i})">${i}</a></li>
 											</c:forEach>
 										</ul>
@@ -95,7 +110,7 @@
 				
 				<div class="btn_wrap">
 					<div class="btn_inner">
-						<a href="javascript:void(0);" class="btn_next Lang-LBL1025" title="결제하기">결제하기</a>
+						<a href="javascript:void(0);" class="btn_next" title="결제하기">결제하기</a>
 					</div>
 				</div>
 				
@@ -128,12 +143,12 @@
 											    <dt class="Lang-LBL1030">상영관</dt>
 											    <dd class="name_data">${movieEnterVO.locName}<br>${box.boxNum}관</dd>
 											    <dt class="Lang-LBL1031">좌석</dt>
-											    <dd class="seat_data"></dd>
+											    <dd class="seat_data" id="seat_data"></dd> 
 											</c:forEach>
 									    </dl>
 								    </dd>
 							    </dl>
-						    </li>
+						    </li> 	
 						    
 						    <li>
 							    <dl>	
@@ -144,7 +159,7 @@
 									    </dl>								
 								    </dd>
 							    </dl>
-							    <strong class="total_sum fixSum"><span>0</span> <em class="Lang-LBL1037">원</em></strong>
+							    <strong class="total_sum fixSum"><span id="total">0</span> <em class="Lang-LBL1037">원</em></strong>
 						    </li>
 					    </ul>
 				    </div>
@@ -157,8 +172,12 @@
 		<input type="hidden" id="adultNum" value="">
 		<input type="hidden" id="seniorNum" value="">
 		<input type="hidden" id="disabledNum" value="">
+		
+		<input type="hidden" id="people" value="0">
+		<input type="hidden" id="price" value="0">
+		<input type="hidden" id="seatNum" value="">
 	</form>
-	
+	 
 	<script>
 	
 		$(document).ready(function() {
@@ -167,7 +186,7 @@
 			var sideTop = 26;
 			
 			var str = "";
-			
+			  
 			// 알파벳
 			for(var i = 0; i < 11; i++) {
 				
@@ -185,11 +204,11 @@
 				
 				for(var j = 1; j < 3; j++) {
 					left_left += 26;
-					str += "<a href='javascript:void(0);' class='p0 grNum3' data-seat='"+e2+j+"'";
+					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 					str += "style='left: "+left_left+"px; top: "+sideTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
 				}
-				sideTop += 26;
-			}
+				sideTop += 26; 
+			} 
 			
 			spanTop = 0;
 			
@@ -202,7 +221,7 @@
 				for(var j = 3; j < 15; j++) {
 					
 					middle_left += 26;
-					str += "<a href='javascript:void(0);' class='p0 grNum3' data-seat='"+e2+j+"'";
+					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 					str += "style='left: "+middle_left+"px; top: "+spanTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
 				}
 				spanTop += 26;
@@ -218,21 +237,88 @@
 				
 				for(var j = 15; j < 17; j++) {
 					top_left += 26;
-					str += "<a href='javascript:void(0);' class='p0 grNum3' data-seat='"+e2+j+"'";
+					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 					str += "style='left: "+top_left+"px; top: "+sideTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
 				}
 				sideTop += 26;
 			}
-			
+			 
 			$(".seat_area").html(str);
-		});
-		
+		 
+		}); 
+		  
+		$(function(){
+			
+			var people;
+			var str = new Array;
+
+			$(".seat_area").on("click", ".grNum3", function() {
+				
+				people = Number($('#adultNum').val()) + Number($('#seniorNum').val()) + Number($('#disabledNum').val());	
+				     
+				if(people != 0) { 
+					
+					var price =  Number($('#adultNum').val() * 10000) + Number($('#seniorNum').val() * 7000) + 
+					Number($('#disabledNum').val() * 5000);
+					 
+					if((people - str.length) <= 0) {
+						alert("좌석이 인원보다 많습니다.");
+						return false; 
+					}      
+					   
+					$(this).attr('class','on');
+					str.push($(this).data("seat"));
+			
+					document.getElementById('people').value = people;
+					document.getElementById('seatNum').value = str;
+					document.getElementById('price').value = price;
+					
+					$("#seat_data").html(str);  
+					$("#total").html(price);
+					      
+				} else { 
+					alert("인원을 선택해 주세요.");
+					return false; 
+				}
+			});     
+			
+			$(".seat_area").on("click", ".on", function() {
+				
+				str.splice(str.indexOf($(this).data("seat")),1);
+				
+				$(this).attr('class','p0 grNum3');
+				
+				document.getElementById('seatNum').value = str;
+				$("#seat_data").html(str);
+			});
+			
+			$(".btn_next").on("click", function() {
+				
+				people = Number($('#adultNum').val()) + Number($('#seniorNum').val()) + Number($('#disabledNum').val());
+				var price =  Number($('#adultNum').val() * 10000) + Number($('#seniorNum').val() * 7000) + 
+				Number($('#disabledNum').val() * 5000);
+				
+				if(people != str.length) {
+					alert("인원과 좌석이 맞지 않습니다.");
+					return false;
+				}
+				if(price != $('#price').val()) {
+					alert("사기치지 마세요.");
+					return false;
+				}  
+				
+				// 카카오페이 
+				
+			});  
+			    
+		});  
+ 
 		function show(i) {
 			
 			$(".click-adult").on("click", function() {
 				$('.show-click1').html(i);
-				document.getElementById('adultNum').value = i;
-			});
+				document.getElementById('adultNum').value = i; 
+			});     
 			
 			$(".click-senior").on("click", function() {
 				$('.show-click2').html(i);
@@ -242,12 +328,11 @@
 			$(".click-disabled").on("click", function() {
 				$('.show-click3').html(i);
 				document.getElementById('disabledNum').value = i;
-			}); 
-		}
-		
-		
-		
-		// 이거 왜 for문으로 안되는지 모르겠음
+			});
+			
+		}     
+		            
+		// 이거 왜 for문으로 안되는지 모르겠음    
 		$(".show-click1").on("click", function() {
 			
 			$("#showNum1").css("display","block");
