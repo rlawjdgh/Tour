@@ -83,8 +83,8 @@
 			  		<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
 						<div class="card-body" style="height: 101px;" id="movieCode">
 				   			<h5 class="card-title" id="movieNm${i}"></h5>
-				       		<a href="#" class="card-link" id="movieInfo${i }">상세보기</a>
-				   			<a href="#" class="card-link">예매하기</a>
+				       		<button class="btn btn-primary" id="movieInfo${i }" onclick="">상세보기</button>
+				   			<button class="btn btn-primary" onclick="return false">예매하기</button>
 						</div>
 				</div>
 			</div>

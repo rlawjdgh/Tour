@@ -138,8 +138,8 @@ public class MovieController {
 	}
 
 	@RequestMapping("/searchList")
-	public void searchList() {
-
+	public String searchList(@ModelAttribute("keyword")String keyword) {
+		return "/movie/searchList";
 	}
 	
 	@RequestMapping("/movieSitBooking")
