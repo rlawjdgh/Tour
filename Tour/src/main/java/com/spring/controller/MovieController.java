@@ -23,6 +23,7 @@ import com.spring.domain.AreaVO;
 import com.spring.domain.BoxVO;
 import com.spring.domain.Common;
 import com.spring.domain.LocationVO;
+import com.spring.domain.MovieDecide;
 import com.spring.domain.MovieEnterVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -139,7 +140,7 @@ public class MovieController {
 
 	@RequestMapping("/searchList")
 	public String searchList(@ModelAttribute("keyword")String keyword) {
-		return "/movie/searchList";
+		return "/movie/searchList"; 
 	}
 	
 	@RequestMapping("/movieSitBooking")
@@ -151,6 +152,12 @@ public class MovieController {
 		model.addAttribute("box", box);
 		
 		return "/movie/movieSitBooking";
+	}
+	
+	@RequestMapping("/moviePayment")
+	public String moviePayment(@ModelAttribute("movieDecide") MovieDecide movieDecide) {
+		
+		return "/movie/moviePayment";
 	}
 
 }

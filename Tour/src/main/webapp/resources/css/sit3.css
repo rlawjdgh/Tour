@@ -18,34 +18,12 @@
 	line-height: 0;
 }
 
-.btn_wrap {
-	width: 100%;
-	background: #cdc197;
-}
-
-.btn_inner {
-	width: 980px;
-	margin: 0 auto;
-	line-height: 50px;
-}
-
 .btn_inner .btn_next {
 	float: right;
 	padding-right: 29px;
 	background:
 		url(https://www.lottecinema.co.kr/LCHS/Image/Btn/btn_total_next02.png)
 		no-repeat 100% 50%;
-}
-
-.btn_inner [class^=btn_] {
-	display: block;
-	color: #231f20;
-	font-size: 14px;
-	font-weight: bold;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	text-align: center;
 }
 
 .btn_wrap {
@@ -76,21 +54,7 @@
 	text-align: center
 }
 
-.btn_inner .btn_prev {
-	float: left;
-	padding-left: 29px;
-	background: url('/LCHS/Image/Btn/btn_total_prev02.png') no-repeat 0 50%
-}
 
-.btn_inner .btn_prev.on, .btn_inner .btn_prev:hover {
-	background-image: url('/LCHS/Image/Btn/btn_total_prev02_on.png');
-	color: #000
-}
-
-.btn_inner .btn_next.on, .btn_inner .btn_next:hover {
-	background-image: url('/LCHS/Image/Btn/btn_total_next02_on.png');
-	color: #000
-}
 
 .total_wrap {
 	width: 100%;
@@ -268,4 +232,4 @@
 
 .total_wrap .total_slide ul>li:first-child {
 	width: 228px;
-}
+}  

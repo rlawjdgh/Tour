@@ -1,0 +1,206 @@
+#container.sub {
+    margin: 39px 0 0 0;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+#container {
+    position: relative;
+    min-width: 980px;
+    border-top: 1px solid #e9e4d2;
+}
+
+#content {
+    position: relative;
+    min-height: 400px;
+}
+
+.orderPayment {
+    width: 100%;
+    padding: 50px 0;
+    background: #f9f6ec;
+}
+
+.orderCont {
+    width: 980px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #231f20;
+}
+
+.orderCont .order_tit {
+    padding-bottom: 30px;
+    font-size: 28px;
+    color: #231f20;
+}
+
+.tableRet {
+    width: 100%;
+    border-top: 2px solid #231f20;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tableRet tbody tr:first-child {
+    border-top: none;
+}
+
+.tableRet tbody tr {
+    border-top: 1px solid #dedede;
+    background: #fff;
+}
+
+.table_typeC.tableRet tbody td {
+    padding: 20px 0 20px 30px;
+    vertical-align: middle;
+}
+
+.order_Lbox2 {
+    display: inline-block;
+    margin-left: 9px;
+    width: 623px;
+    vertical-align: middle;
+}
+
+.order_title {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #231f20;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+.order_tList li.bg_none {
+    padding-left: 0;
+    background: none;
+}
+
+.order_tList li {
+    display: inline-block;
+    padding: 0 10px;
+    /* background: url(/LCHS/Image/Bg/bg_line_order.gif) no-repeat 0 50%; */
+    color: #231f20;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.order_tList li em {
+    color: #666;
+}
+
+address, caption, em {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.table_typeC.tableRet td.sum {
+    padding-right: 50px;
+}
+
+.tableRet .sum em {
+    font-weight: bold;
+}
+
+.tableRet .sum em > strong {
+    margin-right: 3px;
+    font-size: 24px;
+    font-family: 'linlivertine';
+    font-weight: bold;
+}
+
+em {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.tableRet tfoot { 
+    border-top: 1px solid #f9f6ec;
+    background: #dad2b4;
+}
+
+.table_typeC.tableRet tfoot td {
+    line-height: 74px;
+    padding: 0 50px 0 47px;
+} 
+
+.tableRet tfoot .mount dt {
+    float: left;
+}
+
+.table_typeC.tableRet tfoot .sum em > strong {
+    font-size: 30px;
+}
+
+.tableRet tfoot .mount:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.table_typeC.tableRet tfoot .mount dt {
+    font-size: 18px;
+}
+
+
+.tableRet tfoot .mount dd {
+    float: right;
+}
+
+.btn_wrap {
+    width: 100%;
+    /* background: #cdc197; */
+}
+
+.btn_inner {
+    width: 980px;
+    margin: 0 auto;
+    line-height: 50px;
+}
+
+.btn_inner .btn_prev {
+    float: left;
+    padding-left: 29px;
+    background: url(https://www.lottecinema.co.kr/LCHS/Image/Btn/btn_total_prev02.png) no-repeat 0 50%;
+}
+
+.btn_inner:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+a {
+    /* text-decoration: none; */
+    color: #555;
+}
+
+.btn_inner [class^=btn_] {
+    display: block;
+    color: #231f20;
+    font-size: 14px;
+    font-weight: bold;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-align: center;
+}
+
+.btn_inner .btn_next {
+	float: right;
+	padding-right: 29px;
+	background:
+		url(https://www.lottecinema.co.kr/LCHS/Image/Btn/btn_total_next02.png)
+		no-repeat 100% 50%;
+}
+

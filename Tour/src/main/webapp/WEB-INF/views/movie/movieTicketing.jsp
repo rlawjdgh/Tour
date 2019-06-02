@@ -119,20 +119,14 @@
 		
 			var ddd = d.getDate();
 			
-			if(mm<10){
-				mm="0"+mm;
-			}			
-			if(dd<10){
-				dd = "0"+dd;
-			}
-			if(ddd<10){
-				dd = "0"+dd;
-			}
+			if(mm<10){mm="0"+mm;}
+			if(dd<10){dd = "0"+dd;}
 			
 			$(document).ready(function() {
 
 				// $("#box1").html(mm +"월" + ddd+"일");
-				$("#box1").html("05월20일");
+				$("#box1").html("05월20일");	
+				alert(yy + mm + dd);
 				
 				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=d3d73e7d0bdba4769f78b1222bf012b9&targetDt=";
 				url+=yy+mm+dd;

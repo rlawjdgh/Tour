@@ -35,12 +35,12 @@
 		</div>
 	</div>
 	
-	<form method="post" id="form1">
+	<form method="get" id="form1" action="/tour/moviePayment">
 		<div id="container" class="sub">
 			<div id="content">
 				<div class="seatwrap">
 					<div class="seatArea">
-						<div class="seatheader">
+						<div class="seatheader"> 
 							<h2 class="seatTit Lang-LBL1001">인원/좌석선택</h2>	
 						</div>
 						
@@ -58,7 +58,7 @@
 									</div>
 								</li>
 								
-								<li>
+								<li> 
 									<label>시니어</label>
 									<div class="select_box selbox2" style="width: 70px;">
 										<a href="#0" class="ui_fold_btn show-click2">0</a>
@@ -110,7 +110,7 @@
 				
 				<div class="btn_wrap">
 					<div class="btn_inner">
-						<a href="javascript:void(0);" class="btn_next" title="결제하기">결제하기</a>
+						<a href="javascript:void(0);" class="btn_next Lang-LBL1025" title="다음단계">다음단계</a>
 					</div>
 				</div>
 				
@@ -144,9 +144,14 @@
 											    <dd class="name_data">${movieEnterVO.locName}<br>${box.boxNum}관</dd>
 											    <dt class="Lang-LBL1031">좌석</dt>
 											    <dd class="seat_data" id="seat_data"></dd> 
+											    
+											    <input type="hidden" id="day" value="${movieEnterVO.day}">
+												<input type="hidden" id="time" value="${box.time}">
+												<input type="hidden" id="locName" value="${movieEnterVO.locName}">
+												<input type="hidden" id="boxNum" value="${box.boxNum}">
 											</c:forEach>
 									    </dl>
-								    </dd>
+								    </dd>  
 							    </dl>
 						    </li> 	
 						    
@@ -173,9 +178,10 @@
 		<input type="hidden" id="seniorNum" value="">
 		<input type="hidden" id="disabledNum" value="">
 		
+		
 		<input type="hidden" id="people" value="0">
 		<input type="hidden" id="price" value="0">
-		<input type="hidden" id="seatNum" value="">
+		<input type="hidden" id="seatNum" value="0">
 	</form>
 	 
 	<script>
@@ -251,6 +257,7 @@
 			
 			var people;
 			var str = new Array;
+			var form = $("#form1");
 
 			$(".seat_area").on("click", ".grNum3", function() {
 				
@@ -303,15 +310,25 @@
 					return false;
 				}
 				if(price != $('#price').val()) {
+					
 					alert("사기치지 마세요.");
+					document.getElementById('price').value = price;
+					$("#total").html(price);
+					
 					return false;
-				}  
+				}
 				
-				// 카카오페이 
+				form.append("<input type='hidden' name='day' value='" + $('#day').val() + "'/>")
+				form.append("<input type='hidden' name='time' value='" + $('#time').val() + "'/>")
+				form.append("<input type='hidden' name='locName' value='" + $('#locName').val() + "'/>")
+				form.append("<input type='hidden' name='boxNum' value='" + $('#boxNum').val() + "'/>")
+				form.append("<input type='hidden' name='people' value='" + $('#people').val() + "'/>")
+				form.append("<input type='hidden' name='seatNum' value='" + $('#seatNum').val() + "'/>")
+				form.append("<input type='hidden' name='price' value='" + price + "'/>")
 				
-			});  
-			    
-		});  
+				form.submit();
+			});	    
+		});   
  
 		function show(i) {
 			
