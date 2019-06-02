@@ -23,7 +23,7 @@ import com.spring.domain.AreaVO;
 import com.spring.domain.BoxVO;
 import com.spring.domain.Common;
 import com.spring.domain.LocationVO;
-import com.spring.domain.MovieDecide;
+import com.spring.domain.MovieDecideVO;
 import com.spring.domain.MovieEnterVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -155,7 +155,7 @@ public class MovieController {
 	}
 	
 	@RequestMapping("/moviePayment")
-	public String moviePayment(@ModelAttribute("movieDecide") MovieDecide movieDecide) {
+	public String moviePayment(@ModelAttribute("movieDecideVO") MovieDecideVO movieDecideVO) {
 		
 		return "/movie/moviePayment";
 	}

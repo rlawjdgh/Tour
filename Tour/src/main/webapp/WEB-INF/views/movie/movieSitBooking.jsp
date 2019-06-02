@@ -145,6 +145,8 @@
 											    <dt class="Lang-LBL1031">좌석</dt>
 											    <dd class="seat_data" id="seat_data"></dd> 
 											    
+											    
+											    <input type="hidden" id="movieNm" value="${movieEnterVO.movieNm}">
 											    <input type="hidden" id="day" value="${movieEnterVO.day}">
 												<input type="hidden" id="time" value="${box.time}">
 												<input type="hidden" id="locName" value="${movieEnterVO.locName}">
@@ -318,6 +320,7 @@
 					return false;
 				}
 				
+				form.append("<input type='hidden' name='movieNm' value='" + $('#movieNm').val() + "'/>")
 				form.append("<input type='hidden' name='day' value='" + $('#day').val() + "'/>")
 				form.append("<input type='hidden' name='time' value='" + $('#time').val() + "'/>")
 				form.append("<input type='hidden' name='locName' value='" + $('#locName').val() + "'/>")

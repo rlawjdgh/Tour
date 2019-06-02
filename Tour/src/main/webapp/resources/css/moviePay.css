@@ -199,8 +199,8 @@ a {
 .btn_inner .btn_next {
 	float: right;
 	padding-right: 29px;
-	background:
+	/* background:
 		url(https://www.lottecinema.co.kr/LCHS/Image/Btn/btn_total_next02.png)
-		no-repeat 100% 50%;
+		no-repeat 100% 50%; */
 }
 

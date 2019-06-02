@@ -30,28 +30,26 @@
 									<tr>
 										<td>
 											<div class="order_Lbox2">
-												<strong class="order_title">알라딘(2D자막)</strong>
+												<strong class="order_title">${movieDecideVO.movieNm}</strong>
 												<ul class="order_tList">
-													<li class="bg_none"><em class="Lang-LBL0055">상영일</em> 2019-06-01 (토)</li>
-													<li><em class="Lang-LBL1029">상영시간</em> 23:00 ~ 25:18</li>
-													<li><em class="Lang-LBL1030">상영관</em> 건대입구 3관</li>
-													<li><em class="Lang-LBL0038">관람인원</em> 성인1</li>
-													<li><em class="Lang-LBL0033">  좌석</em> A11</li>
+													<li class="bg_none"><em class="Lang-LBL0055">상영일</em> ${movieDecideVO.day}</li>
+													<li><em class="Lang-LBL1029">상영시간</em> ${movieDecideVO.time}</li>
+													<li><em class="Lang-LBL1030">상영관</em> ${movieDecideVO.locName} ${movieDecideVO.boxNum}관</li>
+													<li><em class="Lang-LBL0038">관람인원</em> ${movieDecideVO.people}명</li>
+													<li><em class="Lang-LBL0033">  좌석</em> ${movieDecideVO.seatNum}</li>  
 												</ul> 
 											</div>   
 										</td>
-										
-										<td class="sum"><em><strong>12,000</strong> <span class="Lang-LBL3037">원</span></em></td>
 									</tr>
 								</tbody>
-								
+								  
 								<tfoot>
-									<tr>
+									<tr> 
 	                                    <td colspan="2">
-	                                        <dl class="mount">
+	                                        <dl class="mount"> 
 	                                            <dt class="Lang-LBL0039">총 주문금액</dt>
 	                                            <dd class="sum">
-	                                            	<em><strong>12,000</strong> <span class="Lang-LBL3037">원</span></em>
+	                                            	<em><strong>${movieDecideVO.price}</strong> <span class="Lang-LBL3037">원</span></em>
 	                                            </dd>                             
 	                                        </dl>
 	                                    </td>
