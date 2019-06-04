@@ -180,7 +180,7 @@
 		<input type="hidden" id="seniorNum" value="">
 		<input type="hidden" id="disabledNum" value="">
 		
-		
+		<input type="hidden" id="boxIdx" value="${movieEnterVO.boxIdx}">
 		<input type="hidden" id="people" value="0">
 		<input type="hidden" id="price" value="0">
 		<input type="hidden" id="seatNum" value="0">
@@ -307,6 +307,11 @@
 				var price =  Number($('#adultNum').val() * 10000) + Number($('#seniorNum').val() * 7000) + 
 				Number($('#disabledNum').val() * 5000);
 				
+				if(${logon == null}) {
+				alert("로그인 후 이용 가능합니다.");
+				return false;
+				} 
+				
 				if(people != str.length) {
 					alert("인원과 좌석이 맞지 않습니다.");
 					return false;
@@ -320,6 +325,8 @@
 					return false;
 				}
 				
+				
+				form.append("<input type='hidden' name='boxIdx' value='" + $('#boxIdx').val() + "'/>")
 				form.append("<input type='hidden' name='movieNm' value='" + $('#movieNm').val() + "'/>")
 				form.append("<input type='hidden' name='day' value='" + $('#day').val() + "'/>")
 				form.append("<input type='hidden' name='time' value='" + $('#time').val() + "'/>")
@@ -330,7 +337,7 @@
 				form.append("<input type='hidden' name='price' value='" + price + "'/>")
 				
 				form.submit();
-			});	    
+			});	      
 		});   
  
 		function show(i) {

@@ -60,20 +60,20 @@ insert into box values(seq_box.nextval, 2, 1, '09:20');
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 보류  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 
-create sequence seq_sit
+create sequence seq_payment
 
-create table sit(
+create table payment(
 	idx number(5) primary key,
-	mumberNum number(5),
-	sitNum number(5),
+	memberIdx number(5),
+	boxIdx number(5),
 	day varchar2(20),
-	movie varchar2(20),
-	sitName varchar2(20)
+	movieNm varchar2(20),
+	seatNum varchar2(20)
 );
-insert into sit values(seq_sit.nextval, 1, 4, 2019-05-20, '어벤져스', 'F11');
-insert into sit values(seq_sit.nextval, 1, 4, 2019-05-20, '어벤져스', 'F12');
-insert into sit values(seq_sit.nextval, 2, 4, 2019-05-21, '어벤져스', 'F13');
-insert into sit values(seq_sit.nextval, 2, 4, 2019-05-21, '어벤져스', 'F14');
+insert into payment values(seq_payment.nextval, 1, 4, 2019-05-20, '어벤져스', 'F11');
+insert into payment values(seq_payment.nextval, 1, 4, 2019-05-20, '어벤져스', 'F12');
+insert into payment values(seq_payment.nextval, 2, 4, 2019-05-21, '어벤져스', 'F13');
+insert into payment values(seq_payment.nextval, 2, 4, 2019-05-21, '어벤져스', 'F14');
 
 번호		멤버idx	고유번호	날짜	     		영화	         좌석
 -------------------------------------------------------------

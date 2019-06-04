@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class MovieDecideVO {
 
+	private int boxIdx;
 	private String movieNm;
 	private String day;
 	private String time;
