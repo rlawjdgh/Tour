@@ -19,5 +19,5 @@ public class PaymentServiceImpl implements PaymentService{
 	public int insertPay(PaymentVO vo) {
 		return mapper.insertPay(vo);
 	}
-
+ 
 }

@@ -263,6 +263,11 @@
 
 			$(".seat_area").on("click", ".grNum3", function() {
 				
+				if(${logon == null}) {
+					alert("로그인 후 이용 가능합니다.");
+					return false;
+				} 
+				
 				people = Number($('#adultNum').val()) + Number($('#seniorNum').val()) + Number($('#disabledNum').val());	
 				     
 				if(people != 0) { 
@@ -307,18 +312,13 @@
 				var price =  Number($('#adultNum').val() * 10000) + Number($('#seniorNum').val() * 7000) + 
 				Number($('#disabledNum').val() * 5000);
 				
-				if(${logon == null}) {
-				alert("로그인 후 이용 가능합니다.");
-				return false;
-				} 
-				
 				if(people != str.length) {
 					alert("인원과 좌석이 맞지 않습니다.");
 					return false;
 				}
 				if(price != $('#price').val()) {
 					
-					alert("사기치지 마세요.");
+					alert("금액이 맞지 않습니다.");
 					document.getElementById('price').value = price;
 					$("#total").html(price);
 					

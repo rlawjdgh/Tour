@@ -14,7 +14,7 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" class="d-block w-100" alt="...">
+				<img src="#" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>First slide label</h5>
 					<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -63,29 +63,31 @@
 	</div>
 	
 	<!-- 순위권 영화 목록 -->
-	<div class="row justify-content-center mvList">
-	<c:forEach var="i" begin="0" end="4" step="1">
-		<div class="col-sm-2 m-3">
-			<div class="card" style="width:15rem;">
-		  		<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
-					<div class="card-body" style="height: 101px;" id="movieCode">
-			   			<h5 class="card-title" id="movieNm${i }"></h5>
-			       		<button class="btn btn-primary" id="movieInfo${i }" onclick="">상세보기</button>
-			   			<button class="btn btn-primary" onclick="return false">예매하기</button>
-					</div>
-			</div>
-		</div>
-	</c:forEach>
-	<div class="row justify-content-center mvList hiding">
-		<c:forEach var="i" begin="5" end="9" step="1">
-			<div class="col-sm-2 m-3">
+	<div class="row justify-content-center mvList" style="width: 100%">
+		<c:forEach var="i" begin="0" end="4" step="1"> 
+			<div class="col-sm-2">
 				<div class="card" style="width:15rem;">
-			  		<img class="card-img-top" src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" alt="img-thumbnail">
-						<div class="card-body" style="height: 101px;" id="movieCode">
-				   			<h5 class="card-title" id="movieNm${i}"></h5>
-				       		<button class="btn btn-primary" id="movieInfo${i }" onclick="">상세보기</button>
-				   			<button class="btn btn-primary" onclick="return false">예매하기</button>
-						</div>
+			  		<img class="card-img-top" src="#" alt="img-thumbnail">
+					<div class="card-body" style="height: 101px;" id="movieCode">
+			   			<h5 class="card-title" id="movieNm${i}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h5>
+			       		<a href="#" class="card-link" id="movieInfo${i}" onclick="return false">상세보기</a>
+			   			<a href="#" class="card-link" onclick="return false">예매하기</a>
+					</div>
+				</div>  
+			</div>   
+		</c:forEach>
+	</div>   
+	
+	<div class="row justify-content-center mvList hiding" style="padding-top: 40px; width: 100%;">
+		<c:forEach var="i" begin="5" end="9" step="1">
+			<div class="col-sm-2">
+				<div class="card" style="width:15rem;">
+			  		<img class="card-img-top" src="#" alt="img-thumbnail">
+					<div class="card-body" style="height: 101px;" id="movieCode">
+			   			<h5 class="card-title" id="movieNm${i}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h5>
+			       		<a href="#" class="card-link" id="movieInfo${i}" onclick="return false">상세보기</a>
+			   			<a href="#" class="card-link" onclick="return false">예매하기</a>
+					</div>
 				</div>
 			</div>
 		</c:forEach>

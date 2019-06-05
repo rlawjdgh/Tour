@@ -54,7 +54,7 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" id="btn">
+						<button class="login100-form-btn" id="btn" onclick="return false">
 							Login
 						</button>
 					</div>
@@ -96,6 +96,7 @@
 						alert("존재하지 않는 비밀번호입니다.");
 						return;
 					}else{
+						alert("로그인 완료");
 						$(location).attr('href', "/tour/");
 					}
 				}

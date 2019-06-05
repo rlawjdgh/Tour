@@ -55,29 +55,19 @@ insert into box values(seq_box.nextval, 2, 1, '09:20');
 4		2		1		10:35
 
 
-
-
-↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 보류  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
-
-create sequence seq_payment
+// create sequence seq_payment
 
 create table payment(
-	idx number(5) primary key,
+	idx varchar2(200),
 	memberIdx number(5),
 	boxIdx number(5),
 	day varchar2(20),
-	movieNm varchar2(20),
-	seatNum varchar2(20)
+	movieNm varchar2(100),
+	seatNum varchar2(20),
+	price number(5),
+	regdate date
 );
-insert into payment values(seq_payment.nextval, 1, 4, 2019-05-20, '어벤져스', 'F11');
-insert into payment values(seq_payment.nextval, 1, 4, 2019-05-20, '어벤져스', 'F12');
-insert into payment values(seq_payment.nextval, 2, 4, 2019-05-21, '어벤져스', 'F13');
-insert into payment values(seq_payment.nextval, 2, 4, 2019-05-21, '어벤져스', 'F14');
 
-번호		멤버idx	고유번호	날짜	     		영화	         좌석
--------------------------------------------------------------
-1		1		 4		2019-05-20	   어벤져스	   	F11
-2		1		 4		2019-05-20	   어벤져스		F12
-3		3		 4		2019-05-21	   어벤져스		F13
-4		4		 4		2019-05-21	   어벤져스		F14
+
+select seatnum from payment
+where boxidx = 1 and day = '2019-05-20' and movienm = '기생충';

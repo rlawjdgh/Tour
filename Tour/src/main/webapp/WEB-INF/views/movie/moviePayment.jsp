@@ -85,53 +85,55 @@
 
 	
 	<script>
+	
+		$(".btn_prev").click(function(){
+	
+			window.history.back();
+	
+		});
+
 		$(".btn_pay").on("click", function() {
 			
 			 $(function(){
-
+				
 		        IMP.init('imp57782593');
 		        var msg;
 		        
 		        IMP.request_pay({
+		        	
 		            pg : 'kakaopay',
 		            pay_method : 'card',
 		            merchant_uid : 'merchant_' + new Date().getTime(),
 		            name : 'MAGACGV 결제',
 		            amount : $('#price').val(),
 		            buyer_name : $('#logon_name').val(),
-		            buyer_tel : $('#logon_phone').val(),
+		            buyer_tel : $('#logon_phone').val(),    
 		        }, function(rsp) {
-		      
+		        	
 		            if ( rsp.success ) {
-		                 
-		                jQuery.ajax({
+		            	
+		            	$.getJSON({
 		                    url: "/tour/kakaoPay",
 		                    type: 'POST',
-		                    dataType: 'json',
 		                    data: {
+		                    	idx : rsp.imp_uid,
 		                        memberIdx : $('#logon_idx').val(),
 		                        boxIdx : $('#boxIdx').val(),
 		                        day : $('#day').val(),
 		                        movieNm : $('#movieNm').val(),
-		                        seatNum : $('#seatNum').val()
+		                        seatNum : $('#seatNum').val(),
+		                        price : $('#price').val()
 		                    }
-		                }).done(function(data) {
-
-		                    if ( everythings_fine ) {
-		                        msg = '결제가 완료되었습니다.';
-		                        msg += '\n고유ID : ' + rsp.imp_uid;
-		                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-		                        msg += '\결제 금액 : ' + rsp.paid_amount;
-		                        msg += '카드 승인번호 : ' + rsp.apply_num;
-		                        
-		                        //alert(msg);
-		                     	
-		                    } else {
-		                         
-		                    }
-		                }); 
-		                //성공시 이동할 페이지
-		                
+		                });
+		            	
+		            	msg = '결제가 완료되었습니다.';
+		            	msg += '\n이름 : ' + rsp.buyer_name;
+	                    msg += '\n결제번호 : ' + rsp.imp_uid;
+	                    msg += '\n결제 금액 : ' + rsp.paid_amount;
+	                    
+	                    alert(msg);       
+	                    $(location).attr('href', '/tour/');
+	                    
 		            } else {
 		                msg = '결제에 실패하였습니다.';
 		                msg += '에러내용 : ' + rsp.error_msg;

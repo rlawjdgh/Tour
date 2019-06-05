@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,9 +21,10 @@ public class KakaoPayController {
 	
 	@PostMapping("/kakaoPay")
 	@ResponseBody
-	public String kakaoPay(PaymentVO vo) {
+	public String kakaoPay(@ModelAttribute("PaymentVO") PaymentVO vo) {
 		
-		service.insertPay(vo);
+		service.insertPay(vo);	
 		return null;
 	}
+
 }
