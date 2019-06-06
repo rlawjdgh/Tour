@@ -92,23 +92,8 @@
   				if($(".keyword").val()=="" || $(".keyword").val==null){
   					alert("검색어를 입력하세요");
   				}else{
-  					location.href="/tour/searchList";
-  				}
-  				
-  				
-  				$.ajax({
-					url:url,
-					type:"get",
-					success:function(data){
-						console.log(data);
-						var str="";
-					},
-					error:function(){
-						alert('실패');
-					}
-						
-					});
-  				
+  					location.href="/tour/searchList?keyword="+$(".keyword").val();
+  				}  				
   			});
   			
   		});
