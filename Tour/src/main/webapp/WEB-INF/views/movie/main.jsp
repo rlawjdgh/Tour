@@ -71,7 +71,7 @@
 					<div class="card-body" style="height: 101px;" id="movieCode">
 			   			<h5 class="card-title" id="movieNm${i}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h5>
 			       		<a href="#" class="card-link" id="movieInfo${i}" onclick="return false">상세보기</a>
-			   			<a href="#" class="card-link" onclick="return false">예매하기</a>
+			   			<a href="#" class="card-link" id="movieBook${i}" onclick="return false">예매하기</a>
 					</div>
 				</div>  
 			</div>   
@@ -165,6 +165,9 @@
 						$('#movieInfo'+index).click(function() {
 							$("#movieInfo"+index).attr("onClick", show(item.movieCd));
 						});
+						$('#movieBook'+index).click(function() {
+							$("#movieInfo"+index).attr("onClick", book(item.movieNm));
+						});
 						
 					});
 								
@@ -214,6 +217,18 @@
 						alert('에러발생');
 					}
 				});
+			}
+			
+			function book(movieNm) {
+				var form = $('<form></form>'); 
+				form.attr('action', '/tour/movieTicketing'); 
+				form.attr('method', 'get'); 
+				form.appendTo('body');
+
+				var movieNm = $("<input type='hidden' name='movieNm' value='" + movieNm + "'/>");
+				
+				form.append(movieNm);
+				form.submit();
 			}
 		});
 	</script>

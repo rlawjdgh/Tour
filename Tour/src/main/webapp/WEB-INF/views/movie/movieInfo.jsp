@@ -83,6 +83,9 @@
 			</tr>
 		</table>
 	</div>
+	
+	<input type="hidden" id="clickMovieNm" value="${ movieVO.movieNm }">
+	
 	<!-- 댓글등록 -->
 	<script>
 	$(function(){
@@ -155,7 +158,7 @@
 	})
 	 
 	$('#booking').click(function(){
-		$(location).attr('href', '/tour/movieTicketing')
+		$(location).attr('href', '/tour/movieTicketing?movieNm='+$('#clickMovieNm').val());
 	});	
-	</script>
+	</script> 
 <%@include file="../includes/footer.jsp" %>  

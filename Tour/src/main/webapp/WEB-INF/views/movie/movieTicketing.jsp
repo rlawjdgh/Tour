@@ -4,6 +4,9 @@
 <%@include file="../includes/header.jsp"%>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/ticketing.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/box.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<div class="carousel slide carousel-fade">
 		<div class="carousel-inner" role="listbox">
@@ -25,8 +28,8 @@
 				<div class="ticket_left">
 					<dl class="theater_header">					
 						<dt>
-							<button type="button" class="btn btn-outline-danger">날짜선택</button>
-							<!-- 날짜선택 : <input type="text" style="width: 180px; height: 30px;"> -->
+							<!-- <button type="button" class="btn btn-outline-danger">날짜선택</button> -->
+							날짜선택 : <input type="text" id="datepicker" style="width: 180px; height: 30px;">
 						</dt>       
                     </dl>
                     
@@ -79,9 +82,9 @@
 				</dl>
 				
 				<dl class="txtName">
-					<dt class="Lang-LBL0015">영화 : </dt>
-					<dd><div id="box3"></div></dd>
-				</dl>
+					<dt class="Lang-LBL0015">영화 : ${clickMovieNm}</dt>
+					<dd><div id="box3"></div></dd> 
+				</dl> 
 				<button type="button" class="btn btn-outline-success" id="btnOk">확인</button>
 			</div>
 		</div>	
@@ -102,12 +105,12 @@
 		</div>
 	</div>
 	
-	<input type="hidden" id="click-today" value="2019-05-20">
+	<input type="hidden" id="click-today" value=""> 
 	<input type="hidden" id="click-locIdx" value="">
 	<input type="hidden" id="click-locName" value="">
-	<input type="hidden" id="click-movieNm" value="">
+	<input type="hidden" id="click-movieNm" value="${clickMovieNm}">
 	
-	
+	 
 	<script>
 	
 		$(function(){
@@ -123,10 +126,7 @@
 			if(dd<10){dd = "0"+dd;}
 			
 			$(document).ready(function() {
-
-				// $("#box1").html(mm +"월" + ddd+"일");
-				$("#box1").html("05월20일");	
-				
+		
 				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=d3d73e7d0bdba4769f78b1222bf012b9&targetDt=";
 				url+=yy+mm+dd;
 				
@@ -173,9 +173,20 @@
 					} 
 				});
 				
-			});
-		});
-		
+			}); 
+			
+			$( "#datepicker" ).datepicker({
+				dateFormat: 'yy-mm-dd',
+				minDate: '-0M',
+			    maxDate: '+4D', 
+			     
+			    onSelect: function(dateText, inst) {
+			   		$("#box1").html(dateText);
+			    	document.getElementById('click-today').value = dateText;
+			    }  
+			});   
+		});  
+		 
 		function show(movieCd){
 	
 			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=d3d73e7d0bdba4769f78b1222bf012b9&movieCd=";

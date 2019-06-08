@@ -104,10 +104,11 @@ public class MovieController {
 	}
 
 	@RequestMapping("/movieTicketing")
-	public String movieTicketing(Model model) {
+	public String movieTicketing(Model model,String movieNm) {
 		
 		List<AreaVO> area = areaService.getArea();
 		model.addAttribute("area", area);
+		model.addAttribute("clickMovieNm", movieNm);
 
 		return "/movie/movieTicketing";
 	}
