@@ -1,23 +1,19 @@
-.w_center {
-	width: 32px;
-	height: 6px;
-	background-image:
-		url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_left.png);
-	background-position: 50% 0;
+.w_bottom {
+    width: 32px;
+    height: 6px;
+    background-image: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_bottom.png);
 }
 
 [class^=w_] {
-	position: absolute;
-	display: block;
-	width: 6px;
-	height: 32px;
-	background:
-		url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_left.png)
-		no-repeat;
-	font-size: 0;
-	line-height: 0;
-}
-
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 32px;
+    background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_window_left.png) no-repeat;
+    font-size: 0;
+    line-height: 0;
+} 
+ 
 .btn_inner .btn_next {
 	float: right;
 	padding-right: 29px;

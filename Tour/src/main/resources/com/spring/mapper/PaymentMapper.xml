@@ -7,4 +7,11 @@
 		 	#{idx}, #{memberIdx}, #{boxIdx}, #{day}, #{movieNm}, #{seatNum}, #{price}, sysdate)
 	</insert>
 	
+	<select id="select" resultType="com.spring.domain.PaymentVO">
+		select seatNum from payment
+		where boxIdx=#{boxIdx} and day=#{day} and movieNm=#{movieNm}
+	</select>
+	
+	
+	
 </mapper>

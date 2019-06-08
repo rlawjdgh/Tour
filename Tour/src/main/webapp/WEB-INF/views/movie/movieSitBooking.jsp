@@ -10,8 +10,13 @@
 		.seat_area .on {
     		background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_seat01.gif);
 		}
+
+		.seat_area .no {
+    		background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_disabled.gif);
+    		pointer-events: none;
+		}
 		
-		.total_slide .total_sum {
+		.total_slide .total_sum { 
 		    float: right;
 		    padding-top: 5px;
 		    font-size: 14px;
@@ -99,15 +104,15 @@
 							<div class="screen_scroll">
 								<div class="screen_Fbox seatSet1">
 									<div class="seat_Barea">
-										<div class="seat_area" style="height: 284px; margin-left: 253px;"></div>
-										<span class="w_center" style="top:0px;left:731px"> 상영관 출입문 입니다.</span>
+										<div class="seat_area" style="height: 400px; margin-left: 253px;"></div>
+										<span class="w_bottom" style="top:392px; left:696px"> 상영관 출입문 입니다.</span>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> 
 					</div>
-				</div>
-				
+				</div> 
+				 
 				<div class="btn_wrap">
 					<div class="btn_inner">
 						<a href="javascript:void(0);" class="btn_next Lang-LBL1025" title="다음단계">다음단계</a>
@@ -172,11 +177,11 @@
 				    </div>
 		        </div>
 	        </div>
-				
+				 
 			</div>
 		</div>
 		
-		<input type="hidden" id="adultNum" value="">
+		<input type="hidden" id="adultNum" value=""> 
 		<input type="hidden" id="seniorNum" value="">
 		<input type="hidden" id="disabledNum" value="">
 		
@@ -184,77 +189,95 @@
 		<input type="hidden" id="people" value="0">
 		<input type="hidden" id="price" value="0">
 		<input type="hidden" id="seatNum" value="0">
+
 	</form>
 	 
 	<script>
 	
 		$(document).ready(function() {
 			
+			var top = 0;
 			var spanTop = 0;
-			var sideTop = 26;
+			
+			var boxIdx = Number($('#boxIdx').val());
+			var day = $('#day').val();
+			var movieNm = $('#movieNm').val();
+			var seatReady = new Array();
 			
 			var str = "";
-			  
-			// 알파벳
-			for(var i = 0; i < 11; i++) {
-				
-				var e2 = String.fromCharCode(65 + i);
-				str += "<span class='seat_tit' style='left: -30px; top: "+spanTop+"px;'>"+e2+"</span>";
-				
-				spanTop += 26;
-			}
-			
-			// 왼쪽 좌석
-			for(var i = 1; i < 11; i++) {
-				
-				var e2 = String.fromCharCode(65 + i);
-				var left_left = 22;
-				
-				for(var j = 1; j < 3; j++) {
-					left_left += 26;
-					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
-					str += "style='left: "+left_left+"px; top: "+sideTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
-				}
-				sideTop += 26; 
-			} 
-			
-			spanTop = 0;
-			
-			// 중앙 좌석
-			for(var i = 0; i < 11; i++) {
-				
-				var middle_left = 92;
-				var e2 = String.fromCharCode(65 + i);
-				
-				for(var j = 3; j < 15; j++) {
+
+			$.getJSON({
+				url : "/tour/ready_seat",
+				type: "get",
+				data : {
+					boxIdx:boxIdx,
+					day:day,
+					movieNm:movieNm
+				},
+				success : function(data) {
+					$(data).each(function(i,obj) {
+						
+						msg = obj.seatNum.split(',');
+						for(var k = 0; k < msg.length; k++) {
+							seatReady.push(msg[k]);
+						}
+					});
 					
-					middle_left += 26;
-					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
-					str += "style='left: "+middle_left+"px; top: "+spanTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
-				}
-				spanTop += 26;
-			}
-			
-			sideTop = 26;
-			
-			// 오른쪽 좌석
-			for(var i = 1; i < 11; i++) {
-				
-				var e2 = String.fromCharCode(65 + i);
-				var top_left = 422;
-				
-				for(var j = 15; j < 17; j++) {
-					top_left += 26;
-					str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
-					str += "style='left: "+top_left+"px; top: "+sideTop+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
-				}
-				sideTop += 26;
-			}
+					seatReady = $.grep(seatReady,function(n) {
+						return n == " " || n; 
+					}); 
 			 
-			$(".seat_area").html(str);
-		 
-		}); 
-		  
+					// 알파벳   
+					for(var i = 0; i < 14; i++) {
+						
+						var e2 = String.fromCharCode(65 + i);
+						str += "<span class='seat_tit' style='left: -30px; top: "+spanTop+"px;'>"+e2+"</span>";
+						
+						spanTop += 26;
+					}
+					 
+					//좌석 
+					for(var i = 0; i < 14; i++) {
+						
+						var e2 = String.fromCharCode(65 + i);
+						var left = 22; 
+						var right_left = 438;
+						 
+						for(var j = 1; j < 17; j++) {
+							if(j < 3) {
+								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
+								str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
+							}
+							left += 26;
+							
+							if(j > 2 && j < 15) {
+								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
+								str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
+							}
+								  
+							if(j > 14 && j < 17) { 
+								if(j == 16) { 
+									right_left = 464;
+								}
+								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
+								str += "style='left: "+right_left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
+							}
+							
+							$(seatReady).each(function (index, obj) {
+		 						if((e2+j) == obj) {
+		 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
+		 						} 
+							}); 
+							 
+						}     
+						top += 26;         
+					}          
+					    
+					$(".seat_area").html(str);  
+				} 
+			});      
+		});  
+		    
 		$(function(){
 			
 			var people;
@@ -263,7 +286,7 @@
 
 			$(".seat_area").on("click", ".grNum3", function() {
 				
-				if(${logon == null}) {
+				if(${logon == null}) {    
 					alert("로그인 후 이용 가능합니다.");
 					return false;
 				} 
@@ -304,7 +327,7 @@
 				
 				document.getElementById('seatNum').value = str;
 				$("#seat_data").html(str);
-			});
+			}); 
 			
 			$(".btn_next").on("click", function() {
 				
@@ -325,7 +348,6 @@
 					return false;
 				}
 				
-				
 				form.append("<input type='hidden' name='boxIdx' value='" + $('#boxIdx').val() + "'/>")
 				form.append("<input type='hidden' name='movieNm' value='" + $('#movieNm').val() + "'/>")
 				form.append("<input type='hidden' name='day' value='" + $('#day').val() + "'/>")
@@ -337,8 +359,9 @@
 				form.append("<input type='hidden' name='price' value='" + price + "'/>")
 				
 				form.submit();
-			});	      
-		});   
+			});
+	      
+		});    
  
 		function show(i) {
 			
@@ -359,9 +382,8 @@
 			
 		}     
 		            
-		// 이거 왜 for문으로 안되는지 모르겠음    
+		
 		$(".show-click1").on("click", function() {
-			
 			$("#showNum1").css("display","block");
 		});
 		$('#showNum1').mouseleave(function(){
@@ -370,7 +392,6 @@
 		
 		
 		$(".show-click2").on("click", function() {
-			
 			$("#showNum2").css("display","block");
 		});
 		$('#showNum2').mouseleave(function(){
@@ -379,12 +400,13 @@
 		
 		
 		$(".show-click3").on("click", function() {
-			
 			$("#showNum3").css("display","block");
 		});
 		$('#showNum3').mouseleave(function(){
 			$("#showNum3").css("display","none");
 		});
+		
+		
 	</script>
 	
 	
