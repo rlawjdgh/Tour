@@ -206,7 +206,7 @@
 						var director = $("<input type='hidden' name='director' value='" + $(data).find("director").find("peopleNm").text() + "'/>");
 						var people = $("<input type='hidden' name='people' value='" + howPeople + "'/>");
 						var openDt = $("<input type='hidden' name='openDt' value='" + $(data).find("openDt").text() + "'/>");
-						var genreNm = $("<input type='hidden' name='genreNm' value='" + $(data).find("genreNm").text() + "'/>"); // 영화 장르
+						var genreNm = $("<input type='hidden' name='genreNm' value='" + $(data).find("genreNm").text() + "'/>");
 						
 						form.append(movieNm).append(showTm).append(director).append(people).append(openDt).append(genreNm);
 	

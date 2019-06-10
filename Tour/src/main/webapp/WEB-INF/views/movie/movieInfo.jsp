@@ -59,18 +59,18 @@
 		</blockquote>
 		
 		<hr size="4px" width="170px">
-		
+		 
 		<!-- 한줄평 입력 -->
-		<div class="input-group mb-3" style="padding-top: 40px;">
+		<div class="input-group mb-3" style="padding-top: 40px;">  
 			<form action="" id="replyForm">
-				<input id="reply" name="reply" type="text" class="form-control" placeholder="한줄평">
+				<input id="reply" name="reply" type="text" class="form-control" placeholder="한줄평" style="width: 400px;"> 
 				<input id="movieTitle" name="movieNm" type="hidden" class="form-control" value="${ movieVO.movieNm }">		
 				<input id="writer" name="writer" type="hidden" class="form-control" value="${ logon.id }"/>
-			</form>
-			<div class="input-group-append">
+			</form>  
+			<div class="input-group-append"> 
 				<button class="btn btn-primary btn-reply">등록</button>
-			</div>
-		</div>
+			</div> 
+		</div> 
 	
 		<!-- 한줄평 리스트 -->
 		<div class="list-group mt-3 reList"></div>

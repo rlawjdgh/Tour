@@ -1,12 +1,13 @@
 create sequence seq_member;
 	
-	create table member (
+create table member (
 		idx number(5) primary key,
-		name varchar2(20) not null,
-		id varchar2(10) not null,
+		name varchar2(20),
+		id varchar2(10),
 		email varchar2(50) not null unique,
-		password varchar2(20) not null ,
-		phone number(30) not null, 
+		password varchar2(20),
+		phone number(30), 
 		grade varchar2(20),
-		authenticate number(2)
-	);
+		authkey varchar2(50),
+		authstatus number(5)
+	); 

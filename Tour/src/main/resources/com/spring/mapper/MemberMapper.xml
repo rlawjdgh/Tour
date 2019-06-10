@@ -2,13 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.MemberMapper">
 	
-	<insert id="registMember">
-		 INSERT INTO member VALUES(
-		 	seq_member.nextVal, #{name}, #{id}, #{email}, #{password}, #{phone}, #{grade}, 0)
-	</insert>
+	<insert id="registEmail">
+		insert into member(idx, name, password, email)
+		values(seq_member.nextval,#{name},#{password},#{email})
+	</insert>   
+	  
+	<select id="getIdx" resultType="com.spring.domain.MemberVO">
+		select * from member where email=#{email}
+	</select>
+	
+	<update id="updateAuthKey">
+		update member set authkey=#{authkey} where idx=#{idx} and email=#{email}
+	</update>
+	
+	<update id="updateAuthstatus">
+		update member set authstatus=#{authstatus} where idx=#{idx} and authkey=#{authkey}
+	</update>
+	
+	<update id="registMember">
+		update member set name=#{name}, id=#{id}, password=#{password}, phone=#{phone}, grade=#{grade} where email=#{email} 
+	</update>
 	
 	<select id="checkId" resultType="com.spring.domain.MemberVO"> 
 		select * from member where id=#{id} 
+	</select>
+	
+	<select id="checkEmail" resultType="com.spring.domain.MemberVO">
+		select * from member where email=#{email}
 	</select>
 	
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.domain.MemberVO;
 import com.spring.service.MemberService;
@@ -89,4 +90,32 @@ public class MemberController {
 		return res;
 	}
 	
-}
+	@RequestMapping("/checkEmail")
+	@ResponseBody
+	public String checkemail(MemberVO vo) throws Exception {
+		
+		String str = "notexist";
+		MemberVO check = service.checkEmail(vo.getEmail());
+		if(check!=null) {
+			if(check.getAuthstatus() == 1) {
+				str = "exist";
+			} else if(check.getAuthstatus() == 0) {
+				str = "notyetauth";
+			}
+			return str;
+		} else {
+			service.checkMail(vo);
+			return "requestCheckEmailSuccess";
+		}
+	}
+	 
+	@RequestMapping("/emailConfirm")
+	public String emailConfirm(MemberVO vo, RedirectAttributes rttr) throws Exception {
+		log.info("메일인증확인");
+		vo.setAuthstatus(1);
+		int result = service.updateAuthstatus(vo);
+		
+		return "member/emailConfirm"; 
+	}
+	
+} 

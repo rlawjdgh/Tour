@@ -12,6 +12,7 @@ public class MemberVO {
 	private String password;
 	private int phone;
 	private String grade;
-	private int authenticate;
+	private String authkey;
+	private int authstatus;
 	
 }

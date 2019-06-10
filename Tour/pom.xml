@@ -14,6 +14,17 @@
 		<org.slf4j-version>1.7.24</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- Mail -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version> 
+		</dependency>
 			<!-- json 형태로 데이터를 처리하기 위해 필요 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

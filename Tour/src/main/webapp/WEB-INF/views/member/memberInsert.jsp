@@ -50,7 +50,7 @@
        					<div class="input-group">
        						<input type="email" class="form-control" id="email">
        						<span class="input-group-btn">
-	        					<button type="button" class="btn btn-outline-danger">인증하기</button>
+	        					<button type="button" class="btn btn-outline-danger" id="check_email">인증하기</button>
 	      					</span>
        					</div>
      				</div>
@@ -93,15 +93,16 @@
 	<script>
 		$(function(){
 			
-			 var id_check = false;
-			 var name = $('#name');
-			 var id = $('#id');
-			 var email = $('#email');
-			 var password = $('#password');
-			 var confirm = $('#confirm-Pass');
-			 var phone = $('#phone');
+			var email_check = false;
+			var id_check = false; 
+			var name = $('#name');
+			var id = $('#id');
+			var email = $('#email');
+			var password = $('#password');
+			var confirm = $('#confirm-Pass');
+		 	var phone = $('#phone');
 			 
-			 var registForm = $("#regist");
+			var registForm = $("#regist");
 			
 			$(".btn-block").on("click",function(e) {
 				e.preventDefault();
@@ -140,6 +141,11 @@
 					return false;
 				}
 		        
+		        if(email_check == false) {
+		        	alert("이메일 인증을 해주세요");
+		        	return false;
+		        } 
+		        
 		        if( password.val() == '') {
 		        	alert("비밀번호를 입력 해 주세요.");
 		        	password.focus();
@@ -150,18 +156,6 @@
 		        	alert("비밀번호가 일치하지 않습니다.");
 		        	confirm.focus();
 		        	return false;
-		        }
-		        
-		        if( email.val() == '' ){
-		            alert('이메일주소를 입력 해 주세요');
-		            email.focus();
-		            return false;
-		        } else {
-		            if(!regEmail.test(email.val())) {
-		                alert('이메일 주소가 유효하지 않습니다');
-		                email.focus();
-		                return false;
-		            }
 		        }
 		        
 		        if( phone.val() == '' ){
@@ -198,7 +192,7 @@
 			$("#check_id").click(function() {
 				
 				var checkId = $("#id").val();
-
+		
 				$.ajax({
 					url : "/tour/check_id",
 					data : checkId,
@@ -215,7 +209,42 @@
 						}
 					}
 				});
-			});	
+			});
+			
+			$("#check_email").click(function(e) {
+				
+				var emailReg = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+				
+				if(!emailReg.test(email.val())) {
+					e.preventDefault();
+					alert('이메일 주소가 유효하지 않습니다');		 	
+				} else if(email.val() == "") { 
+					e.preventDefault();
+					alert("이메일을 입력해주세요");
+					return;			
+				} else {
+					
+					$.ajax({
+						url : '/tour/checkEmail',
+						type : 'get',
+						data : {email : email.val()},
+						dataType : 'text',
+						success : function(result) {
+							if (result == "requestCheckEmailSuccess") {
+								console.log(result);
+								
+								alert("메일 수신함에서 인증버튼을 클릭해주시면 다음단계로 넘어갑니다.");
+								email_check = true; 
+								
+							} else if (result == "exist") {
+								alert("이미 존재하는 이메일 입니다");			
+							} else if(result=="notyetauth") {
+								alert("메일 수신함에서 인증버튼을 클릭해주세요");
+							}
+						}
+					});
+				}
+			});
 		});
 	</script>
 
