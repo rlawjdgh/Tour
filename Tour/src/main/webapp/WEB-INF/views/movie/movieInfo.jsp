@@ -50,8 +50,8 @@
 	  	<div class="embed-responsive embed-responsive-16by9" style="width: 1100px; height: 500px;">
 	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PVP5ZJuI57c" allowfullscreen style="float: center;"></iframe>
 		</div>
-	  	
-	  	
+	  	 
+	  	 
 	  	<div style="padding-top: 70px;"></div>
 	  	
 	  	<blockquote class="blockquote text-center mb-3">
@@ -110,7 +110,7 @@
 					}
 					
 				});
-			}
+			} 
 		});
 		function showReply(){
 			 $.getJSON({
@@ -130,8 +130,8 @@
 					$(".reList").html(str);
 				}
 			}); //getJSON
-		 }//showReply
-		  
+		 }//showReply 
+		   
 		 //시간포맷
 		function displayTime(timeValue){
 			

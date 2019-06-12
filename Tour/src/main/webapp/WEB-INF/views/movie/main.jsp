@@ -54,10 +54,9 @@
 	
 	<div class="col text-center" style="padding-bottom: 50px;"> 
 		<button type="button" class="btn btn-secondary btn-lg">Box Office</button>
-		<button type="button" class="btn btn-secondary btn-lg">Latest Film</button>
-		<button type="button" class="btn btn-secondary btn-lg">Coming Soon</button>
+		<button type="button" class="btn btn-secondary btn-lg">New Office</button>
 	</div>
-	
+	 
 	<div style="padding-left: 1340px;">
 		<button type="button" class="btn btn-link show-more">MORE</button>
 	</div>
@@ -141,7 +140,7 @@
 			if(dd<10){dd = "0"+dd;}
 			
 			//박스오피스 얻어오기
-			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=";
+			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=d3d73e7d0bdba4769f78b1222bf012b9&targetDt=";
 			url+=yy+mm+dd 
 			
 			$.ajax({
@@ -179,11 +178,11 @@
 	
 			function show(movieCd){
 				console.log(movieCd);
-				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=430156241533f1d058c603178cc3ca0e&movieCd=";
+				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=d3d73e7d0bdba4769f78b1222bf012b9&movieCd=";
 				url+=movieCd;
 				
 				$.ajax({
-					url:url,
+					url:url, 
 					type:"get",
 					success:function(data){
 						var length = $(data).find("actor").find("peopleNm").length; 

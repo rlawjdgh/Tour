@@ -73,9 +73,8 @@ public class MemberController {
 		log.info("로그인");
 		
 		MemberVO vo = service.checkId(id);
-		
 		String res = "clear";
-		
+		 
 		if (vo == null) {
 			res = "no_id";
 			return res;
@@ -83,9 +82,14 @@ public class MemberController {
 		if (!vo.getPassword().equals(password)) {
 			res = "no_pw";
 		}
+		  
+		if(vo.getAdmin() == 1) {
+			res = "admin";
+			return res; 
+		} 
 		
 		session.setAttribute("logon", vo);
-		session.setMaxInactiveInterval(3600);
+		session.setMaxInactiveInterval(3600); 
 		
 		return res;
 	}

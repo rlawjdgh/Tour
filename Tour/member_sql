@@ -9,5 +9,6 @@ create table member (
 		phone number(30), 
 		grade varchar2(20),
 		authkey varchar2(50),
-		authstatus number(5)
+		authstatus number(5),
+		admin number(2)
 	); 

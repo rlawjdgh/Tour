@@ -95,8 +95,10 @@
 					} else if(data == 'no_pw'){
 						alert("존재하지 않는 비밀번호입니다.");
 						return;
-					}else{
-						alert("로그인 완료");
+					} else if(data == "admin") {
+						$(location).attr('href', "/tour/adminMain");
+					} else{
+						alert("로그인 완료"); 
 						$(location).attr('href', "/tour/");
 					}
 				}

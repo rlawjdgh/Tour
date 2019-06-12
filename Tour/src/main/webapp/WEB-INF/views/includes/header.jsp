@@ -59,21 +59,17 @@
         			<li class="nav-item active">
         				<c:choose>
         					<c:when test="${logon == null}">
-        						<a class="nav-link" href="/tour/memberlogin">로그인</a>
+        						<a class="nav-link" href="/tour/memberlogin">Login</a>
         					</c:when>
-        					
+        					 
         					<c:otherwise>
-        						<a class="nav-link" href="#">${ logon.id }</a>
+        						<a class="nav-link" href="#" style="pointer-events: none;">${ logon.name } 님 안녕하세요</a>
+        						
+        						<li class="nav-item"> 
+          							<a class="nav-link" href="#" onclick="return false">MyPage</a>
+       		 					</li> 
         					</c:otherwise>
-        				</c:choose>
-        			</li>
-        		
-        			<li class="nav-item">
-          				<a class="nav-link" href="#">영화</a>
-       		 		</li>
-       		 	
-        			<li class="nav-item">
-          				<a class="nav-link" href="#">상영관</a>
+        				</c:choose>  
         			</li>
       			</ul>
       				<div class="form-inline mt-2 mt-md-0">

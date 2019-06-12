@@ -14,5 +14,6 @@ public class MemberVO {
 	private String grade;
 	private String authkey;
 	private int authstatus;
+	private int admin;
 	
-}
+} 
