@@ -17,9 +17,11 @@ public class AdminController {
 	} 
 	
 	@RequestMapping("/adminMovie")
-	public String adminMovie(Model model, String movieCd) {
+	public String adminMovie(Model model, String movieCd, String movieNm) {
 		
 		model.addAttribute("movieCd", movieCd);
-		return "admin/adminMovie";
+		model.addAttribute("movieNm", movieNm);
+		
+		return "admin/adminMovie"; 
 	}
 }

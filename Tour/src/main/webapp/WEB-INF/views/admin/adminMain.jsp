@@ -10,14 +10,14 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MAGACGV</a>
+  		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" onclick="return false;">MAGACGV</a>
   		
 	  	<ul class="navbar-nav px-3">
 	    	<li class="nav-item text-nowrap">
       			<a class="nav-link" href="#">Sign out</a>
     		</li> 
   		</ul>
-	</nav>
+	</nav> 
 		
 	<div class="container-fluid"  style="padding-top: 40px;">
   		<div class="row">
@@ -26,7 +26,7 @@
       			<div class="sidebar-sticky">
         			<ul class="nav flex-column">
           				<li class="nav-item">
-            				<a class="nav-link active" href="#">영화 정보 편집</a>
+            				<a class="nav-link active" href="#">영화</a>
           				</li>
           				
           				<li class="nav-item">
@@ -45,10 +45,10 @@
  			</nav> 
 
     		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      			<h2>Section title</h2>
+      			<h2>Info</h2>
       				<div class="table-responsive" id="msg"></div> 
 			</main> 
-  		</div>
+  		</div> 
 	</div>
 	
 	<script type="text/javascript">
@@ -101,11 +101,11 @@
 								str=str+"(▼";
 								else
 									str=str+"(" 
-						str=str+rankInten+") : "; 
+						str=str+rankInten+")";  
 						str += "</td>"; 
 						
 						str +="<td>";
-						str+="<a href='#' data-moviecd='"+item.movieCd+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
+						str+="<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
 						str +="</td>"; 
 						
 						str +="</tr>";
@@ -125,9 +125,10 @@
 			$("#msg").on("click", ".clickMovie", function() {  
 				
 				movieCd = $(this).data("moviecd");
+				movieNm = $(this).data("movienm");
 				
-				var popUrl = "/tour/adminMovie?movieCd="+movieCd;
-				var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+				var popUrl = "/tour/adminMovie?movieCd="+movieCd+"&movieNm="+movieNm;
+				var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;";
 
 				window.open(popUrl,"",popOption);
 			});

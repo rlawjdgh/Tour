@@ -82,7 +82,7 @@
 				</dl>
 				
 				<dl class="txtName">
-					<dt class="Lang-LBL0015">영화 : ${clickMovieNm}</dt>
+					<dt class="Lang-LBL0015">영화 : </dt>
 					<dd><div id="box3"></div></dd> 
 				</dl> 
 				<button type="button" class="btn btn-outline-success" id="btnOk">확인</button>
@@ -173,8 +173,10 @@
 					} 
 				});
 				
+				$("#box3").html($('#click-movieNm').val());
+				
 			}); 
-			
+			 
 			$( "#datepicker" ).datepicker({
 				dateFormat: 'yy-mm-dd',
 				minDate: '-0M',
