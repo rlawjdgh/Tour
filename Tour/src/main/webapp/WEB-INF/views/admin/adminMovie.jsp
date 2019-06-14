@@ -38,11 +38,28 @@
 		            return false; 
 		        }
 				
-				upload.append("<input type='hidden' name='movieNm' value='" + $('#movieNm').val() + "'/>")
-				upload.append("<input type='hidden' name='youtube' value='" + youtube.val() + "'/>")
-				upload.append("<input type='file' name='photo' value='" + photo.val() + "'/>")
 				
-				upload.submit();  
+				var formData = new FormData($("#upload")[0]);
+				formData.append("movieNm", $('#movieNm').val());
+				formData.append("youtube", $('#youtube').val());
+				formData.append("photo", $("#photo")[0].files[0]);
+
+				$.ajax({ 
+					type : 'post',
+					url : '/tour/upload',
+					data : formData,
+					processData : false,
+					contentType : false,
+					success : function(data) {
+						if(data == "ready") {
+							alert($('#movieNm').val() +" 이(가) 추가되어있습니다.");
+							return false; 
+						} else { 
+							alert("업로드 완료");
+							self.close(); 	
+						}
+					} 
+				});
 			});
 		}); 
 	</script>

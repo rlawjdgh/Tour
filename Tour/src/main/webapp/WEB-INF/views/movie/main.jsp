@@ -62,12 +62,12 @@
 	</div>
 	
 	<!-- 순위권 영화 목록 -->
-	<div class="row justify-content-center mvList" style="width: 100%">
-		<c:forEach var="i" begin="0" end="4" step="1"> 
-			<div class="col-sm-2">
-				<div class="card" style="width:15rem;">
-			  		<img class="card-img-top" src="#" alt="img-thumbnail">
-					<div class="card-body" style="height: 101px;" id="movieCode">
+	<div class="row justify-content-center mvList" style="width: 100%"> 
+		<c:forEach var="i" begin="0" end="4" step="1">  
+			<div class="col-sm-2">  
+				<div class="card" style="width:15rem;">    
+			  		<img class="card-img-top" src="#" alt="img-thumbnail" id="src${i}" style="width: 239px; height: 250px;"> 
+					<div class="card-body" style="height: 101px;" id="movieCode">  
 			   			<h5 class="card-title" id="movieNm${i}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h5>
 			       		<a href="#" class="card-link" id="movieInfo${i}" onclick="return false">상세보기</a>
 			   			<a href="#" class="card-link" id="movieBook${i}" onclick="return false">예매하기</a>
@@ -81,12 +81,12 @@
 		<c:forEach var="i" begin="5" end="9" step="1">
 			<div class="col-sm-2">
 				<div class="card" style="width:15rem;">
-			  		<img class="card-img-top" src="#" alt="img-thumbnail">
+			  		<img class="card-img-top" src="#" alt="img-thumbnail" id="src${i}" style="width: 239px; height: 250px;">
 					<div class="card-body" style="height: 101px;" id="movieCode">
 			   			<h5 class="card-title" id="movieNm${i}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h5>
 			       		<a href="#" class="card-link" id="movieInfo${i}" onclick="return false">상세보기</a>
 			   			<a href="#" class="card-link" onclick="return false">예매하기</a>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</c:forEach>
@@ -156,9 +156,19 @@
 					}
 					
 					$.each(data.boxOfficeResult.dailyBoxOfficeList,function(index,item){ //boxOfficeResult : json안에 젤 바깥 키
-						//영화이름
-						var movieNm = item.movieNm;
-						console.log(movieNm);
+					
+						$.getJSON({ 
+							url : "/tour/uploadOne",
+							data : {movieNm: item.movieNm},
+							type : "get", 
+							success : function(result) {
+								console.log(result);
+								$(result).each(function(i,obj) { 
+									$("#src"+index).attr('src', '${ pageContext.request.contextPath }/resources/upload/'+obj.filename);
+								});					   
+							} 
+						});
+						 
 						$("#movieNm"+index).text( item.movieNm );
 						
 						$('#movieInfo'+index).click(function() {

@@ -33,27 +33,27 @@
         		<form>
 	        		<button type="button" class="btn btn-primary" id="booking">
 	  					예매하기
-					</button>
+					</button> 
 				</form>
-      		</div>
-      		
-	      	<div class="col-md-5 order-md-1">
-	        	<img src="${ pageContext.request.contextPath }/resources/img/nnn.jpg" style="width: 100%; height: 100%;">
+      		</div> 
+      		  
+	      	<div class="col-md-5 order-md-1"> 
+	        	<img src="#" style="width: 450px; height: 550px;" id="src">  
 	      	</div>
-    	</div>
+    	</div> 
 	</div>
 	
-	<div style=" padding-top: 60px;"></div>
+	<div style=" padding-top: 60px;"></div> 
 	
 	<div class="container">
   	
 	  	<div class="embed-responsive embed-responsive-16by9" style="width: 1100px; height: 500px;">
-	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PVP5ZJuI57c" allowfullscreen style="float: center;"></iframe>
+	  		<iframe class="embed-responsive-item" src="#" allowfullscreen style="float: center;" id="youtube"></iframe>
 		</div>
 	  	 
 	  	 
 	  	<div style="padding-top: 70px;"></div>
-	  	
+	  	 
 	  	<blockquote class="blockquote text-center mb-3">
 	  		<h1>한줄평</h1>
 		</blockquote>
@@ -88,77 +88,91 @@
 	
 	<!-- 댓글등록 -->
 	<script>
-	$(function(){
-		var logedIdx = "${logon.idx}";
-		showReply();
-		
-		$(".btn-reply").on("click",function(){
-			if(${logon == null}){
-				alert("로그인 후 이용가능합니다.");
-				return;
-			}else{ 
-				$.ajax({
-					type : "post",
-					url : '/tour/insertReply',
+		$(function(){
+			var logedIdx = "${logon.idx}";
+			showReply(); 
+			
+			$.getJSON({ 
+				url : "/tour/uploadOne",
+				data : {movieNm: $("#movieTitle").val()},
+				type : "get", 
+				success : function(result) { 
+					console.log(result);
+					$(result).each(function(i,obj) { 
+						$("#src").attr('src', '${ pageContext.request.contextPath }/resources/upload/'+obj.filename);
+						$("#youtube").attr("src",obj.youtube); 
+					});					   
+				}  
+			});
+			  
+			 
+			$(".btn-reply").on("click",function(){
+				if(${logon == null}){
+					alert("로그인 후 이용가능합니다.");
+					return;
+				}else{ 
+					$.ajax({
+						type : "post",
+						url : '/tour/insertReply',
+						data : {movieNm : $("#movieTitle").val(),
+								writer : $("#writer").val(),
+								reply : $("#reply").val()},
+						success : function(data){
+							console.log(data);
+							 $("#reply").val("");
+							 showReply();
+						}
+						
+					});
+				} 
+			});
+			function showReply(){
+				 $.getJSON({
+					url : '/tour/getReplyLists',
 					data : {movieNm : $("#movieTitle").val(),
-							writer : $("#writer").val(),
-							reply : $("#reply").val()},
-					success : function(data){
+							page : ${page}},  
+					success:function(data){
+						var str = "";
 						console.log(data);
-						 $("#reply").val("");
-						 showReply();
+						$(data).each(function(i,obj){
+							str += "<a href='#' class='list-group-item list-group-item-action disabled'>";
+							str += "<div class='d-flex w-100 justify-content-between'>";
+							str += "<h5 class='mb-1'>" + obj.writer + "</h5>";
+							str += "</div><p class='mb-1'>" + obj.reply + "</p>";
+							str += "<small>" + displayTime(obj.replyDate) + "</small></a>";
+						});	
+						$(".reList").html(str);
 					}
-					
-				});
-			} 
-		});
-		function showReply(){
-			 $.getJSON({
-				url : '/tour/getReplyLists',
-				data : {movieNm : $("#movieTitle").val(),
-						page : ${page}},  
-				success:function(data){
-					var str = "";
-					console.log(data);
-					$(data).each(function(i,obj){
-						str += "<a href='#' class='list-group-item list-group-item-action disabled'>";
-						str += "<div class='d-flex w-100 justify-content-between'>";
-						str += "<h5 class='mb-1'>" + obj.writer + "</h5>";
-						str += "</div><p class='mb-1'>" + obj.reply + "</p>";
-						str += "<small>" + displayTime(obj.replyDate) + "</small></a>";
-					});	
-					$(".reList").html(str);
-				}
-			}); //getJSON
-		 }//showReply 
-		   
-		 //시간포맷
-		function displayTime(timeValue){
-			
-			var today = new Date();
-			
-			var gap = today.getTime()-timeValue;
-			
-			var dateObj = new Date(timeValue);
-			var str = "";
-			/* if(gap<(1000*60*60*24)){//오늘 24시간 안에 작성됐을 경우
-				var hh=dateObj.getHours();
-				var mi = dateObj.getMinutes();
-				var ss = dateObj.getSeconds();
+				}); //getJSON
+			 }//showReply 
+			     
+			 //시간포맷
+			function displayTime(timeValue){
 				
-						//시분초가 9가 넘어가면 두자리수가 되니까 그냥 쓰고, 두자리수가 안될경우 앞에 0붙이기
-				return [(hh>9?'':'0')+hh,':',(mi>9?'':'0')+mi,':',(ss>9?'':'0')+ss].join('');
-			}else{//댓글이 달린지 24시간이 지났으면 */
-				var yy = dateObj.getFullYear();
-				var mm = dateObj.getMonth()+1;
-				var dd = dateObj.getDate();
-				return [yy,'/',(mm>9?'':'0')+mm,'/',(dd>9?'':'0')+dd].join('');
-			//}
-		}//displayTime
-	})
-	 
-	$('#booking').click(function(){
-		$(location).attr('href', '/tour/movieTicketing?movieNm='+$('#clickMovieNm').val());
-	});	
+				var today = new Date();
+				
+				var gap = today.getTime()-timeValue;
+				
+				var dateObj = new Date(timeValue);
+				var str = "";
+				/* if(gap<(1000*60*60*24)){//오늘 24시간 안에 작성됐을 경우
+					var hh=dateObj.getHours();
+					var mi = dateObj.getMinutes();
+					var ss = dateObj.getSeconds();
+					
+							//시분초가 9가 넘어가면 두자리수가 되니까 그냥 쓰고, 두자리수가 안될경우 앞에 0붙이기
+					return [(hh>9?'':'0')+hh,':',(mi>9?'':'0')+mi,':',(ss>9?'':'0')+ss].join('');
+				}else{//댓글이 달린지 24시간이 지났으면 */
+					var yy = dateObj.getFullYear();
+					var mm = dateObj.getMonth()+1;
+					var dd = dateObj.getDate();
+					return [yy,'/',(mm>9?'':'0')+mm,'/',(dd>9?'':'0')+dd].join('');
+				//}
+			}//displayTime 
+		})
+		 
+		$('#booking').click(function(){
+			$(location).attr('href', '/tour/movieTicketing?movieNm='+$('#clickMovieNm').val());
+		});	
 	</script> 
 <%@include file="../includes/footer.jsp" %>  
