@@ -20,9 +20,9 @@
 	</update>
 	
 	<update id="registMember">
-		update member set name=#{name}, id=#{id}, password=#{password}, phone=#{phone}, grade=#{grade}, admin=0 where email=#{email} 
+		update member set name=#{name}, id=#{id}, password=#{password}, phone=#{phone}, grade=#{grade}, point=0, admin=0 where email=#{email} 
 	</update>
-	 
+	  
 	<select id="checkId" resultType="com.spring.domain.MemberVO"> 
 		select * from member where id=#{id} 
 	</select>
@@ -30,5 +30,13 @@
 	<select id="checkEmail" resultType="com.spring.domain.MemberVO">
 		select * from member where email=#{email}
 	</select>
+	
+	<select id="getPoint" resultType="com.spring.domain.MemberVO">
+		select * from member where idx=#{idx} 
+	</select>
+	
+	<insert id="setPoint"> 
+		update member set point=#{point}, grade=#{grade} where idx=#{idx}  
+	</insert>
 	
 </mapper>

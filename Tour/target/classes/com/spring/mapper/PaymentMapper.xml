@@ -12,6 +12,9 @@
 		where boxIdx=#{boxIdx} and day=#{day} and movieNm=#{movieNm}
 	</select>
 	
+	<select id="getTicket" resultType="com.spring.domain.PaymentVO"> 
+		select * from payment where memberIdx=#{memberIdx} ORDER BY regdate DESC
+	</select>
 	
-	
+	  
 </mapper>

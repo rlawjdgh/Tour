@@ -1,0 +1,134 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+.myCinemaCont {
+    width: 980px;
+    margin: 0 auto;
+    padding: 50px 0;
+    font-size: 14px;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+.myCinemaCont .tab_st03 {
+    margin-bottom: 0;
+}
+
+.tab_st03 {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.tab_st03 > li:first-child {
+    margin-left: 0;
+}
+
+.tab_st03 > li {
+    float: left;
+    margin-left: 1px;
+} 
+
+.tab_st03 .active > a {
+    background: #231f20;
+    color: #cdc197;
+}
+
+.tab_st03 > li > a {
+    display: block;
+    width: 195px;
+    height: 49px;
+    background: #efebdb;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 14px;
+    color: #231f20;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+.tab_st03 > li > a:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.tab_st03:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.myCinemaCont .tabCont {
+    padding: 80px 0 0;
+    color: #231f20;
+}
+
+.srchResult_none {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.srchResult_none .txt {
+    display: inline-block;
+    height: 23px;
+    padding-left: 28px;
+    background: url(http://www.lottecinema.co.kr/LCHS/Image/Bg/bg_ex_mark.png) no-repeat 0 0;
+    font-size: 18px;
+    color: #777;
+    line-height: 25px;
+}
+
+.myCinema_list {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.myCinema_list .myCinema_box {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 30px;
+    border-top: 1px solid #c0c0c0;
+    background: #fff;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.myCinema_list .myCimema_cont {
+    float: left;
+    width: 702px;
+    margin-left: 40px;
+    line-height: 22px;
+}
+
+.myCinema_list .myCimema_cont dt {
+    clear: both;
+    float: left;
+    width: 142px;
+    font-size: 14px;
+    color: #666;
+}
+
+.myCinema_list .myCimema_cont dd {
+    float: left;
+    width: 550px;
+    font-size: 14px;
+    color: #231f20;
+    font-weight: bold;
+}

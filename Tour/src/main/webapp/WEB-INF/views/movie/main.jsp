@@ -51,11 +51,6 @@
 	</blockquote>
 
 	<hr size="4px" width="170px">
-	
-	<div class="col text-center" style="padding-bottom: 50px;"> 
-		<button type="button" class="btn btn-secondary btn-lg">Box Office</button>
-		<button type="button" class="btn btn-secondary btn-lg">New Office</button>
-	</div>
 	 
 	<div style="padding-left: 1340px;">
 		<button type="button" class="btn btn-link show-more">MORE</button>

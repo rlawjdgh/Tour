@@ -9,5 +9,6 @@ public interface PaymentService {
 	
 	public int insertPay(PaymentVO vo);
 	public List<PaymentVO> select(ReadSeatVO vo);
+	public List<PaymentVO> getTicket(int memberIdx);
 
 }

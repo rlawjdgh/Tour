@@ -10,14 +10,14 @@
 </head>
 <body>
 	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" onclick="return false;">MAGACGV</a>
-  		
+  		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" onclick="return false;" style="pointer-events: none;">MAGACGV</a>
+  		 
 	  	<ul class="navbar-nav px-3">
 	    	<li class="nav-item text-nowrap">
-      			<a class="nav-link" href="#">Sign out</a>
+      			<a class="nav-link" href="#" onclick="return false" id="logout">Sign out</a>
     		</li> 
   		</ul>
-	</nav> 
+	</nav>  
 		
 	<div class="container-fluid"  style="padding-top: 40px;">
   		<div class="row">
@@ -38,7 +38,7 @@
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#">회원정보 관리</a> 
+            				<a class="nav-link" href="#" id="member">회원정보 관리</a> 
           				</li>
     				</ul>
 				</div> 
@@ -119,7 +119,7 @@
 				error:function(){
 					alert('실패'); 
 				}
-			});
+			}); 
 			
 			
 			$("#msg").on("click", ".clickMovie", function() {  
@@ -133,6 +133,14 @@
 				window.open(popUrl,"",popOption);
 			});
 			
+			$("#logout").on("click", function() { 
+				 $(location).attr('href', '/tour/logout'); 
+			});
+			
+			$("#member").on("click", function() { 
+				$(location).attr('href', '/tour/memberInfo');  
+			});
+			 
 		});
 	</script>
 </body> 

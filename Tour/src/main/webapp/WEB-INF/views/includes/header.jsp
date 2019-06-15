@@ -63,12 +63,16 @@
         					</c:when>
         					 
         					<c:otherwise>
-        						<a class="nav-link" href="#" style="pointer-events: none;">${ logon.name } 님 안녕하세요</a>
+        						<a class="nav-link" href="#" style="pointer-events: none;">${ logon.name } 님</a> 
         						
         						<li class="nav-item"> 
-          							<a class="nav-link" href="#" onclick="return false">MyPage</a>
-       		 					</li> 
-        					</c:otherwise>
+          							<a class="nav-link" href="#" onclick="return false" id="myPage">MyPage</a>
+       		 					</li>
+       		 					
+       		 					<li class="nav-item"> 
+          							<a class="nav-link" href="#" onclick="return false" id="logout">Logout</a>
+       		 					</li>
+        					</c:otherwise> 
         				</c:choose>  
         			</li>
       			</ul>
@@ -92,5 +96,13 @@
   				}  				
   			});
   			
+  			$("#myPage").on("click", function() {  
+  				$(location).attr('href', '/tour/myPage');  
+			}); 
+  			
+  			$("#logout").on("click", function() { 
+  				$(location).attr('href', '/tour/logout');  
+			}); 
+  			 
   		});
   	</script> 

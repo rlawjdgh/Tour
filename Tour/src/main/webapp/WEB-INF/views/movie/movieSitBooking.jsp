@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../includes/header.jsp"%>
@@ -15,7 +15,7 @@
     		background: url(https://www.lottecinema.co.kr/LCHS/Image/Bg/bg_disabled.gif);
     		pointer-events: none;
 		}
-		
+		 
 		.total_slide .total_sum { 
 		    float: right;
 		    padding-top: 5px;
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 	
-	<form method="get" id="form1" action="/tour/moviePayment">
+	<form method="post" id="form1" action="/tour/moviePayment"> 
 		<div id="container" class="sub">
 			<div id="content">
 				<div class="seatwrap">
@@ -263,11 +263,13 @@
 								str += "style='left: "+right_left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
 							}
 							
-							$(seatReady).each(function (index, obj) {
+							$(seatReady).each(function(index, obj) {
 		 						if((e2+j) == obj) {
+		 							console.log(e2+j);  
 		 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
+		 							str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>"; 
 		 						} 
-							}); 
+							});   
 							 
 						}     
 						top += 26;         

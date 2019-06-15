@@ -27,5 +27,10 @@ public class PaymentServiceImpl implements PaymentService{
 	public List<PaymentVO> select(ReadSeatVO vo) {
 		return mapper.select(vo);
 	}
+
+	@Override
+	public List<PaymentVO> getTicket(int memberIdx) {
+		return mapper.getTicket(memberIdx);
+	}
  
 }

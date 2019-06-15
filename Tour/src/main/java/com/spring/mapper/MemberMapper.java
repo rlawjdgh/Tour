@@ -11,5 +11,8 @@ public interface MemberMapper {
 	public int updateAuthKey(MemberVO vo);
 	public MemberVO checkEmail(String email); // 중복체크
 	public int updateAuthstatus(MemberVO vo);
+	public MemberVO getPoint(int idx);
+	public int setPoint(MemberVO vo);
 	
 }
+ 

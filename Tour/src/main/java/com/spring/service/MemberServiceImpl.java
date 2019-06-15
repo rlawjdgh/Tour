@@ -87,5 +87,15 @@ public class MemberServiceImpl implements MemberService{
 	public int updateAuthstatus(MemberVO vo) {
 		return mapper.updateAuthstatus(vo);
 	}
+	
+	@Override
+	public MemberVO getPoint(int idx) {
+		return mapper.getPoint(idx);
+	}
+
+	@Override
+	public int setPoint(MemberVO vo) {
+		return mapper.setPoint(vo); 
+	}
 
 }

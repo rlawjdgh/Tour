@@ -1,9 +1,7 @@
 package com.spring.service;
 
-import java.util.List;
 
 import com.spring.domain.MemberVO;
-import com.spring.domain.MovieVO;
 
 public interface MemberService {
 	
@@ -12,4 +10,6 @@ public interface MemberService {
 	public MemberVO checkEmail(String email); // 이메일 중복체크 
 	public void checkMail(MemberVO vo);
 	public int updateAuthstatus(MemberVO vo);
+	public MemberVO getPoint(int idx);
+	public int setPoint(MemberVO vo);
 }

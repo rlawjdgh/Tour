@@ -144,7 +144,7 @@ public class MovieController {
 		return "/movie/searchList"; 
 	}
 	
-	@RequestMapping("/movieSitBooking")
+	@PostMapping("/movieSitBooking") 
 	public String sitBooking(Model model, @ModelAttribute("movieEnterVO") MovieEnterVO movieEnterVO) {
 		
 		int idx = movieEnterVO.getBoxIdx();
@@ -155,7 +155,7 @@ public class MovieController {
 		return "/movie/movieSitBooking";
 	}
 	
-	@RequestMapping("/moviePayment")
+	@PostMapping("/moviePayment") 
 	public String moviePayment(@ModelAttribute("movieDecideVO") MovieDecideVO movieDecideVO) {
 		
 		return "/movie/moviePayment";

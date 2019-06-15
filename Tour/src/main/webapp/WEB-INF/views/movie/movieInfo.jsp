@@ -48,8 +48,8 @@
 	<div class="container">
   	
 	  	<div class="embed-responsive embed-responsive-16by9" style="width: 1100px; height: 500px;">
-	  		<iframe class="embed-responsive-item" src="#" allowfullscreen style="float: center;" id="youtube"></iframe>
-		</div>
+	  		<iframe class="embed-responsive-item" src="..." allowfullscreen style="float: center;" id="youtube"></iframe>
+		</div> 
 	  	 
 	  	 
 	  	<div style="padding-top: 70px;"></div>

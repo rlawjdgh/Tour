@@ -307,8 +307,8 @@
 			
 			var form = $('<form></form>'); 
 			form.attr('action', '/tour/movieSitBooking'); 
-			form.attr('method', 'get'); 
-			form.appendTo('body'); 
+			form.attr('method', 'post'); 
+			form.appendTo('body');   
 			
 			var day = $("<input type='hidden' name='day' value='"+$('#click-today').val()+"'/>");
 			var boxIdx = $("<input type='hidden' name='boxIdx' value='"+$(this).data("boxidx")+"'/>");

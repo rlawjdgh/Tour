@@ -1,5 +1,8 @@
 package com.spring.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.domain.MemberVO;
+import com.spring.domain.PaymentVO;
 import com.spring.service.MemberService;
+import com.spring.service.PaymentService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +26,8 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private PaymentService payService; 
 
 	@RequestMapping("/memberlogin")
 	public String memberlogin() {
@@ -30,7 +37,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberInsert")
-	public String memberInsert() {
+	public String memberInsert() { 
 		log.info("회원가입 페이지");
 
 		return "member/memberInsert";
@@ -94,6 +101,16 @@ public class MemberController {
 		return res;
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, HttpServletRequest request) {
+		
+		session = request.getSession();
+		session.removeAttribute("logon");
+		 
+		return "redirect:/";    
+		
+	}
+	
 	@RequestMapping("/checkEmail")
 	@ResponseBody
 	public String checkemail(MemberVO vo) throws Exception {
@@ -120,6 +137,19 @@ public class MemberController {
 		int result = service.updateAuthstatus(vo);
 		
 		return "member/emailConfirm"; 
+	}
+	
+	@RequestMapping("/myPage")
+	public String myPage() {
+		return "member/myPage";
+	}
+	
+	@RequestMapping("/getTicket")
+	@ResponseBody
+	public List<PaymentVO> getTicket(int memberIdx) {
+		
+		List<PaymentVO> ticket = payService.getTicket(memberIdx);
+		return ticket;
 	}
 	
 } 
