@@ -40,9 +40,9 @@
                             	</dd>
                             	<dd class="note">
 	                                <ul>
-	                                    <li>POINT로 영화예매 할 수 있습니다.</li>   
+	                                    <li>POINT로 영화예매를 할 수 있습니다.</li>   
 	                                </ul>
-                            	</dd>   
+                            	</dd>    
 							</dl>
 						</div>
 						
@@ -69,30 +69,36 @@
 							<span class="txt Lang-LBL3056">예매/구매한 내역이 없습니다.</span>
 						</div>		
 						<ol class="myCinema_list" id="myCinemaList"></ol> 
-					</div> 
+					</div>
+					
+					<div id="pageMenu"></div>
 				</div>
 			</div>
 		</div> 
 	</div>
 	
-	<input type="hidden" id="idx" value="${logon.idx }"> 
+	<input type="hidden" id="idx" value="${logon.idx }">
+	<input type="hidden" id="payPageMenu" value="${pageMenu}">
 	
 	<script>
 			
 		$(document).ready(function() {
 			
 			str = "";
+			msg = "";
 			
 			$.getJSON({
 				url : "/tour/getTicket",
 				type: "get", 
-				data : {memberIdx: Number($('#idx').val())}, 
+				data : {memberIdx: Number($('#idx').val()), 
+						page : ${page}}, 
 				success : function(data) {
 					
 					if(data.length == 0) {
 						$("#searchResultNone").css("display","block");
 						$("#myCinemaList").css("display","none"); 
-					}  
+						$("#pageMenu").css("display","none"); 
+					}   
 					
 					$(data).each(function(i,obj) {
 						str += "<li>";
@@ -107,10 +113,19 @@
 						str += "</dl>";
 						str += "</div>";
 						str += "</li>";
-					});  
+					});
+					
+					msg = "<table width='690' class='mb-3 mt-3'>";
+					msg += "<tr>";
+					msg += "<td class='f11' align='center'>";
+					msg += 	$('#payPageMenu').val()
+					msg += "</td>";
+					msg += "</tr>";
+					msg += "</table>";
 				
 					$("#myCinemaList").html(str);  
-				} 
+					$("#pageMenu").html(msg);  		 
+				}  
 			});  
 		}); 
 		

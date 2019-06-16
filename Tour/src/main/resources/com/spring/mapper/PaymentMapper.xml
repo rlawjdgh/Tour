@@ -13,8 +13,12 @@
 	</select>
 	
 	<select id="getTicket" resultType="com.spring.domain.PaymentVO"> 
-		select * from payment where memberIdx=#{memberIdx} ORDER BY regdate DESC
+		select * from ( select rank() over(order by regdate desc) no,
+		b.* from(select * from payment where memberIdx=#{memberIdx} ) b ) where no between #{start} and #{end}
 	</select>
-	
-	  
-</mapper>
+	 
+	<select id="getTotal" resultType="java.lang.Integer">
+		select count(*) from payment
+	</select>
+	 
+</mapper> 

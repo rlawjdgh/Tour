@@ -1,5 +1,6 @@
 package com.spring.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.spring.domain.PaymentVO;
@@ -9,6 +10,7 @@ public interface PaymentMapper {
 	
 	public int insertPay(PaymentVO vo);
 	public List<PaymentVO> select(ReadSeatVO vo);
-	public List<PaymentVO> getTicket(int memberIdx);
+	public List<PaymentVO> getTicket(HashMap<String, Object> hash);
+	public int getTotal();
 
 }

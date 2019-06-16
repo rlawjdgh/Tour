@@ -7,13 +7,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.domain.Common;
 import com.spring.domain.MemberVO;
+import com.spring.domain.Paging;
 import com.spring.domain.PaymentVO;
 import com.spring.service.MemberService;
 import com.spring.service.PaymentService;
@@ -140,15 +143,35 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/myPage")
-	public String myPage() {
+	public String myPage(Model model, String page) {
+		
+		// 댓글페이지네이
+		int nowPage = 1; // 기본으로 보여질 페이지
+		if (page != null && !page.isEmpty()) {
+			nowPage = Integer.parseInt(page);
+		} else {
+			page = "1";
+		}
+		int row_total = payService.getTotal(); 
+		
+		String pageMenu = Paging.getPaging("/tour/myPage?", nowPage, row_total, Common.Reply.BLOCKLIST, Common.Reply.BLOCKPAGE);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("pageMenu", pageMenu); 
+				
 		return "member/myPage";
 	}
 	
 	@RequestMapping("/getTicket")
 	@ResponseBody
-	public List<PaymentVO> getTicket(int memberIdx) {
+	public List<PaymentVO> getTicket(int memberIdx, String page) {
 		
-		List<PaymentVO> ticket = payService.getTicket(memberIdx);
+		int nowPage = 1; // 기본으로 보여질 페이지
+		if (page != null && !page.isEmpty()) {
+			nowPage = Integer.parseInt(page);
+		}
+		
+		List<PaymentVO> ticket = payService.getTicket(nowPage, memberIdx);
 		return ticket;
 	}
 	

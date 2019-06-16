@@ -68,8 +68,9 @@ public class MovieController {
 		int row_total = replyService.getTotal();
 
 		// 현재 페이지 메뉴 생성
-		String pageMenu = Paging.getPaging("/tour/movieInfo?movieNm=" + movieVO.getMovieNm(), nowPage, row_total,
-				Common.Reply.BLOCKLIST, Common.Reply.BLOCKPAGE);
+		String pageMenu = Paging.getPaging("/tour/movieInfo?movieNm=" + movieVO.getMovieNm()+"&showTm="+
+				movieVO.getShowTm()+"&director="+movieVO.getDirector()+"&people="+movieVO.getPeople()+"&openDt="+movieVO.getOpenDt()+
+				"&genreNm="+movieVO.getGenreNm(), nowPage, row_total, Common.Reply.BLOCKLIST, Common.Reply.BLOCKPAGE);
 
 		model.addAttribute("page", page);
 		model.addAttribute("pageMenu", pageMenu);

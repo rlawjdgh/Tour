@@ -48,9 +48,9 @@
 	<div class="container">
   	
 	  	<div class="embed-responsive embed-responsive-16by9" style="width: 1100px; height: 500px;">
-	  		<iframe class="embed-responsive-item" src="..." allowfullscreen style="float: center;" id="youtube"></iframe>
+	  		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/J0wqNzuYd-c?list=LLqCYhQf3pEjtR3R9b3BbZnA" allowfullscreen style="float: center;" id="youtube"></iframe>
 		</div> 
-	  	 
+	  	  
 	  	 
 	  	<div style="padding-top: 70px;"></div>
 	  	 
@@ -86,8 +86,8 @@
 	
 	<input type="hidden" id="clickMovieNm" value="${ movieVO.movieNm }">
 	
-	<!-- 댓글등록 -->
 	<script>
+	
 		$(function(){
 			var logedIdx = "${logon.idx}";
 			showReply(); 
@@ -104,8 +104,8 @@
 					});					   
 				}  
 			});
-			  
-			 
+			   
+			// 댓글
 			$(".btn-reply").on("click",function(){
 				if(${logon == null}){
 					alert("로그인 후 이용가능합니다.");
