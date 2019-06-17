@@ -16,9 +16,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.domain.Common;
 import com.spring.domain.MemberVO;
+import com.spring.domain.NoticeVO;
 import com.spring.domain.Paging;
 import com.spring.domain.PaymentVO;
 import com.spring.service.MemberService;
+import com.spring.service.NoticetService;
 import com.spring.service.PaymentService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +33,9 @@ public class MemberController {
 	private MemberService service;
 	@Autowired
 	private PaymentService payService; 
+	@Autowired
+	private NoticetService noticeService; 
+	
 
 	@RequestMapping("/memberlogin")
 	public String memberlogin() {
@@ -174,5 +179,21 @@ public class MemberController {
 		List<PaymentVO> ticket = payService.getTicket(nowPage, memberIdx);
 		return ticket;
 	}
+	
+	@RequestMapping("/memberNotice") 
+	public String adminMovie() {
+		return "member/memberNotice";  
+	}
+	
+	@RequestMapping("/setNotice")
+	@ResponseBody
+	public String setNotice(NoticeVO vo) throws Exception{
+		
+		String msg = "clear";  
+		noticeService.insert(vo);
+		
+		log.info("" + msg);	
+		return msg; 
+	} 
 	
 } 

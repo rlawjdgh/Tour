@@ -3,6 +3,7 @@
 <%@include file="../includes/header.jsp" %>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage2.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage3.css"> 
 
 	 <div class="carousel slide carousel-fade">
 		<div class="carousel-inner" role="listbox">
@@ -51,8 +52,8 @@
 				
 				<div class="myCinemaCont">
 					<ul class="tab_st03" id="ulTab" style="border-bottom: 1px solid #231f20;">
-						<li class="myticket active">
-                        	<a href="javascript:void(0)" class="Lang-LBL3001" id="ticket" onclick="return false;">예매/구매내역</a>
+						<li class="myticket active" id="ticket"> 
+                        	<a href="javascript:void(0)" class="Lang-LBL3001" onclick="return false;">예매/구매내역</a>
                         </li>
                         
                         <li class="myContact" style="">
@@ -67,8 +68,46 @@
 					<div class="tabCont" id="divTabContent">
 						<div class="srchResult_none" style="display: none;" id="searchResultNone">
 							<span class="txt Lang-LBL3056">예매/구매한 내역이 없습니다.</span>
-						</div>		
-						<ol class="myCinema_list" id="myCinemaList"></ol> 
+						</div>
+							
+						<ol class="myCinema_list" id="myCinemaList"></ol>
+						
+						<div id="myNotice">
+							<fieldset>
+								<table border="1" class="tbl_st03">
+									<colgroup>
+										<col style="width:15%">
+										<col style="width:52%">
+										<col style="width:20%">
+										<col style="width:14%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">번호</th>	
+											<th scope="col">제목</th>
+											<th scope="col">등록일</th>
+											<th scope="col">처리상태</th>	
+										</tr>
+									</thead>
+									<tbody id="tbodyListInquiry">
+										<div id="myQuestion" style="display: none;"> 
+											<tr> 
+												<td colspan="6">
+													<div class="srchResult_none">
+														<span class="txt">등록된 문의 내역이 없습니다.</span>
+													</div>
+												</td>
+											</tr>
+										</div>
+										<div id="myAnswer"></div>
+									</tbody>
+								</table>
+							</fieldset>	
+							<div class="btn_box btn_rbox">
+								<a href="javascript:void(0);" class="btnc_reserve goNotice">문의등록</a>
+							</div> 
+						</div>
+						
 					</div>
 					
 					<div id="pageMenu"></div>
@@ -83,16 +122,17 @@
 	<script>
 			
 		$(document).ready(function() {
-			
 			str = "";
-			msg = "";
+			msg = ""; 
 			
-			$.getJSON({
+			$("#myNotice").css("display","none"); 
+			
+			$.getJSON({ 
 				url : "/tour/getTicket",
 				type: "get", 
 				data : {memberIdx: Number($('#idx').val()), 
 						page : ${page}}, 
-				success : function(data) {
+				success : function(data) { 
 					
 					if(data.length == 0) {
 						$("#searchResultNone").css("display","block");
@@ -126,12 +166,59 @@
 					$("#myCinemaList").html(str);  
 					$("#pageMenu").html(msg);  		 
 				}  
-			});  
+			});    
 		}); 
+		
+		$(".myContact").on("click", function() {
+			
+			var str = "";
+			
+			$(".myContact").attr('class','myContact active');
+			$("#ticket").attr('class','ticket');  
+			$("#myCinemaList").css("display","none");
+			$("#pageMenu").css("display","none"); 	
+			
+			$.getJSON({ 
+				url : "/tour/getNotice",
+				type: "get", 
+				data : {memberIdx: Number($('#idx').val())}, 
+				success : function(data) {  
+					
+					if(data.length == 0) {
+						$("#myQuestion").css("display","block");
+					}   
+					 	
+					$(data).each(function(i,obj) {
+						str += "<tr>";
+						str += "<td>"+i+"</td>";
+						str += "<td>"+obj.title+"</td>";
+						str += "<td>"+obj.regdate+"</td>";
+						if(obj.done == 0) {
+							str += "<td>미처리</td>";
+						} else { 
+							str += "<td>답변완료</td>";	
+						}
+						str += "</tr>";
+					});
+				
+					$("#myAnswer").html(str);  		 
+				}  
+			}); 
+			
+		}); 
+		
+		$(".goNotice").on("click", function() { 
+			
+			var popUrl = "/tour/memberNotice"; 
+			var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;";
+
+			window.open(popUrl,"",popOption);  
+			 
+		});
 		
 	</script>
 	 
-<%@include file="../includes/footer.jsp" %>  
+<%@include file="../includes/footer.jsp" %>   
 
 
 

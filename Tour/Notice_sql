@@ -1,0 +1,8 @@
+create table Notice(
+	memberidx number(5),
+	email varchar2(20),
+	title varchar2(20),
+	content varchar2(1000),
+	done number(2),
+	regdate date
+); 
