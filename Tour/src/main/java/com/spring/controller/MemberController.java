@@ -157,10 +157,11 @@ public class MemberController {
 		} else {
 			page = "1";
 		}
-		int row_total = payService.getTotal(); 
+		int row_total = payService.getTotal();
+		int row_total2 = noticeService.getTotal();
 		
 		String pageMenu = Paging.getPaging("/tour/myPage?", nowPage, row_total, Common.Reply.BLOCKLIST, Common.Reply.BLOCKPAGE);
-		
+		 
 		model.addAttribute("page", page);
 		model.addAttribute("pageMenu", pageMenu); 
 				
@@ -193,6 +194,27 @@ public class MemberController {
 		noticeService.insert(vo);
 		
 		log.info("" + msg);	
+		return msg; 
+	} 
+	
+	@RequestMapping("/getNotice")
+	@ResponseBody
+	public List<NoticeVO> getNotice(int memberIdx, String page) throws Exception{
+		
+		int nowPage = 1;
+		
+		List<NoticeVO> gn = noticeService.getNotice(nowPage, memberIdx);	
+		return gn; 
+	} 
+	
+	@RequestMapping("/memberDelete")
+	@ResponseBody
+	public String memberDelete(int idx, HttpSession session) {
+		
+		String msg = "clear"; 
+		service.memberDelete(idx); 
+		session.removeAttribute("logon");
+		
 		return msg; 
 	} 
 	

@@ -12,4 +12,5 @@ public interface MemberService {
 	public int updateAuthstatus(MemberVO vo);
 	public MemberVO getPoint(int idx);
 	public int setPoint(MemberVO vo);
+	public int memberDelete(int idx);
 }

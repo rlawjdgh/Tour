@@ -98,4 +98,9 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.setPoint(vo); 
 	}
 
+	@Override
+	public int memberDelete(int idx) {
+		return mapper.memberDelete(idx);
+	}
+
 }

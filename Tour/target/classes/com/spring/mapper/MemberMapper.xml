@@ -39,4 +39,8 @@
 		update member set point=#{point}, grade=#{grade} where idx=#{idx}  
 	</insert>
 	
+	<delete id="memberDelete">
+		delete from member where idx=#{idx}
+	</delete> 
+	
 </mapper>
