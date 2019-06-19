@@ -9,6 +9,6 @@ public class NoticeVO {
 	private String email;
 	private String title;
 	private String content;
-	private int doen;
+	private int done; 
 	private String regdate; 
 }

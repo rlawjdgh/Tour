@@ -42,5 +42,8 @@
 	<delete id="memberDelete">
 		delete from member where idx=#{idx}
 	</delete> 
-	
+	 
+	<update id="reInsert">    
+		update member set password=#{password}, phone=#{phone}, email=#{email} where idx=#{idx}  
+	</update>
 </mapper>

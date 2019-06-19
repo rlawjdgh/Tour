@@ -103,4 +103,9 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.memberDelete(idx);
 	}
 
+	@Override
+	public int reInsert(MemberVO vo) {
+		return mapper.reInsert(vo);
+	}
+
 }

@@ -117,10 +117,10 @@
 			
 		$(document).ready(function() {
 			
-			str = "";
-			msg = ""; 
-			
 			$("#ticket").on("click", function() {
+				
+				str = "";
+				msg = ""; 
 				
 				$(".myContact").attr('class','myContact');
 				$("#ticket").attr('class','myticket active');
@@ -176,7 +176,7 @@
 						$("#pageMenu").html(msg);  		 
 					}  
 				}); 
-			}); 
+			});  
 			 
 			 $('#ticket').trigger('click');  
 		}); 
@@ -184,7 +184,7 @@
 		$(".myContact").on("click", function() {
 			
 			var str = "";
-			
+			 
 			$(".myContact").attr('class','myContact active'); 
 			$("#ticket").attr('class','ticket'); 	
 			$(".myInfoMng").attr('class','myInfoMng');
@@ -221,9 +221,9 @@
 						str += "<td>"+(++i)+"</td>"; 
 						str += "<td>"+obj.title+"</td>";
 						str += "<td>"+obj.regdate+"</td>";
-						if(obj.doen == 0) {
+						if(obj.done == 0) {
 							str += "<td>미처리</td>";
-						} else {  
+						} else {   
 							str += "<td>답변완료</td>";	  
 						} 
 						str += "</tr>";
@@ -258,25 +258,38 @@
 		}); 
 		
 		$("#aPasswordChange").on("click", function() {
-		
-			$(location).attr('href', "/tour/passChange"); 	
-		});  
+			
+			var result = prompt('비밀번호를 입력해주세요', '');
+			console.log(result); 
+			
+			if(result == ${logon.password}) {
+				$(location).attr('href', "/tour/memberInfoChange");
+			} else {
+				alert("비밀번호가 틀렸습니다.");
+			}
+		});    
 		
 		
 		$("#aMemberDelete").on("click", function() {
 			
-			$.ajax({
-				url : "/tour/memberDelete",
-				data : {idx: $("#idx").val()},
-				type : "get",
-				success : function(data) { 
-					if(data == 'clear'){
-						alert("탈퇴되었습니다.");
-						$(location).attr('href', "/tour/"); 
-				
+			
+			var result = confirm("정말로 회원탈퇴 하시겠습니까?");
+			
+			if(result) {
+				$.ajax({
+					url : "/tour/memberDelete",
+					data : {idx: $("#idx").val()},
+					type : "get",
+					success : function(data) { 
+						if(data == 'clear'){
+							alert("탈퇴되었습니다.");
+							$(location).attr('href', "/tour/"); 
+						}
 					}
-				}
-			});
+				});
+			} else {
+				alert("취소되었습니다."); 
+			}
 		});
 	</script>
 	 

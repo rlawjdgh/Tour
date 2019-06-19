@@ -218,4 +218,21 @@ public class MemberController {
 		return msg; 
 	} 
 	
+	@RequestMapping("/memberInfoChange")
+	public String memberInfoChange() {
+		 
+		return "member/memberInfoChange";
+	}
+	
+	@RequestMapping("/reInsert")
+	@ResponseBody
+	public String reInsert(MemberVO vo, HttpSession session) {
+		
+		String msg = "clear";
+		service.reInsert(vo);
+		session.removeAttribute("logon"); 
+		
+		return msg;     
+	} 
+	
 } 

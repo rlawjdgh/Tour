@@ -1,0 +1,185 @@
+#KOR *, #ENG * {
+    font-family: 'Noto Sans KR','sans-serif','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','AppleGothic','Dotum','돋움';
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: inherit;
+    border: 0;
+    vertical-align: baseline;
+}
+
+#mast-body .container {
+    margin: 0 auto;
+    padding: 70px 0;
+    max-width: 1100px;
+}
+
+.headline {
+    margin: 0 0 10px;
+    font-weight: 100;
+    font-size: 2.4em;
+    line-height: 1.15;
+    color: #000000;
+    letter-spacing: -0.05em;
+}
+
+.__high {
+    margin: 0 0 80px !important;
+}
+
+#mast-head {
+    height: 80px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.__half {
+    margin: 0 0 60px !important;
+}
+
+.subject.__underline {
+    border-bottom: 1px solid #000000;
+}
+
+.subject {
+    font-size: 1em;
+    color: #000000;
+}
+
+.subject > em {
+    width: 160px;
+    line-height: 2;
+}
+
+.subject > em, .subject > span.description {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.section > .row {
+    padding: 20px 0;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.row {
+    display: table;
+    width: 100%;
+}
+
+.section > .row > .col-md:first-child {
+    width: 160px;
+    color: #8a8a8a;
+}
+
+.row .col-md, .row .col-md-1, .row .col-md-2, .row .col-md-3, .row .col-md-4, .row .col-md-5, .row .col-md-6, .row .col-md-7, .row .col-md-8, .row .col-md-9, .row .col-md-10, .row .col-md-11, .row .col-md-12 {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.section > .row > .col-md > label {
+    line-height: 34px;
+}
+
+.ui-input.__disable {
+    width: auto !important;
+    text-align: left !important;
+    background-color: #ffffff;
+    flex-basis: auto !important;
+    -webkit-flex-basis: auto !important;
+}
+
+.ui-input {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f0f0f0;
+}
+
+.ui-input.__disable > label {
+    position: relative;
+    font-size: 1em;
+    line-height: 34px;
+    color: #000000;
+    text-align: left !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.form-wrap > .inner:first-child {
+    margin: 0;
+}
+
+.form-wrap.__mobile .ui-input:first-child {
+    margin: 0;
+}
+
+.ui-input > input {
+    position: relative;
+    padding: 0 10px;
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 34px;
+    border: 0;
+    background: none;
+}
+
+input, button, select, textarea {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input, button, select, textarea {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    border: 0;
+}
+
+.form-wrap.__mobile .ui-select, .form-wrap.__mobile .ui-input {
+    text-align: center;
+} 
+
+.__half {
+    margin: 0 0 40px !important;
+}
+
+.__center {
+    text-align: center;
+}
+
+.ui-button.__black {
+    color: #ffffff;
+    background-color: #333333;
+}
+
+.ui-button.__square-large {
+    padding: 0 10px;
+    min-width: 9.375em;
+    height: 40px;
+    line-height: 40px;
+}
+
+.__black {
+    color: #000000;
+}
+
+.ui-button {
+    display: inline-block;
+    font-weight: inherit;
+    font-size: inherit;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.ui-button.__blue {
+    color: #ffffff;
+    background-color: #0092fa;
+}
+ 

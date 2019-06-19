@@ -14,6 +14,7 @@ public interface MemberMapper {
 	public MemberVO getPoint(int idx);
 	public int setPoint(MemberVO vo);
 	public int memberDelete(int idx);
+	public int reInsert(MemberVO vo);
 	
-}
+} 
  
