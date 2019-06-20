@@ -1,5 +1,7 @@
 package com.spring.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +108,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int reInsert(MemberVO vo) {
 		return mapper.reInsert(vo);
+	}
+
+	@Override
+	public List<MemberVO> selectAll() {
+		return mapper.selectAll();
 	}
 
 }

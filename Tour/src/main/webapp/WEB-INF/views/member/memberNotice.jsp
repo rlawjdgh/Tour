@@ -31,8 +31,8 @@
 					if (result == "clear") {
 						console.log(result);
 						
-						alert("확인 후 답변은 이메일로 확인하실 수 있습니다."); 
-						self.close(); 
+						alert("답변은 이메일로 확인하실 수 있습니다."); 
+						self.close();  
 					}
 				}
 			});

@@ -26,7 +26,7 @@
       			<div class="sidebar-sticky">
         			<ul class="nav flex-column">
           				<li class="nav-item">
-            				<a class="nav-link active" href="#">영화</a>
+            				<a class="nav-link active" href="#" onClick="return false;" id="main">영화</a>
           				</li>
           				
           				<li class="nav-item">
@@ -45,7 +45,7 @@
  			</nav> 
 
     		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      			<h2>Info</h2>
+      			<h2>Member Info</h2>
       				<div class="table-responsive" id="msg"></div> 
 			</main> 
   		</div> 
@@ -54,93 +54,75 @@
 	<script type="text/javascript">
 		$(function() {
 			
-			var d = new Date(); 
-			var yy = d.getFullYear();
-			var mm = d.getMonth() + 1;
-			var dd = d.getDate() - 1;
-			var today = `${yy}${mm}${dd}`;
+			var str="";
 			
-			if(mm<10){mm="0"+mm;}
-			if(dd<10){dd = "0"+dd;}
-			
-			//박스오피스 얻어오기
-			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=d3d73e7d0bdba4769f78b1222bf012b9&targetDt=";
-			url+=yy+mm+dd 
-			
-			$.ajax({
-				url:url,
+			$.getJSON({ 
+				url:"/tour/adminGetMember",
 				type:"get",
 				success:function(data) {
-					 
-					var str="";
-						
-					if(data.boxOfficeResult.dailyBoxOfficeList==""){
-						alert("데이터가 없습니다.");
-						$("#msg").html(str);
-					}
 					
 					str = "<table class='table table-striped table-sm'>"; 
 					str += "<thead>";
 					str += "<tr>";
-					str += "<th>#</th>";
-					str += "<th>영화제목</th>";
+					str += "<th>이름</th>";
+					str += "<th>아이디</th>";
+					str += "<th>이메일</th>";
+					str += "<th>전화번호</th>"; 
+					str += "<th>포인트</th>";  
 					str += "</tr>";
-					str += "</thead>";
+					str += "</thead>";  
 					str += "<tbody>"; 
+					
+					console.log(data); 
 
-					$.each(data.boxOfficeResult.dailyBoxOfficeList,function(index,item) {
+					$(data).each(function(i,obj) {  
 						
-						str += "<tr>";
-						 
-						str += "<td>";
-						str += item.rank +" 위";
-						var rankInten=parseInt(item.rankInten);
-						if(rankInten>0)
-							str=str+"(▲";
-							else if(rankInten<0)
-								str=str+"(▼";
-								else
-									str=str+"(" 
-						str=str+rankInten+")";  
-						str += "</td>"; 
-						
-						str +="<td>";
-						str+="<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
-						str +="</td>"; 
-						
-						str +="</tr>";
-					});
+						if(obj.idx > ++i) { 
+							
+							str += "<tr>"; 		 
+							str += "<td>"+obj.name+"</td>"; 
+							str += "<td>"+obj.id+"</td>";
+							str += "<td>"+obj.email+"</td>";
+							str += "<td>"+obj.phone+"</td>";
+							str += "<td>"+obj.point+"</td>";
+							str += "<td><button type='button' data-idx='"+obj.idx+"' id='button'>삭제</button></td>";		 
+							str +="</tr>";  	
+						}
+					});	  
 					  
 					str += "</tbody>";  
 					str += "</table>"; 
 					 
 					$("#msg").html(str);
-				},
-				error:function(){
-					alert('실패'); 
-				}
-			}); 
-			
-			
-			$("#msg").on("click", ".clickMovie", function() {  
-				
-				movieCd = $(this).data("moviecd");
-				movieNm = $(this).data("movienm");
-				
-				var popUrl = "/tour/adminMovie?movieCd="+movieCd+"&movieNm="+movieNm;
-				var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;";
-
-				window.open(popUrl,"",popOption);
+				} 
 			});
 			
-			$("#logout").on("click", function() { 
-				 $(location).attr('href', '/tour/logout'); 
-			});
 			
-			$("#member").on("click", function() { 
-				$(location).attr('href', '/tour/adminMemberInfo');   
+			$("#msg").on("click", "#button", function() {
+				
+				$.ajax({
+					url : '/tour/removeMember',
+					type : 'get',
+					data : { idx : $(this).data("idx") }, 
+					success : function(result) { 
+						if (result == "clear") {
+							console.log(result);
+							
+							alert("삭제완료");
+							location.reload(); 
+						}
+					}
+				});
 			});
 			 
+		});
+		
+		$("#logout").on("click", function() { 
+			 $(location).attr('href', '/tour/logout'); 
+		});
+		
+		$("#main").on("click", function() { 
+			$(location).attr('href', '/tour/adminMain');    
 		});
 	</script>
 </body> 

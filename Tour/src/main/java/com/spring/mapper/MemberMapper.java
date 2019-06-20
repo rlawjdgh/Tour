@@ -1,5 +1,7 @@
 package com.spring.mapper;
 
+import java.util.List;
+
 import com.spring.domain.MemberVO;
 
 public interface MemberMapper {
@@ -15,6 +17,7 @@ public interface MemberMapper {
 	public int setPoint(MemberVO vo);
 	public int memberDelete(int idx);
 	public int reInsert(MemberVO vo);
+	public List<MemberVO> selectAll();
 	
 } 
  

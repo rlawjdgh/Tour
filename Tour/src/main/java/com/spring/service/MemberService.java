@@ -1,6 +1,8 @@
 package com.spring.service;
 
 
+import java.util.List;
+
 import com.spring.domain.MemberVO;
 
 public interface MemberService {
@@ -14,4 +16,5 @@ public interface MemberService {
 	public int setPoint(MemberVO vo);
 	public int memberDelete(int idx);
 	public int reInsert(MemberVO vo);
+	public List<MemberVO> selectAll();
 }

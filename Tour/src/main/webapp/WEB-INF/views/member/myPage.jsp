@@ -97,9 +97,9 @@
 						
 						<div id="myInfo">
 						<ol class="manage_step">
-							<li class="second"><a href="javascript:void(0);" onclick="return false;" id="aPasswordChange">비밀번호변경</a></li>
+							<li class="second"><a href="javascript:void(0);" onclick="return false;" id="aPasswordChange">회원정보 변경</a></li>
 							<li class="last"><a href="javascript:void(0);" onclick="return false;" id="aMemberDelete">회원탈퇴</a></li>
-						</ol>
+						</ol> 
 					</div>	
 							 		
 					</div>
@@ -259,26 +259,23 @@
 		
 		$("#aPasswordChange").on("click", function() {
 			
-			var result = prompt('비밀번호를 입력해주세요', '');
-			console.log(result); 
+			var result = confirm("회원정보를 변경하시겠습니까?"); 
 			
-			if(result == ${logon.password}) {
+			if(result) {
 				$(location).attr('href', "/tour/memberInfoChange");
-			} else {
-				alert("비밀번호가 틀렸습니다.");
-			}
+			} 
 		});    
 		
 		
 		$("#aMemberDelete").on("click", function() {
 			
 			
-			var result = confirm("정말로 회원탈퇴 하시겠습니까?");
+			var userInput = prompt("'회원탈퇴' 라고 입력하시면 회원탈퇴 처리가 됩니다"+"");
 			
-			if(result) {
+			if(userInput == "회원탈퇴") {
 				$.ajax({
-					url : "/tour/memberDelete",
-					data : {idx: $("#idx").val()},
+					url : "/tour/memberDelete", 
+					data : {idx: $("#idx").val()}, 
 					type : "get",
 					success : function(data) { 
 						if(data == 'clear'){
@@ -294,6 +291,6 @@
 	</script>
 	 
 <%@include file="../includes/footer.jsp" %>   
-
+ 
 
 

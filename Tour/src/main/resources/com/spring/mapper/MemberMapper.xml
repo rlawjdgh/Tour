@@ -46,4 +46,8 @@
 	<update id="reInsert">    
 		update member set password=#{password}, phone=#{phone}, email=#{email} where idx=#{idx}  
 	</update>
+	
+	<select id="selectAll" resultType="com.spring.domain.MemberVO">
+		select * from member 
+	</select> 
 </mapper>
