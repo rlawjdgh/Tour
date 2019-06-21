@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.domain.MemberVO;
+import com.spring.domain.NoticeVO;
 import com.spring.service.MemberService;
+import com.spring.service.NoticetService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +21,8 @@ public class AdminController {
 	
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private NoticetService noticeService;
 
 	@RequestMapping("/adminMain")
 	public String adminMain() {
@@ -54,9 +58,41 @@ public class AdminController {
 	@ResponseBody
 	public String removeMember(int idx) {
 		
-		String msg = "clear"; 
 		service.memberDelete(idx); 
-		
-		return msg; 
+		return "clear"; 
 	}
-}
+	
+	@RequestMapping("/adminNotice")
+	public String adimNotice() {
+		
+		return "admin/adminNotice";
+	}
+	
+	@RequestMapping("/adminGetNotice")
+	@ResponseBody
+	public List<NoticeVO> adminGetNotice() {
+		
+		List<NoticeVO> list = noticeService.selectAll(); 
+		return list; 
+	}
+	
+	@RequestMapping("/setAnswer")
+	public String setAnswer(int idx, String email, String content, String title, Model model) {
+		
+		model.addAttribute("idx", idx);
+		model.addAttribute("email", email);
+		model.addAttribute("title", title); 		
+		model.addAttribute("content", content);		 
+		
+		return "admin/setAnswer"; 
+	}
+	
+	@RequestMapping("/answerEmail")
+	@ResponseBody
+	public String answerEmail(NoticeVO vo) throws Exception {
+		
+		noticeService.answerEmail(vo); 
+		return "emailSuccess";
+	}
+	
+} 

@@ -30,21 +30,21 @@
           				</li>
           				
           				<li class="nav-item">
-            				<a class="nav-link" href="#">문의사항</a>
+            				<a class="nav-link" href="#" id="notice" onClick="return false;">문의사항</a>
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#">상영관 추가하기</a>
+            				<a class="nav-link" href="#" onClick="return false;">상영관 추가하기</a>
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#" id="member">회원정보 관리</a> 
+            				<a class="nav-link" href="#" id="member" onClick="return false;">회원정보 관리</a> 
           				</li>
     				</ul>
 				</div> 
  			</nav> 
 
-    		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"> 
       			<h2>Member Info</h2>
       				<div class="table-responsive" id="msg"></div> 
 			</main> 
@@ -123,6 +123,10 @@
 		
 		$("#main").on("click", function() { 
 			$(location).attr('href', '/tour/adminMain');    
+		});
+		
+		$("#notice").on("click", function() { 
+			$(location).attr('href', '/tour/adminNotice');   
 		});
 	</script>
 </body> 

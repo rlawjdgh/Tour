@@ -241,7 +241,7 @@
 			var popUrl = "/tour/memberNotice"; 
 			var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;";
 
-			window.open(popUrl,"",popOption);  
+			window.open(popUrl,"",popOption); 
 			 
 		});
 		

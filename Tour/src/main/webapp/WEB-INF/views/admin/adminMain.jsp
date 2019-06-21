@@ -26,19 +26,19 @@
       			<div class="sidebar-sticky">
         			<ul class="nav flex-column">
           				<li class="nav-item">
-            				<a class="nav-link active" href="#">영화</a>
+            				<a class="nav-link active" href="#" onClick="return false;">영화</a>
           				</li>
           				
           				<li class="nav-item">
-            				<a class="nav-link" href="#">문의사항</a>
+            				<a class="nav-link" href="#" id="notice" onClick="return false;">문의사항</a>
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#">상영관 추가하기</a>
+            				<a class="nav-link" href="#" onClick="return false;">상영관 추가하기</a>
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#" id="member">회원정보 관리</a> 
+            				<a class="nav-link" href="#" id="member" onClick="return false;">회원정보 관리</a> 
           				</li>
     				</ul>
 				</div> 
@@ -140,6 +140,11 @@
 			$("#member").on("click", function() { 
 				$(location).attr('href', '/tour/adminMemberInfo');   
 			});
+			
+			$("#notice").on("click", function() { 
+				$(location).attr('href', '/tour/adminNotice');   
+			});
+			
 			 
 		});
 	</script>

@@ -1,8 +1,13 @@
+create sequence seq_notice;
+
 create table Notice(
+	idx number(5),
 	memberidx number(5),
+	id varchar2(20),
 	email varchar2(20),
 	title varchar2(20),
 	content varchar2(1000),
+	answer varchar2(1000),
 	done number(2),
 	regdate date
 ); 

@@ -15,6 +15,7 @@
 	
 	<input type="hidden" id="email" value="${logon.email }">
 	<input type="hidden" id="idx" value="${logon.idx }">
+	<input type="hidden" id="id" value="${logon.id }">
 	
 	<script type="text/javascript">
 	 
@@ -23,17 +24,19 @@
 			$.ajax({
 				url : '/tour/setNotice',
 				type : 'get',
-				data : {memberIdx : Number($("#idx").val()), 
+				data : {memberIdx : Number($("#idx").val()),
+						id : $("#id").val(),
 						email : $("#email").val(),
 						title : $("#title").val(), 
-						content : $("#content").val()}, 
+						content : $("#content").val(),
+						answer : "미답변"},  
 				success : function(result) {
-					if (result == "clear") {
-						console.log(result);
+					if (result == "clear") {  
 						
-						alert("답변은 이메일로 확인하실 수 있습니다."); 
+						alert("답변은 이메일로 확인하실 수 있습니다.");
 						self.close();  
-					}
+						opener.parent.location.reload(); 
+					} 
 				}
 			});
 		}); 

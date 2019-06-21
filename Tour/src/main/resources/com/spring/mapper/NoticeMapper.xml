@@ -4,7 +4,7 @@
 	
 	<insert id="insert">
 		 INSERT INTO notice VALUES(
-		 	#{memberIdx}, #{email}, #{title}, #{content}, 0, sysdate)
+		 	seq_notice.nextval, #{memberIdx}, #{id}, #{email}, #{title}, #{content}, #{answer}, 0, sysdate)
 	</insert>
 	
 	<select id="getNotice" resultType="com.spring.domain.NoticeVO">
@@ -16,4 +16,12 @@
 		select count(*) from notice 
 	</select>
 	
-</mapper>   
+	<select id="selectAll" resultType="com.spring.domain.NoticeVO">
+		select * from notice
+	</select>
+	
+	<update id="answerEmail"> 
+		update notice set answer=#{answer}, done=1 where idx=#{idx}
+	</update>
+	
+</mapper>    

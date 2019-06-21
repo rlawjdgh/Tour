@@ -10,5 +10,7 @@ public interface NoticeMapper {
 	public int insert(NoticeVO vo);
 	public List<NoticeVO> getNotice(HashMap<String, Object> hash);
 	public int getTotal();
+	public List<NoticeVO> selectAll();
+	public int answerEmail(NoticeVO vo);
 }
  

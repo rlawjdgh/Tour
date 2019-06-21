@@ -193,7 +193,7 @@ public class MemberController {
 		String msg = "clear";  
 		noticeService.insert(vo);
 		
-		log.info("" + msg);	
+		log.info("vo : " + vo);	 
 		return msg; 
 	} 
 	

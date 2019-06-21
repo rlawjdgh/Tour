@@ -3,10 +3,15 @@ package com.spring.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.domain.Common;
+import com.spring.domain.MailUtils;
 import com.spring.domain.NoticeVO;
 import com.spring.mapper.NoticeMapper;
 
@@ -16,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service("notice")
 public class NoticeServiceImpl implements NoticetService {
 	
+	@Inject 
+	private JavaMailSender mailSender;
 	@Autowired
 	private NoticeMapper mapper;
 	
@@ -43,6 +50,40 @@ public class NoticeServiceImpl implements NoticetService {
 	@Override
 	public int getTotal() {  
 		return mapper.getTotal();
+	}
+
+	@Override
+	public List<NoticeVO> selectAll() {
+		return mapper.selectAll();
+	}
+
+	@Override
+	@Transactional
+	public int answerEmail(NoticeVO vo) {
+		
+		MailUtils sendMail;
+		
+		try { 
+			sendMail = new MailUtils(mailSender);
+			
+			sendMail.setSubject("[MAGACGV] 문의내용 답변");
+			sendMail.setText(new StringBuffer().append("<h1>[문의내용]</h1>")
+					.append("<p>"+vo.getTitle()+"</p>")
+					.append("<p>내용 : "+vo.getContent()+"</p><br>") 
+					.append("<br><h1>[답변내용]</h1>")
+					.append("<p>"+vo.getAnswer()+"</p><br>")
+					.toString());
+			sendMail.setFrom("jeonghoo1228@gmail.com", "MAGACGV"); 
+			sendMail.setTo(vo.getEmail());
+			sendMail.send();
+			log.info("메일!!!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mapper.answerEmail(vo);
+		
 	}
  
 }

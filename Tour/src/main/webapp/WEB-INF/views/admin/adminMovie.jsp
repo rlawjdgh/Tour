@@ -12,8 +12,8 @@
 	<form method="POST" enctype="multipart/form-data" id="upload" action="/tour/upload">
 		유튜브 링크 : <input type="text" id="youtube"><br>
 		사진 : <input type="file" id="photo"><br><br>
-		<input type="button" id="click" value="저장하기"><br>
-		
+		<input type="button" id="click" value="저장하기" onclick="return false;"><br>
+		 
 		<input type="hidden" id="movieNm" value="${movieNm}">
 	</form>
 	 
@@ -56,6 +56,7 @@
 							return false; 
 						} else { 
 							alert("업로드 완료");
+							opener.parent.location.reload(); 
 							self.close(); 	
 						}
 					} 
