@@ -17,9 +17,9 @@
 	</select>
 	
 	<select id="selectAll" resultType="com.spring.domain.NoticeVO">
-		select * from notice
+		select * from notice order by regdate desc
 	</select>
-	
+	 
 	<update id="answerEmail"> 
 		update notice set answer=#{answer}, done=1 where idx=#{idx}
 	</update>

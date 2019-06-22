@@ -45,8 +45,8 @@
  			</nav> 
 
     		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      			<h2>Member Info</h2> 
-      			<Button class="noAnswer">전체보기</Button> 
+      			<h2>Notice</h2>  
+      			<Button class="noAnswer" id="noticeBtn">미처리</Button> 
       				<div class="table-responsive" id="msg"></div> 
 			</main>  
   		</div> 
@@ -54,12 +54,24 @@
 	
 	<script type="text/javascript"> 
 	
+		$("#noticeBtn").on("click", function() {
+			if( $(this).html() == '미처리' ) {
+			      $(this).html('전체보기');
+			      $(this).attr('class','noAnswer');
+			      
+			    } 
+			    else {
+			      $(this).html('미처리'); 
+			      $(this).attr('class','allAnswer');
+			    }  
+		});
+	
 		$(document).ready(function() {
 			
-			$(".noAnswer").on("click", function() {
+			$(".px-4").on("click", ".noAnswer", function() {
 			
-				var str="";
-				
+				var str="";  
+				 
 				$.getJSON({ 
 					url:"/tour/adminGetNotice",
 					type:"get",
@@ -88,11 +100,10 @@
 								str += "<td>"+obj.id+"</td>";
 								str += "<td>"+obj.title+"</td>";
 								str += "<td>"+obj.email+"</td>";
-								str += "<td>미처리</td>";
-								str += "<td><button type='button' data-idx='"+obj.idx+"' data-email='"+obj.email+"'";
-								str += "data-title='"+obj.title+"' data-content='"+obj.content+"' id='button'>답변하기</button></td>";		 
+								str += "<td><button type='button' data-idx='"+obj.idx+"' data-email='"+obj.email+"'"; 
+								str += "data-title='"+obj.title+"' data-content='"+obj.content+"' id='button' onclick='return false;'>답변하기</button></td>";		 
 								str +="</tr>"; 
-							}  
+							}    
 						});	  
 						   
 						str += "</tbody>";  
@@ -100,15 +111,13 @@
 						$("#msg").html(str);
 					} 
 				});
-				$(".noAnswer").attr('class','allAnswer');
 			}); 
 			
 			$('.noAnswer').trigger('click');  
 		});
 		 
 		
-		$(".px-4").on("click", ".allAnswer", function() {	
-			alert("ddd"); 
+		$(".px-4").on("click", ".allAnswer", function() {	 
 			  
 			var str=""; 
 			
@@ -137,15 +146,16 @@
 						str += "<td>"+obj.title+"</td>";
 						str += "<td>"+obj.email+"</td>";
 						if(obj.done == 1) {
-							str += "<td>완료</td>";
-						} else {
-							str += "<td>미처리</td>";
+							str += "<td><button type='button' data-title='"+obj.title+"' data-content='"+obj.content+"'";
+							str += "data-answer='"+obj.answer+"'id='answerButton'>완료</button></td>";
+							str +="</tr>";   
+						} else { 
 							str += "<td><button type='button' data-idx='"+obj.idx+"' data-email='"+obj.email+"'";
 							str += "data-title='"+obj.title+"' data-content='"+obj.content+"' id='button'>답변하기</button></td>";		 
 							str +="</tr>";  
 						} 
-						  
-					});	  
+						   
+					});	   
 					   
 					str += "</tbody>";  
 					str += "</table>"; 
@@ -158,6 +168,18 @@
 			$(this).attr('class','noAnswer');
 		});
 		
+		
+		$("#msg").on("click", "#answerButton", function() {
+			
+			title = $(this).data("title"); 
+			content = $(this).data("content"); 
+			answer = $(this).data("answer"); 
+			 
+			var popUrl = "/tour/reviewAnswer?title="+title+"&content="+content+"&answer="+answer; 
+			var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;";  
+ 
+			window.open(popUrl,"",popOption); 
+		});
 		
 		$("#msg").on("click", "#button", function() {
 			

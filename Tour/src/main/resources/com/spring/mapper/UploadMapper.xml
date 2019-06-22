@@ -13,6 +13,6 @@
 	
 	<select id="uploadOne" resultType="com.spring.domain.UploadVO">
 		select * from upload where movieNm=#{movieNm}
-	</select> 
-	 
+	</select>
+	
 </mapper> 

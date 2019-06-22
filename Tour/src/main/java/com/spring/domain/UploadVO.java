@@ -12,5 +12,5 @@ public class UploadVO {
 	// 파일을 받기위한 객체
 	private MultipartFile photo;
 	private String filename;
-}
+} 
    

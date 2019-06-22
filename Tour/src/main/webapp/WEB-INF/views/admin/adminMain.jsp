@@ -46,8 +46,19 @@
 
     		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       			<h2>Info</h2>
-      				<div class="table-responsive" id="msg"></div> 
-			</main> 
+      				<div class="table-responsive">
+      					<table class="table table-striped table-sm">
+      						<thead>
+      							<tr>
+      								<th>#</th>
+      								<th>영화제목</th> 
+      							</tr>
+      						</thead>
+      						
+      						<tbody id="msg"></tbody>
+      					</table> 
+      				</div> 
+			</main>  
   		</div> 
 	</div>
 	
@@ -78,20 +89,10 @@
 						alert("데이터가 없습니다.");
 						$("#msg").html(str);
 					}
-					
-					str = "<table class='table table-striped table-sm'>"; 
-					str += "<thead>";
-					str += "<tr>";
-					str += "<th>#</th>";
-					str += "<th>영화제목</th>";
-					str += "</tr>";
-					str += "</thead>";
-					str += "<tbody>"; 
 
 					$.each(data.boxOfficeResult.dailyBoxOfficeList,function(index,item) {
 						
-						str += "<tr>";
-						 
+						str += "<tr>"; 
 						str += "<td>";
 						str += item.rank +" 위";
 						var rankInten=parseInt(item.rankInten);
@@ -104,18 +105,14 @@
 						str=str+rankInten+")";  
 						str += "</td>"; 
 						
-						str +="<td>";
-						str+="<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
-						str +="</td>"; 
-						
-						str +="</tr>";
-					});
-					  
-					str += "</tbody>";  
-					str += "</table>"; 
-					 
-					$("#msg").html(str);
-				},
+						str += "<td>";
+						str += "<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
+						str += "</td>";
+						str +="</tr>"; 
+					});  
+							
+					$("#msg").html(str);  
+				}, 
 				error:function(){
 					alert('실패'); 
 				}

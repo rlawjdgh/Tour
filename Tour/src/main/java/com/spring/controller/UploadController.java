@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.domain.MemberVO;
 import com.spring.domain.UploadVO;
 import com.spring.service.PaymentService;
 import com.spring.service.UploadService;
@@ -74,6 +75,6 @@ public class UploadController {
 		
 		List<UploadVO> one = service.uploadOne(movieNm);
 		return one;
-	}
+	} 
 	
 }

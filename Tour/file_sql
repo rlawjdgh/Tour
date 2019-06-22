@@ -2,4 +2,4 @@ create table upload (
 	movieNm varchar2(50),
 	youtube varchar2(2000),
 	filename varchar2(200)
-); 
+);  
