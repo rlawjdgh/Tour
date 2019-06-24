@@ -86,27 +86,7 @@
 			</div>
 		</c:forEach>
 	</div>
-	
-	<div class="container marketing">		
-		<hr class="featurette-divider">
-		
-  		<h1 style="text-align:center; padding-bottom: 20px;">Coming Soon</h1>
-		
-		<div class="row featurette">
-      		<div class="col-md-7 order-md-2">
-        		<h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        		<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      		</div>
-      		
-	      	<div class="col-md-5 order-md-1">
-	        	<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-	        		<title>Placeholder</title>
-	        		<rect width="100%" height="100%" fill="#eee"></rect>
-	        		<text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-	        	</svg>
-	      	</div>
-    	</div>
-	</div>
+ 
 	
 	<script>
 		$(function(){
@@ -118,9 +98,9 @@
 					$(".hiding").fadeIn(500);
 					$(".show-more").html("HIDE");
 					switch1 = !switch1;
-				}else{
+				}else{ 
 					$(".hiding").fadeOut(500);
-					$(".show-more").html("MORE");
+					$(".show-more").html("MORE"); 
 					switch1 = !switch1;
 				}
 			});
@@ -142,7 +122,7 @@
 				url:url,
 				type:"get",
 				success:function(data){
-					console.log(data);
+					
 					var str="";
 						
 					if(data.boxOfficeResult.dailyBoxOfficeList==""){
@@ -157,13 +137,14 @@
 							data : {movieNm: item.movieNm},
 							type : "get", 
 							success : function(result) {
-								console.log(result);
+								
 								$(result).each(function(i,obj) { 
 									$("#src"+index).attr('src', '${ pageContext.request.contextPath }/resources/upload/'+obj.filename);
-								});					   
-							} 
-						});
-						 
+								});			 		    
+							}   
+						});   
+					 
+		  	
 						$("#movieNm"+index).text( item.movieNm );
 						
 						$('#movieInfo'+index).click(function() {
@@ -182,7 +163,7 @@
 			});
 	
 			function show(movieCd){
-				console.log(movieCd);
+				 
 				var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=d3d73e7d0bdba4769f78b1222bf012b9&movieCd=";
 				url+=movieCd;
 				
@@ -236,5 +217,5 @@
 			}
 		});
 	</script>
-
-<%@include file="../includes/footer.jsp" %>  
+ 
+<%@include file="../includes/mainFooter.jsp" %>  
