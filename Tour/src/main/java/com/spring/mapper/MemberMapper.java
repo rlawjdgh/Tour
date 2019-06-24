@@ -18,6 +18,7 @@ public interface MemberMapper {
 	public int memberDelete(int idx);
 	public int reInsert(MemberVO vo);
 	public List<MemberVO> selectAll();
+	public MemberVO findEmail(MemberVO vo);
 	
 } 
  

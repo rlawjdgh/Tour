@@ -50,4 +50,8 @@
 	<select id="selectAll" resultType="com.spring.domain.MemberVO">
 		select * from member 
 	</select> 
+	
+	<select id="findEmail" resultType="com.spring.domain.MemberVO">
+		select * from member where id=#{id} and email=#{email}  
+	</select>
 </mapper>

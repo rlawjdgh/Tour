@@ -115,4 +115,32 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.selectAll();
 	}
 
+	@Override
+	public MemberVO findEmail(MemberVO vo) {
+		return mapper.findEmail(vo);
+	}
+
+	@Override
+	public void getPassword(MemberVO vo) {
+		
+		MemberVO member = mapper.findEmail(vo);
+		log.info("" + member);
+		
+		MailUtils sendMail; 	
+		try {
+			sendMail = new MailUtils(mailSender);
+			sendMail.setSubject("[MAGACGV] 비밀번호");
+			sendMail.setText(new StringBuffer().append("<h1>[비밀번호]</h1>")
+					.append("<p>귀하의 비밀번호는 '"+member.getPassword()+"' 입니다.</p>")
+					.toString());
+			sendMail.setFrom("jeonghoo1228@gmail.com", "MAGACGV"); 
+			sendMail.setTo(vo.getEmail());
+			sendMail.send();
+			log.info("메일!!!");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

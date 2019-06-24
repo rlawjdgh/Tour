@@ -47,7 +47,7 @@
 								회원가입
 							</a>
 							 / 				
-							<a href="#" class="txt1">
+							<a href="#" class="txt1" id="findPass">
 								비밀번호 찾기
 							</a>
 						</div>
@@ -106,6 +106,14 @@
 			
 		});
 	});
+	
+	$("#findPass").on("click", function() {
+		
+		var popUrl = "/tour/findPassword";  
+		var popOption = "width=500, height=230, resizable=no, scrollbars=no, status=no;";
+
+		window.open(popUrl,"",popOption);
+	})
 	</script>
 	
 <%@include file="../includes/footer.jsp" %>  

@@ -233,6 +233,31 @@ public class MemberController {
 		session.removeAttribute("logon"); 
 		
 		return msg;     
-	} 
+	}
+	
+	@RequestMapping("/findPassword")
+	public String findPass() {
+		 
+		return "member/findPassword";
+	}
+	
+	@RequestMapping("/getPassword")
+	@ResponseBody
+	public String getPassword(MemberVO vo) throws Exception {
+		
+		String str = "";
+		MemberVO check = service.findEmail(vo);
+		if(check == null) {
+			str = "notexist";
+		} else {
+			service.getPassword(vo);
+			str = "ddddd";
+		}
+		
+		return str;
+		
+		
+	}
+	
 	
 } 
