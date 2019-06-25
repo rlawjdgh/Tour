@@ -11,7 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 	<style>
-      	.bd-placeholder-img {
+      	.bd-placeholder-img { 
         	font-size: 1.125rem;
         	text-anchor: middle;
         	-webkit-user-select: none;
