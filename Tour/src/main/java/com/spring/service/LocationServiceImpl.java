@@ -22,4 +22,14 @@ public class LocationServiceImpl implements LocationService {
 		return mapper.select(areaIdx);
 	}
 
+	@Override
+	public LocationVO findLocation(LocationVO vo) {
+		return mapper.findLocation(vo);
+	}
+
+	@Override
+	public int addLocation(LocationVO vo) {
+		return mapper.addLocation(vo);
+	}
+
 }

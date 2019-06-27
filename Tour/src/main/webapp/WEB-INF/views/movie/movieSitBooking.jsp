@@ -288,11 +288,6 @@
 
 			$(".seat_area").on("click", ".grNum3", function() {
 				
-				if(${logon == null}) {    
-					alert("로그인 후 이용 가능합니다.");
-					return false;
-				} 
-				
 				people = Number($('#adultNum').val()) + Number($('#seniorNum').val()) + Number($('#disabledNum').val());	
 				     
 				if(people != 0) { 
@@ -332,6 +327,11 @@
 			}); 
 			
 			$(".btn_next").on("click", function() {
+				
+				if(${logon == null}) {    
+					alert("로그인 후 이용 가능합니다.");
+					return false;
+				}  
 				
 				people = Number($('#adultNum').val()) + Number($('#seniorNum').val()) + Number($('#disabledNum').val());
 				var price =  Number($('#adultNum').val() * 10000) + Number($('#seniorNum').val() * 7000) + 

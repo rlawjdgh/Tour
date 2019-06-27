@@ -268,8 +268,7 @@
 		
 		
 		$("#aMemberDelete").on("click", function() {
-			
-			
+					
 			var userInput = prompt("'회원탈퇴' 라고 입력하시면 회원탈퇴 처리가 됩니다"+"");
 			
 			if(userInput == "회원탈퇴") {

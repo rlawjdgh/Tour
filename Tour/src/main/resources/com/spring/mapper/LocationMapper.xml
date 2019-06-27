@@ -3,7 +3,15 @@
 <mapper namespace="com.spring.mapper.LocationMapper">
 
 	<select id="select" resultType="com.spring.domain.LocationVO">
-		select * from location where locNum=#{areaIdx}
+		select * from location where locNum=#{areaIdx} order by locName 
 	</select>
 	
-</mapper>
+	<select id="findLocation" resultType="com.spring.domain.LocationVO">
+		select * from location where locNum=#{locNum} and locName=#{locName}
+	</select>  
+
+	<insert id="addLocation">
+		 INSERT INTO location VALUES(seq_location.nextval, #{locNum}, #{locName}) 
+	</insert> 
+	 
+</mapper>  

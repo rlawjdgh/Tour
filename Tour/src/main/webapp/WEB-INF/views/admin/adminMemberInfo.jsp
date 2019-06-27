@@ -34,7 +34,7 @@
           				</li>
           				
           				<li class="nav-item"> 
-            				<a class="nav-link" href="#" onClick="return false;">상영관 추가하기</a>
+            				<a class="nav-link" href="#" onClick="return false;" id="box">상영관 추가하기</a>
           				</li>
           				
           				<li class="nav-item"> 
@@ -127,6 +127,10 @@
 		
 		$("#notice").on("click", function() { 
 			$(location).attr('href', '/tour/adminNotice');   
+		});
+		
+		$("#box").on("click", function() {  
+			$(location).attr('href', '/tour/adminBox');   
 		});
 	</script>
 </body> 

@@ -27,4 +27,14 @@ public class BoxServiceImpl implements BoxService{
 		return mapper.selectIdx(idx);
 	}
 
+	@Override
+	public int addBox(BoxVO vo) {
+		return mapper.addBox(vo);
+	}
+
+	@Override
+	public BoxVO findBox(BoxVO vo) {
+		return mapper.findBox(vo);
+	}
+
 }

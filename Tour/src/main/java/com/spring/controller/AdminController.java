@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.domain.AreaVO;
+import com.spring.domain.BoxVO;
+import com.spring.domain.LocationVO;
 import com.spring.domain.MemberVO;
 import com.spring.domain.NoticeVO;
+import com.spring.service.AreaService;
+import com.spring.service.BoxService;
+import com.spring.service.LocationService;
 import com.spring.service.MemberService;
 import com.spring.service.NoticetService;
 
@@ -24,6 +30,12 @@ public class AdminController {
 	private MemberService service;
 	@Autowired
 	private NoticetService noticeService;
+	@Autowired
+	private AreaService areaService;
+	@Autowired
+	private LocationService locationService;
+	@Autowired
+	private BoxService boxService; 
 
 	@RequestMapping("/adminMain")
 	public String adminMain() {
@@ -104,6 +116,67 @@ public class AdminController {
 		model.addAttribute("answer", answer); 				 
 		
 		return "admin/reviewAnswer";  
+	}
+	
+	@RequestMapping("/adminBox")
+	public String adminBox() {			 
+		
+		return "admin/adminBox";   
+	}
+	
+	@RequestMapping("/adminGetArea")
+	@ResponseBody 
+	public List<AreaVO> adminGetArea() {
+		
+		List<AreaVO> list = areaService.getArea(); 
+		
+		return list;
+	}
+
+	@RequestMapping("/adminGetloc")
+	@ResponseBody 
+	public List<LocationVO> adminGetloc(int areaIdx) {
+		
+		List<LocationVO> list = locationService.select(areaIdx); 
+		return list;
+	} 
+	
+	@RequestMapping("/adminGetBox") 
+	public String adminGetBox(int locIdx, String locName, Model model) {	
+		 
+		model.addAttribute("locName", locName);
+		model.addAttribute("locIdx", locIdx); 
+		return "admin/adminGetBox";   
+	}
+	
+	@RequestMapping("/addBox")
+	@ResponseBody 
+	public String addBox(BoxVO vo) {
+		
+		String str = "no";  
+		BoxVO check = boxService.findBox(vo);
+		
+		if(check == null) {
+			boxService.addBox(vo); 
+			str = "clear";
+		}   
+		
+		return str; 
+	} 
+	
+	@RequestMapping("/addLocation")
+	@ResponseBody 
+	public String addLocation(LocationVO vo) {
+		
+		String str = "no";  
+		LocationVO check = locationService.findLocation(vo);
+		
+		if(check == null) {
+			locationService.addLocation(vo); 
+			str = "clear";
+		}    
+		
+		return str; 
 	}
 	
 } 
