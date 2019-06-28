@@ -83,10 +83,7 @@
 								str += "<tr>";    
 								str += "<td>"+obj.name+"</td>"; 
 								str += "<td>";
-								
-								if(result.length == 0) {
-									str += "<button type='button'id='addArea'>위치 추가하기</button>";
-								} 
+								 
 								$(result).each(function(j,item) { 
 									console.log(item); 
 									str += "<button type='button'id='button' data-locidx='"+item.idx+"' data-locname='"+item.locName+"' class='btn btn-link'>"+item.locName+"</button>";
@@ -118,25 +115,51 @@
 			
 			
 			var location = prompt($(this).data("name") + ": 위치를 입력 해 주세요"+"");
-			 
-			$.ajax({
-				url : "/tour/addLocation", 
-				data : {
-					locNum : $(this).data("locnum"),
-					locName : location 
-				}, 
-				type : "get", 
-				success : function(data) { 
-					if(data == 'no'){
-						alert("그 지역에 영화관이 있습니다"); 
-					} else {
-						alert("완료");
-						history.go(0);
-					}    
-				}   
-			}); 
+			
+			if(location == '') {
+				alert("위치를 입력 해 주세요");
+			} else { 
+				$.ajax({
+					url : "/tour/addLocation", 
+					data : {
+						locNum : $(this).data("locnum"),
+						locName : location 
+					}, 
+					type : "get", 
+					success : function(data) { 
+						if(data == 'no'){
+							alert("그 지역에 영화관이 있습니다"); 
+						} else {
+							alert("완료");
+							history.go(0);
+						}    
+					}   
+				}); 
+			}
 		});  
-	  
+		
+		$("#addArea").on("click", function() { 
+
+			var area = prompt("지역을 입력 해 주세요"+"");
+			
+			if(area == '') {
+				alert("지역를 입력 해 주세요");
+			} else { 
+				$.ajax({
+					url : "/tour/addArea", 
+					data : {name : area}, 
+					type : "get", 
+					success : function(data) { 
+						if(data == 'no'){
+							alert("그 지역이 존재합니다"); 
+						} else {
+							alert("완료");
+							history.go(0);
+						}    
+					}   
+				}); 
+			}
+		});
 		
 		
 		

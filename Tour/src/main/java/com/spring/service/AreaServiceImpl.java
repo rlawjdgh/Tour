@@ -22,6 +22,16 @@ public class AreaServiceImpl implements AreaService{
 		return mapper.getArea();
 	}
 
+	@Override
+	public AreaVO findArea(AreaVO vo) {
+		return mapper.findArea(vo); 
+	}
+
+	@Override
+	public int addArea(AreaVO vo) {
+		return mapper.addArea(vo);
+	}
+
 	
 	
 }

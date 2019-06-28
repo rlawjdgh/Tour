@@ -11,10 +11,9 @@
 	</select>
 	
 	<insert id="addBox">
-		 INSERT INTO box VALUES(
-		 	seq_box.nextval, #{locIdx}, #{boxNum}, #{time}) 
+		 INSERT INTO box VALUES(seq_box.nextval, #{locIdx}, #{boxNum}, #{time}) 
 	</insert>
-	
+	 
 	<select id="findBox" resultType="com.spring.domain.BoxVO">
 		select * from box where boxNum=#{boxNum} and locIdx=#{locIdx}
 	</select> 

@@ -6,4 +6,12 @@
 		select * from area
 	</select>
 	
+	<select id="findArea" resultType="com.spring.domain.AreaVO">
+		select * from area where name=#{name}
+	</select>
+	
+	<insert id="addArea">
+		 INSERT INTO area VALUES(seq_area.nextval, #{name}) 
+	</insert> 
+	
 </mapper>

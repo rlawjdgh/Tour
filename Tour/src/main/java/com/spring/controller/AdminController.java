@@ -179,4 +179,19 @@ public class AdminController {
 		return str; 
 	}
 	
+	@RequestMapping("/addArea")
+	@ResponseBody 
+	public String addArea(AreaVO vo) {
+		
+		String str = "no";  
+		AreaVO check = areaService.findArea(vo);
+		
+		if(check == null) {
+			areaService.addArea(vo); 
+			str = "clear";
+		}    
+		
+		return str; 
+	}
+	
 } 
