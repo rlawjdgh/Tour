@@ -47,6 +47,7 @@
  
 	
 	<script>
+	
 		$(function(){
 			
 			var switch1 = 0;

@@ -19,9 +19,9 @@
 		update member set authstatus=#{authstatus} where idx=#{idx} and authkey=#{authkey}
 	</update>
 	
-	<update id="registMember">
-		update member set name=#{name}, id=#{id}, password=#{password}, phone=#{phone}, grade=#{grade}, point=0, admin=0 where email=#{email} 
-	</update>
+	<update id="registMember"> 
+		update member set name=#{name}, id=#{id}, password=#{password}, phone=#{phone}, grade=#{grade}, point=0, admin=0, coupon=0 where email=#{email} 
+	</update> 
 	  
 	<select id="checkId" resultType="com.spring.domain.MemberVO"> 
 		select * from member where id=#{id} 
@@ -35,8 +35,8 @@
 		select * from member where idx=#{idx} 
 	</select>
 	
-	<insert id="setPoint"> 
-		update member set point=#{point}, grade=#{grade} where idx=#{idx}  
+	<insert id="setPoint">  
+		update member set point=#{point}, grade=#{grade}, coupon=#{coupon} where idx=#{idx}  
 	</insert>
 	
 	<delete id="memberDelete">
@@ -54,4 +54,13 @@
 	<select id="findEmail" resultType="com.spring.domain.MemberVO">
 		select * from member where id=#{id} and email=#{email}  
 	</select>
+	
+	<update id="removeCoupon">     
+		update member set coupon=#{coupon} where idx=#{idx}  
+	</update>
+	
+	<select id="findMember" resultType="com.spring.domain.MemberVO">
+		select * from member where idx=#{idx} 
+	</select>
+
 </mapper>

@@ -12,5 +12,7 @@ public interface PaymentMapper {
 	public List<PaymentVO> select(ReadSeatVO vo);
 	public List<PaymentVO> getTicket(HashMap<String, Object> hash);
 	public int getTotal();
+	public int couponPay(PaymentVO vo); 
+	public List<PaymentVO> getPay(String idx); 
 
 }

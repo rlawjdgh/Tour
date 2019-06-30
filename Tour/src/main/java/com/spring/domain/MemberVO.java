@@ -16,5 +16,6 @@ public class MemberVO {
 	private int authstatus;
 	private int point; 
 	private int admin;
+	private int coupon; 
 	
 } 

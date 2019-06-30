@@ -63,6 +63,7 @@
 	</div>
 	
 	<script type="text/javascript">
+	
 		$(function() {
 			
 			var d = new Date(); 
@@ -70,10 +71,23 @@
 			var mm = d.getMonth() + 1;
 			var dd = d.getDate() - 1;
 			var today = `${yy}${mm}${dd}`;
+			var arr = new Array();
+			var final_data = [];
 			
 			if(mm<10){mm="0"+mm;}
 			if(dd<10){dd = "0"+dd;}
 			
+			$.getJSON({ 
+				url : "/tour/uploadSelect",
+				type : "get", 
+				success : function(result) {
+					$(result).each(function(i,obj) { 
+						arr.push(obj.movieNm); 
+
+					});			 	 	       
+				}   
+			});
+			      
 			//박스오피스 얻어오기
 			var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=d3d73e7d0bdba4769f78b1222bf012b9&targetDt=";
 			url+=yy+mm+dd 
@@ -89,7 +103,8 @@
 						alert("데이터가 없습니다.");
 						$("#msg").html(str);
 					}
-
+  					 
+  
 					$.each(data.boxOfficeResult.dailyBoxOfficeList,function(index,item) {
 						
 						str += "<tr>"; 
@@ -105,15 +120,24 @@
 						str=str+rankInten+")";  
 						str += "</td>"; 
 						
-						str += "<td>";
-						str += "<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+"</a>"; 
-						str += "</td>";
-						str +="</tr>"; 
-					});  
-							
+						str += "<td>"; 
+						 
+						$.each(arr, function(index, obj) {
+							if(obj == item.movieNm) {
+								str += "<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+" (O)</a>"; 
+								str += "</td>";  
+								str +="</tr>";
+								$("#msg").html(str);  
+							}  
+						});  	
+						str += "<a href='#' data-moviecd='"+item.movieCd+"' data-movienm='"+item.movieNm+"' onclick='return false;' class='clickMovie'>"+item.movieNm+" (X)</a>";
+						str += "</td>";  
+						str +="</tr>";  
+					});     
+							 
 					$("#msg").html(str);  
 				}, 
-				error:function(){
+				error:function(){ 
 					alert('실패'); 
 				}
 			}); 

@@ -63,8 +63,8 @@ create table payment(
 	boxIdx number(5),
 	day varchar2(20),
 	movieNm varchar2(100),
-	seatNum varchar2(20),
-	price number(5),
+	seatNum varchar2(100),
+	price number(10),
 	regdate date
 );
 

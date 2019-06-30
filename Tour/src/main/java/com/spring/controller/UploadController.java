@@ -77,4 +77,12 @@ public class UploadController {
 		return one;
 	} 
 	
+	
+	@RequestMapping("/uploadSelect")
+	@ResponseBody
+	public List<UploadVO> uploadSelect() {
+		
+		List<UploadVO> one = service.uploadSelect();
+		return one; 
+	}
 }

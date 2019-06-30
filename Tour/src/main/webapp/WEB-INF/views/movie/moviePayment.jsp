@@ -65,10 +65,11 @@
 			<div class="btn_wrap">
                 <div class="btn_inner"> 
                     <a href="javascript:void(0);" class="btn_prev Lang-LBL0029">이전단계</a>
-                    <div style="padding-top: 7px;">	                    
+                    <div style="padding-top: 7px;">	                     
                     	<button type="button" class="btn btn-outline-danger btn_pay" style="float: right;">카카오페이 결제하기</button>
+                    	<button type="button" class="btn btn-outline-danger btn_coupon" style="float: right;">쿠폰으로 결제하기</button>
                     </div>
-                </div> 
+                </div>  
            	</div>
     	</div>
 	</div> 
@@ -82,15 +83,93 @@
    	<input type="hidden" id="logon_idx" value="${logon.idx}">	                    
    	<input type="hidden" id="logon_name" value="${logon.name}">	                    
    	<input type="hidden" id="logon_phone" value="${logon.phone}">
+   	
+   	
+   	<input type="hidden" id="people" value="${movieDecideVO.people}"> 
+   	<input type="hidden" id="logon_coupon" value="">  
 
 	
 	<script>
 	
-		$(".btn_prev").click(function(){
 	
-			window.history.back();
-	
+		var code = "cou_"; 
+		 
+		for(var i = 0; i < 12; i++) {
+			code +=  Math.floor(Math.random() * 10);;
+		}
+		
+		$.getJSON({ 
+			url : "/tour/findMember",  
+			data : {idx: Number($('#logon_idx').val())},   
+			type : "get", 
+			success : function(data) {
+				$(data).each(function(i,obj) {   
+					
+					coupon = obj.coupon; 
+				});	 
+				document.getElementById('logon_coupon').value = coupon;					 		    
+			}     
 		});
+		
+		$(".btn_coupon").on("click", function() {
+			
+			if($('#people').val() > $('#logon_coupon').val()) {
+				alert("쿠폰이 부족합니다");
+				return false;
+			} 
+			
+			
+			$.ajax({
+				url : '/tour/removeCoupon',
+				type : 'get',
+				data : {
+					idx : $("#logon_idx").val(),
+					people : $('#people').val()},  
+				success : function(done) { 
+					console.log(done);
+				} 
+			});
+	 	 
+			$.ajax({
+				url : '/tour/couponPay',  
+				type : 'get',
+				data : { 
+					idx : code,
+                    memberIdx : $('#logon_idx').val(),
+                    boxIdx : $('#boxIdx').val(),
+                    day : $('#day').val(),
+                    movieNm : $('#movieNm').val(),
+                    seatNum : $('#seatNum').val(),
+                    price : 0
+				}, 
+				success : function(result) {
+					
+					if(result == "clear") {
+						
+						$.getJSON({ 
+							url : "/tour/getPay",
+							data : {idx: code},   
+							type : "get", 
+							success : function(data) {
+								
+								$(data).each(function(i,obj) {  
+							
+									msg = '결제가 완료되었습니다.';
+					            	msg += '\n이름 : ' + $('#logon_name').val();
+				                    msg += '\n결제번호 : ' + obj.idx;
+				                    msg += '\n결제 금액 : ' + obj.price;
+				                     
+				                    alert(msg);       
+				                    $(location).attr('href', '/tour/'); 
+								});	
+											 		    
+							}   
+						}); 		
+					}
+				}
+			});		
+		});
+	
 
 		$(".btn_pay").on("click", function() {
 			
@@ -145,6 +224,11 @@
 		        
 		    });
 		});
+		
+		$(".btn_prev").click(function(){
+			
+			window.history.back();
+		}); 
 	</script>
 	
 <%@include file="../includes/footer.jsp"%>

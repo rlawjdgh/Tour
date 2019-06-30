@@ -254,9 +254,15 @@ public class MemberController {
 			str = "ddddd";
 		}
 		
-		return str;
+		return str;	
+	}
+	
+	@RequestMapping("/findMember")
+	@ResponseBody
+	public MemberVO findMember(int idx) {
 		
-		
+		MemberVO vo = service.findMember(idx);
+		return vo;	  
 	}
 	
 	

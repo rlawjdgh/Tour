@@ -11,5 +11,7 @@ public interface PaymentService {
 	public List<PaymentVO> select(ReadSeatVO vo);
 	public List<PaymentVO> getTicket(int nowPage, int memberIdx);
 	public int getTotal();
+	public int couponPay(PaymentVO vo); 
+	public List<PaymentVO> getPay(String idx); 
 
 }

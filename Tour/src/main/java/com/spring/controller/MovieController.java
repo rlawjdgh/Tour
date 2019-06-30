@@ -110,9 +110,9 @@ public class MovieController {
 		List<AreaVO> area = areaService.getArea();
 		model.addAttribute("area", area);
 		model.addAttribute("clickMovieNm", movieNm);
-
+ 
 		return "/movie/movieTicketing";
-	}
+	}  
 	
 	@RequestMapping("/ready_loc")
 	@ResponseBody

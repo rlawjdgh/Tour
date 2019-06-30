@@ -142,5 +142,15 @@ public class MemberServiceImpl implements MemberService{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public MemberVO removeCoupon(MemberVO vo) {		
+		return mapper.removeCoupon(vo);
+	}
+
+	@Override
+	public MemberVO findMember(int idx) {
+		return mapper.findMember(idx);
+	}
 	
 }

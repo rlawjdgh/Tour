@@ -19,6 +19,8 @@ public interface MemberMapper {
 	public int reInsert(MemberVO vo);
 	public List<MemberVO> selectAll();
 	public MemberVO findEmail(MemberVO vo);
+	public MemberVO removeCoupon(MemberVO vo); 
+	public MemberVO findMember(int idx); 
 	
 } 
  

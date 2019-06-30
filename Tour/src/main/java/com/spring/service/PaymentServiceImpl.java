@@ -50,5 +50,15 @@ public class PaymentServiceImpl implements PaymentService{
 	public int getTotal() {
 		return mapper.getTotal();
 	}
+
+	@Override
+	public int couponPay(PaymentVO vo) {
+		return mapper.couponPay(vo);
+	}
+
+	@Override
+	public List<PaymentVO> getPay(String idx) {
+		return mapper.getPay(idx);
+	}
  
 }

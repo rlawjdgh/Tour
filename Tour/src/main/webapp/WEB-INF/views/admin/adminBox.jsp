@@ -75,7 +75,7 @@
 					$(data).each(function(i,obj) { 
 						
 						$.getJSON({  
-							url : "/tour/click_loc",
+							url : "/tour/click_loc", 
 							data : {areaIdx:obj.idx}, 
 							type : "get",  
 							success : function(result) { 
@@ -118,6 +118,7 @@
 			
 			if(location == '') {
 				alert("위치를 입력 해 주세요");
+				return false;
 			} else { 
 				$.ajax({
 					url : "/tour/addLocation", 
@@ -144,6 +145,7 @@
 			
 			if(area == '') {
 				alert("지역를 입력 해 주세요");
+				return false;
 			} else { 
 				$.ajax({
 					url : "/tour/addArea", 

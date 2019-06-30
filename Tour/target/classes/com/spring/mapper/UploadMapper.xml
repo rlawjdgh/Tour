@@ -15,4 +15,8 @@
 		select * from upload where movieNm=#{movieNm}
 	</select>
 	
+	<select id="uploadSelect" resultType="com.spring.domain.UploadVO">
+		select movieNm from upload 
+	</select> 
+	
 </mapper> 

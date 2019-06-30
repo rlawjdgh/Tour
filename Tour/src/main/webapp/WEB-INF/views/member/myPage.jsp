@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp" %>
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage.css">
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage2.css">
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage3.css"> 
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/myPage4.css"> 
+<%@include file="../includes/header.jsp" %>  
 
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/mypage5.css"> 
+ 
 	 <div class="carousel slide carousel-fade"> 
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
@@ -14,7 +12,7 @@
 					<div>
 						<h3>────── Member INFO ──────</h3>
 						<h1>My Page</h1>
-					</div>
+					</div> 
 				</div> 
 			</div>
 		</div> 
@@ -30,22 +28,30 @@
 							<em><span class="userName" id="spnUserName">${ logon.name }</span>님 환영합니다!</em>
 							<dl>
 	                            <dt>회원 등급</dt>
-	                            <dd class="rating Lang-LBL0000"><span id="spnMemberGrade">${ logon.grade }</span></dd> 
+	                            <dd class="rating Lang-LBL0000"><span id="spnMemberGrade"></span></dd> 
                         	</dl>
 						</div>
 						
 						<div class="pointCont">
-							<dl class="apoint">
-								<dt>POINT</dt>
+							<dl class="apoint" style=" width: 490px;">
+								<dt>POINT</dt>  
 								<dd class="available">
-                                	<strong id="strAccountLPoint">${ logon.point }<span class="icon_p">P</span></strong>
-                            	</dd>
-                            	<dd class="note">
-	                                <ul>
-	                                    <li>POINT로 영화예매를 할 수 있습니다.</li>   
-	                                </ul>
-                            	</dd>    
+                                	<strong id="strAccountLPoint"><span class="icon_p">P</span></strong>
+                            	</dd>  	 
 							</dl>
+							 
+							<dl class="coupon" id="coupon_info">
+                            <dt>보유 쿠폰정보</dt> 
+                            <dd>  
+                                <dl>
+                                    <dt>사용 가능한 영화쿠폰</dt>
+                                    <dd>
+                                    	<strong id="strExchangeTicketCount"></strong>
+                                    	<span>매</span>
+                                    </dd> 
+                                </dl>
+                            </dd>     
+                        </dl>
 						</div>
 						
 					</div> 
@@ -114,6 +120,32 @@
 	<input type="hidden" id="payPageMenu" value="${pageMenu}">
 	
 	<script>
+	
+		$(function() {
+			
+			var grade = "";
+			var point = 0;
+			var coupon = 0;
+			  
+			$.getJSON({ 
+				url : "/tour/findMember", 
+				data : {idx: Number($('#idx').val())},   
+				type : "get", 
+				success : function(data) {
+					$(data).each(function(i,obj) {   
+						
+						grade = obj.grade;
+						point = obj.point;
+						coupon = obj.coupon; 
+					});	
+					
+					$("#spnMemberGrade").html(grade);
+					$("#strAccountLPoint").html(point);
+					$("#strExchangeTicketCount").html(coupon);
+								 		    
+				}    
+			});
+		});	
 			
 		$(document).ready(function() {
 			

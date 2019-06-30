@@ -33,4 +33,9 @@ public class UploadServiceImpl implements UploadService{
 		return mapper.uploadOne(movieNm);
 	}
 
+	@Override
+	public List<UploadVO> uploadSelect() {
+		return mapper.uploadSelect();
+	}
+
 }

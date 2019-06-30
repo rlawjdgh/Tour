@@ -19,5 +19,6 @@ public interface MemberService {
 	public List<MemberVO> selectAll();
 	public MemberVO findEmail(MemberVO vo);
 	public void getPassword(MemberVO vo);
-
-}
+	public MemberVO removeCoupon(MemberVO vo); 
+	public MemberVO findMember(int idx);
+} 

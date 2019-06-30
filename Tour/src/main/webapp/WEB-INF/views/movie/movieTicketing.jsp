@@ -5,8 +5,7 @@
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/ticketing.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/box.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  	<link rel="stylesheet" href="/resources/demos/style.css">
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 
 	<div class="carousel slide carousel-fade">
 		<div class="carousel-inner" role="listbox">
@@ -28,7 +27,6 @@
 				<div class="ticket_left">
 					<dl class="theater_header">					
 						<dt>
-							<!-- <button type="button" class="btn btn-outline-danger">날짜선택</button> -->
 							날짜선택 : <input type="text" id="datepicker" style="width: 180px; height: 30px;">
 						</dt>       
                     </dl>
@@ -44,10 +42,11 @@
                     			<c:forEach var="area" items="${area}">
                    					<li class="theater_zone">
                    						<button type="button" class="btn btn-secondary" onclick="areaClick( ${ area.idx } );">${area.name}</button><br>
+                   						<input type="hidden" value="${ area.idx }" id="click-area">
                    					</li>
-                   				</c:forEach>
-                   				
-                   				<div class="area_cont on locNum"></div>
+        						</c:forEach> 
+                   				  
+                   				<div class="area_cont on locNum"></div> 
                     		</ul>
                     	</div>
                     </div>  	
@@ -156,8 +155,8 @@
 				
 				$.getJSON({
 					url : "/tour/ready_loc",
-					data : {areaIdx:1},
-					type : "get",
+					data : {areaIdx:$("#click-area").val()},
+					type : "get", 
 					success : function(data) {
 						
 						console.log(data);
@@ -173,14 +172,13 @@
 					} 
 				});
 				
-				$("#box3").html($('#click-movieNm').val());
-				
+				$("#box3").html($('#click-movieNm').val());			
 			}); 
 			 
 			$( "#datepicker" ).datepicker({
 				dateFormat: 'yy-mm-dd',
 				minDate: '-0M',
-			    maxDate: '+4D', 
+			    maxDate: '+4D',  
 			     
 			    onSelect: function(dateText, inst) {
 			   		$("#box1").html(dateText);
@@ -188,6 +186,28 @@
 			    }  
 			});   
 		});  
+		
+		function areaClick(areaIdx){ 
+		 	 
+			$.getJSON({
+				url : "/tour/click_loc",
+				data : {areaIdx:areaIdx},
+				type : "get",
+				success : function(data) {
+					
+					console.log(data);
+					var str = "";
+					
+					str+= "<ul class='area_list'>";
+					$(data).each(function(i,obj){
+						str += "<li><button class='btn btn-outline-primary loc' data-name='"+obj.locName+"' data-locidx='"+obj.idx+"'>"+obj.locName+"</button></li>";
+					});	
+					str+="</ul>";
+					
+					$(".locNum").html(str);
+				} 
+			});	
+		}; 
 		 
 		function show(movieCd){
 	
@@ -210,27 +230,6 @@
 			});
 		};
 		
-		function areaClick(areaIdx){
-			
-			$.getJSON({
-				url : "/tour/click_loc",
-				data : {areaIdx:areaIdx},
-				type : "get",
-				success : function(data) {
-					
-					console.log(data);
-					var str = "";
-					
-					str+= "<ul class='area_list'>";
-					$(data).each(function(i,obj){
-						str += "<li><button class='btn btn-outline-primary loc' data-name='"+obj.locName+"' data-locidx='"+obj.idx+"'>"+obj.locName+"</button></li>";
-					});	
-					str+="</ul>";
-					
-					$(".locNum").html(str);
-				} 
-			});	
-		};
 		
 		$(".locNum").on("click", ".loc", function() {
 			
@@ -299,11 +298,6 @@
 		});
 		
 		$("#box5").on("click", ".t0", function() {
-			
-			/* if(${logon == null}) {
-			alert("로그인 후 이용 가능합니다.");
-			return false;
-			} */
 			
 			var form = $('<form></form>'); 
 			form.attr('action', '/tour/movieSitBooking'); 

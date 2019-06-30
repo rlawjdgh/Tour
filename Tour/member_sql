@@ -10,6 +10,7 @@ create table member (
 		grade varchar2(20),
 		authkey varchar2(50),
 		authstatus number(5),
-		point number(10),
+		point number(30),
+		coupon number(10), 
 		admin number(2)
 	); 

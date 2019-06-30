@@ -247,12 +247,28 @@
 							if(j < 3) {
 								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 								str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
+								
+								$(seatReady).each(function(index, obj) {
+			 						if((e2+j) == obj) {  
+			 							console.log("obj : " + obj);  
+			 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
+			 							str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>"; 
+			 						} 
+								});
 							}
 							left += 26;
 							
 							if(j > 2 && j < 15) {
 								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 								str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
+								
+								$(seatReady).each(function(index, obj) {
+			 						if((e2+j) == obj) {  
+			 							console.log("obj : " + obj);  
+			 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
+			 							str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>"; 
+			 						} 
+								});
 							}
 								  
 							if(j > 14 && j < 17) { 
@@ -261,15 +277,15 @@
 								}
 								str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3' data-seat='"+e2+j+"'";
 								str += "style='left: "+right_left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>";
-							}
-							
-							$(seatReady).each(function(index, obj) {
-		 						if((e2+j) == obj) {
-		 							console.log(e2+j);  
-		 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
-		 							str += "style='left: "+left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>"; 
-		 						} 
-							});   
+								
+								$(seatReady).each(function(index, obj) {
+			 						if((e2+j) == obj) {  
+			 							console.log("obj : " + obj);  
+			 							str += "<a href='javascript:void(0);' id='"+e2+j+"' class='p0 grNum3 no' data-seat='"+e2+j+"'";
+			 							str += "style='left: "+right_left+"px; top: "+top+"px;' title='좌석 번호:"+e2+j+" - 일반석'>"+j+"</a>"; 
+			 						} 
+								});  
+							}   
 							 
 						}     
 						top += 26;         
@@ -280,7 +296,7 @@
 			});      
 		});  
 		    
-		$(function(){
+		$(function() {
 			
 			var people;
 			var str = new Array;
